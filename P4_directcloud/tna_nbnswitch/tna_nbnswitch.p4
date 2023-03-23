@@ -427,6 +427,11 @@ control Ingress(
             }
             // Handles direct cloud connectivity
             else{
+                // if going to the cloud(previous ipv4_forward no match), check user's cloud access
+                cloud_access.apply();
+                // check if the destination is a cloud IP address
+                check_dst_cloud.apply();
+                // route to the cloud
                 update_src_mac.apply();
                 update_dst_mac.apply();
                 ipv4_forward.apply();
