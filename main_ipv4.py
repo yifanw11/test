@@ -54,10 +54,6 @@ def set_fwd_pipeline(p4_name, profile_name, interface):
         raise RuntimeError("SetForwardingPipelineRequest failed")
 
 
-# 1-12 access
-# 13 - 18 cloud
-# 19 - 30 RSP
-# $DEV_PORT is D_P in the switch CLI
 def configure_ports(port_table):
     target = gc.Target()
     # Access User - port 1/0 *TX 10G
@@ -82,88 +78,6 @@ def configure_ports(port_table):
                                gc.DataTuple('$AUTO_NEGOTIATION', str_val="PM_AN_FORCE_DISABLE")])]
         )
 
-    # port 1/1 *TX 10G
-    port_table.entry_add(
-    target,
-    [port_table.make_key([gc.KeyTuple('$DEV_PORT', 133)])],#This means an exact match
-    [port_table.make_data([gc.DataTuple('$SPEED', str_val="BF_SPEED_10G"),
-                           gc.DataTuple('$FEC', str_val="BF_FEC_TYP_NONE"),
-                           gc.DataTuple('$PORT_ENABLE', bool_val=True),
-                           gc.DataTuple('$PORT_DIR', str_val="PM_PORT_DIR_TX_ONLY"),
-                           gc.DataTuple('$AUTO_NEGOTIATION', str_val="PM_AN_FORCE_DISABLE")])]
-    )
-
-
-    # port 1/2 *TX 10G
-    port_table.entry_add(
-    target,
-    [port_table.make_key([gc.KeyTuple('$DEV_PORT', 134)])],#This means an exact match
-    [port_table.make_data([gc.DataTuple('$SPEED', str_val="BF_SPEED_10G"),
-                           gc.DataTuple('$FEC', str_val="BF_FEC_TYP_NONE"),
-                           gc.DataTuple('$PORT_ENABLE', bool_val=True),
-                           gc.DataTuple('$PORT_DIR', str_val="PM_PORT_DIR_TX_ONLY"),
-                           gc.DataTuple('$AUTO_NEGOTIATION', str_val="PM_AN_FORCE_DISABLE")])]
-    )
-
-
-    # port 1/3 *TX 10G
-    port_table.entry_add(
-    target,
-    [port_table.make_key([gc.KeyTuple('$DEV_PORT', 135)])],#This means an exact match
-    [port_table.make_data([gc.DataTuple('$SPEED', str_val="BF_SPEED_10G"),
-                           gc.DataTuple('$FEC', str_val="BF_FEC_TYP_NONE"),
-                           gc.DataTuple('$PORT_ENABLE', bool_val=True),
-                           gc.DataTuple('$PORT_DIR', str_val="PM_PORT_DIR_TX_ONLY"),
-                           gc.DataTuple('$AUTO_NEGOTIATION', str_val="PM_AN_FORCE_DISABLE")])]
-    )
-
-
-    # port 2/1 *TX 10G
-    port_table.entry_add(
-    target,
-    [port_table.make_key([gc.KeyTuple('$DEV_PORT', 141)])],#This means an exact match
-    [port_table.make_data([gc.DataTuple('$SPEED', str_val="BF_SPEED_10G"),
-                           gc.DataTuple('$FEC', str_val="BF_FEC_TYP_NONE"),
-                           gc.DataTuple('$PORT_ENABLE', bool_val=True),
-                           gc.DataTuple('$PORT_DIR', str_val="PM_PORT_DIR_TX_ONLY"),
-                           gc.DataTuple('$AUTO_NEGOTIATION', str_val="PM_AN_FORCE_DISABLE")])]
-    )
-
-    # port 2/2 *TX 10G
-    port_table.entry_add(
-    target,
-    [port_table.make_key([gc.KeyTuple('$DEV_PORT', 142)])],#This means an exact match
-    [port_table.make_data([gc.DataTuple('$SPEED', str_val="BF_SPEED_10G"),
-                           gc.DataTuple('$FEC', str_val="BF_FEC_TYP_NONE"),
-                           gc.DataTuple('$PORT_ENABLE', bool_val=True),
-                           gc.DataTuple('$PORT_DIR', str_val="PM_PORT_DIR_TX_ONLY"),
-                           gc.DataTuple('$AUTO_NEGOTIATION', str_val="PM_AN_FORCE_DISABLE")])]
-    )
-
-    # port 2/3 *TX 10G
-    port_table.entry_add(
-    target,
-    [port_table.make_key([gc.KeyTuple('$DEV_PORT', 143)])],#This means an exact match
-    [port_table.make_data([gc.DataTuple('$SPEED', str_val="BF_SPEED_10G"),
-                           gc.DataTuple('$FEC', str_val="BF_FEC_TYP_NONE"),
-                           gc.DataTuple('$PORT_ENABLE', bool_val=True),
-                           gc.DataTuple('$PORT_DIR', str_val="PM_PORT_DIR_TX_ONLY"),
-                           gc.DataTuple('$AUTO_NEGOTIATION', str_val="PM_AN_FORCE_DISABLE")])]
-    )
-
-
-    # port 3/0 *TX 10G
-    port_table.entry_add(
-    target,
-    [port_table.make_key([gc.KeyTuple('$DEV_PORT', 148)])],#This means an exact match
-    [port_table.make_data([gc.DataTuple('$SPEED', str_val="BF_SPEED_10G"),
-                           gc.DataTuple('$FEC', str_val="BF_FEC_TYP_NONE"),
-                           gc.DataTuple('$PORT_ENABLE', bool_val=True),
-                           gc.DataTuple('$PORT_DIR', str_val="PM_PORT_DIR_TX_ONLY"),
-                           gc.DataTuple('$AUTO_NEGOTIATION', str_val="PM_AN_FORCE_DISABLE")])]
-    )
-
-
     # direct cloud - port 5/0 *TX 10G
     port_table.entry_add(
         target,
@@ -174,7 +88,6 @@ def configure_ports(port_table):
                                gc.DataTuple('$PORT_DIR', str_val="PM_PORT_DIR_DEFAULT"),
                                gc.DataTuple('$AUTO_NEGOTIATION', str_val="PM_AN_FORCE_DISABLE")])]
         )
-
 
     #  - port 21/0 *TX and RX 25G
     port_table.entry_add(
@@ -201,6 +114,7 @@ def configure_ports(port_table):
     return target
 
 
+
 # function to manipulate ipv4_forward table
 def ipv4_forward_add_entry(target, table, dst_ip, prefix_len, dst_port):
     table.info.key_field_annotation_add("dst_ip", "ipv4")
@@ -223,7 +137,7 @@ def main():
     target = configure_ports(port_table)
 
     ipv4_forward_table = bfrt_info.table_get("pipe.ipv4_forward")
-    ipv4_forward_add_entry(target, ipv4_forward_table, “10.0.112.0”, 24, 164)
+    ipv4_forward_add_entry(target, ipv4_forward_table, "10.0.112.0", 24, 164)
 
 
 
