@@ -431,10 +431,16 @@ control Ingress(
                 cloud_access.apply();
                 // check if the destination is a cloud IP address
                 check_dst_cloud.apply();
-                // route to the cloud
-                update_src_mac.apply();
-                update_dst_mac.apply();
-                ipv4_forward.apply();
+                if (dst_cloud){
+                    // route to the cloud
+                    update_src_mac.apply();
+                    update_dst_mac.apply();
+                    ipv4_forward.apply();
+                }
+                else{
+                    port_forward.apply();
+                }
+
             }
         }
 
