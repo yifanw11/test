@@ -488,11 +488,11 @@ control Ingress(
 
                 // Drop packets to users that don't have direct cloud connectivity
                 reverse_cloud_access.apply();
-                #if (cloud_enabled == true) {
+                //if (cloud_enabled == true) {
                     update_src_mac.apply();
                     update_dst_mac.apply();
                     ipv4_forward.apply();
-                #}
+                //}
             }
         }
 
