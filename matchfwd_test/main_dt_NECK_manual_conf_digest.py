@@ -394,13 +394,13 @@ def read_digest(bfrt_info, interface, cloud_ip_prefix):
 
 
 
-def match_forward_add_entry(target, table, src_ip, dst_ip, egr_port):
+def match_forward_add_entry(target, table, src_ip, prefix_len, dst_ip, egr_port):
     table.info.key_field_annotation_add('src_ip', 'ipv4')
     table.info.key_field_annotation_add('dst_ip', 'ipv4')
     table.entry_add(
         target,
         [table.make_key(
-            [gc.KeyTuple("src_ip", src_ip), gc.KeyTuple("dst_ip", dst_ip)])],
+            [gc.KeyTuple("src_ip", src_ip, prefix_len=prefix_len), gc.KeyTuple("dst_ip", dst_ip)])],
         [table.make_data(
             [gc.DataTuple('dst_port', egr_port)],
             'set_egr_port')])
@@ -512,7 +512,7 @@ def main():
                                      c_pkts=0)
   
     match_forward_table = bfrt_info.table_get("pipe.match_forward")
-    match_forward_add_entry(target, match_forward_table, "10.211.211.84", config["cloud_ip"], 36)
+    match_forward_add_entry(target, match_forward_table, config["host_ip"], 24, config["cloud_ip"], 36)
 
 
     digest_reader = threading.Thread(target=read_digest, args=(bfrt_info, interface, config["cloud_ip_prefix"],))
