@@ -416,8 +416,8 @@ control Ingress(
     @name(".match_forward")
     table match_forward {
         key = {
-            hdr.ipv4.src_addr : lpm @name("src_ip");
-            hdr.ipv4.dst_addr: exact @name("dst_ip");
+            hdr.ipv4.src_addr : exact @name("src_ip");
+            hdr.ipv4.dst_addr: lpm @name("dst_ip");
         }
         actions = {
             set_egr_port;
