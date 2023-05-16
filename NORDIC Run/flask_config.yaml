@@ -1,0 +1,48 @@
+PROMETHEUS: 'http://prometheus:9090'
+GRAFANA: 'grafana:3000'
+HOSTNAME: '10.0.70.26'
+BGPNAME: '10.0.70.12'
+CONTROLLER: 'controller'
+CONTROLLER_PORT: '4444'
+iframes:
+  - "Telstra"
+  - "Optus"
+  - "TPG"
+
+clouds:
+  - "Google"
+  - "Amazon"
+  - "Netflix"
+
+cloud_router_mac:
+  - "10.0.112.10" : "fa:16:3e:ac:bd:65"
+
+cloud_arp:
+  - "10.0.112.8"
+
+cloudConfig:
+  #31/0
+  - "21"
+  #31/1
+  - "22"
+
+
+RSPConfig:
+  - "1"
+  - "3"
+  - "5"
+  - "7"
+  - "9"
+  - "11"
+  - "13"
+  - "15"
+  - "17"
+  - "19"
+
+
+
+# Logical MAPPING (NOT ACTUAL SWITCH MAPPINGS)
+mapping:
+  "1": "132"
+  "2": "140"
+  "21": "164"

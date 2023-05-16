@@ -1,0 +1,534 @@
+pkg_info {
+  arch: "tna"
+}
+tables {
+  preamble {
+    id: 33559520
+    name: "port_forward"
+    alias: "port_forward"
+  }
+  match_fields {
+    id: 1
+    name: "ingress_port"
+    bitwidth: 9
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16824214
+  }
+  action_refs {
+    id: 16819938
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  const_default_action_id: 16819938
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33564209
+    name: "counting_table_ing"
+    alias: "counting_table_ing"
+  }
+  match_fields {
+    id: 1
+    name: "ingress_port_count"
+    bitwidth: 9
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16808864
+  }
+  action_refs {
+    id: 16819938
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  const_default_action_id: 16819938
+  direct_resource_ids: 318798751
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33580279
+    name: "counting_table_egr"
+    alias: "counting_table_egr"
+  }
+  match_fields {
+    id: 1
+    name: "egress_port_count"
+    bitwidth: 9
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16822215
+  }
+  action_refs {
+    id: 16819938
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  const_default_action_id: 16819938
+  direct_resource_ids: 318821007
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33608834
+    name: "counting_table_cloud_ing"
+    alias: "counting_table_cloud_ing"
+  }
+  match_fields {
+    id: 1
+    name: "dst_ip_count"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16806592
+  }
+  action_refs {
+    id: 16819938
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  const_default_action_id: 16819938
+  direct_resource_ids: 318797092
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33564143
+    name: "counting_table_cloud_egr"
+    alias: "counting_table_cloud_egr"
+  }
+  match_fields {
+    id: 1
+    name: "src_ip_count"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16781705
+  }
+  action_refs {
+    id: 16819938
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  const_default_action_id: 16819938
+  direct_resource_ids: 318823059
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33572815
+    name: "port_type"
+    alias: "port_type"
+  }
+  match_fields {
+    id: 1
+    name: "ingress_port_type"
+    bitwidth: 9
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16815156
+  }
+  action_refs {
+    id: 16802727
+  }
+  const_default_action_id: 16802727
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33567213
+    name: "cloud_access"
+    alias: "cloud_access"
+  }
+  match_fields {
+    id: 1
+    name: "src_ip"
+    bitwidth: 32
+    match_type: LPM
+  }
+  action_refs {
+    id: 16842380
+  }
+  action_refs {
+    id: 16786359
+  }
+  const_default_action_id: 16786359
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33604723
+    name: "reverse_cloud_access"
+    alias: "reverse_cloud_access"
+  }
+  match_fields {
+    id: 1
+    name: "dst_ip_access"
+    bitwidth: 32
+    match_type: LPM
+  }
+  action_refs {
+    id: 16842380
+  }
+  action_refs {
+    id: 16786359
+  }
+  const_default_action_id: 16786359
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33576669
+    name: "ipv4_forward"
+    alias: "ipv4_forward"
+  }
+  match_fields {
+    id: 1
+    name: "dst_ip"
+    bitwidth: 32
+    match_type: LPM
+  }
+  action_refs {
+    id: 16824214
+  }
+  action_refs {
+    id: 16819938
+  }
+  const_default_action_id: 16819938
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33580102
+    name: "check_dst_cloud"
+    alias: "check_dst_cloud"
+  }
+  match_fields {
+    id: 1
+    name: "cloud_dst_ip"
+    bitwidth: 32
+    match_type: LPM
+  }
+  action_refs {
+    id: 16832143
+  }
+  action_refs {
+    id: 16818211
+  }
+  const_default_action_id: 16818211
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33579495
+    name: "update_src_mac"
+    alias: "update_src_mac"
+  }
+  match_fields {
+    id: 1
+    name: "src_ip_mac"
+    bitwidth: 32
+    match_type: LPM
+  }
+  action_refs {
+    id: 16825440
+  }
+  action_refs {
+    id: 16819938
+  }
+  const_default_action_id: 16819938
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33612237
+    name: "update_dst_mac"
+    alias: "update_dst_mac"
+  }
+  match_fields {
+    id: 1
+    name: "dst_ip_mac"
+    bitwidth: 32
+    match_type: LPM
+  }
+  action_refs {
+    id: 16839946
+  }
+  action_refs {
+    id: 16819938
+  }
+  const_default_action_id: 16819938
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33562399
+    name: "learned_sources_user"
+    alias: "learned_sources_user"
+  }
+  match_fields {
+    id: 1
+    name: "known_ipv4"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "known_mac"
+    bitwidth: 48
+    match_type: EXACT
+  }
+  match_fields {
+    id: 3
+    name: "known_ingress_port"
+    bitwidth: 9
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16819938
+  }
+  action_refs {
+    id: 16841582
+  }
+  const_default_action_id: 16841582
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33575525
+    name: "learned_sources_rsp"
+    alias: "learned_sources_rsp"
+  }
+  match_fields {
+    id: 1
+    name: "known_ipv4_rsp"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "known_mac_rsp"
+    bitwidth: 48
+    match_type: EXACT
+  }
+  match_fields {
+    id: 3
+    name: "known_ingress_port_rsp"
+    bitwidth: 9
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16819938
+  }
+  action_refs {
+    id: 16841582
+  }
+  const_default_action_id: 16841582
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33584333
+    name: "arp_response"
+    alias: "arp_response"
+  }
+  match_fields {
+    id: 1
+    name: "arp_ip"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16819938
+  }
+  action_refs {
+    id: 16821409
+  }
+  const_default_action_id: 16819938
+  size: 1024
+}
+actions {
+  preamble {
+    id: 16819938
+    name: "nop"
+    alias: "nop"
+  }
+}
+actions {
+  preamble {
+    id: 16802727
+    name: "unk_source"
+    alias: "unk_source"
+  }
+}
+actions {
+  preamble {
+    id: 16808864
+    name: "hit_counting_table_ing"
+    alias: "hit_counting_table_ing"
+  }
+}
+actions {
+  preamble {
+    id: 16822215
+    name: "hit_counting_table_egr"
+    alias: "hit_counting_table_egr"
+  }
+}
+actions {
+  preamble {
+    id: 16806592
+    name: "hit_counting_table_cloud_ing"
+    alias: "hit_counting_table_cloud_ing"
+  }
+}
+actions {
+  preamble {
+    id: 16781705
+    name: "hit_counting_table_cloud_egr"
+    alias: "hit_counting_table_cloud_egr"
+  }
+}
+actions {
+  preamble {
+    id: 16815156
+    name: "detect_source"
+    alias: "detect_source"
+  }
+  params {
+    id: 1
+    name: "traffic"
+    bitwidth: 2
+  }
+}
+actions {
+  preamble {
+    id: 16824214
+    name: "set_egr_port"
+    alias: "set_egr_port"
+  }
+  params {
+    id: 1
+    name: "dst_port"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16825440
+    name: "set_src_mac"
+    alias: "set_src_mac"
+  }
+  params {
+    id: 1
+    name: "src_mac"
+    bitwidth: 48
+  }
+}
+actions {
+  preamble {
+    id: 16839946
+    name: "set_dst_mac"
+    alias: "set_dst_mac"
+  }
+  params {
+    id: 1
+    name: "dst_mac"
+    bitwidth: 48
+  }
+}
+actions {
+  preamble {
+    id: 16842380
+    name: "set_cloud_access"
+    alias: "set_cloud_access"
+  }
+}
+actions {
+  preamble {
+    id: 16786359
+    name: "no_access"
+    alias: "no_access"
+  }
+}
+actions {
+  preamble {
+    id: 16818211
+    name: "invalid_cloud_dst"
+    alias: "invalid_cloud_dst"
+  }
+}
+actions {
+  preamble {
+    id: 16832143
+    name: "valid_cloud_dst"
+    alias: "valid_cloud_dst"
+  }
+}
+actions {
+  preamble {
+    id: 16841582
+    name: "Ingress.unknown_source"
+    alias: "unknown_source"
+  }
+}
+actions {
+  preamble {
+    id: 16821409
+    name: "Ingress.cloud_arp"
+    alias: "cloud_arp"
+  }
+}
+direct_counters {
+  preamble {
+    id: 318798751
+    name: "counter_ing"
+    alias: "counter_ing"
+  }
+  spec {
+    unit: BOTH
+  }
+  direct_table_id: 33564209
+}
+direct_counters {
+  preamble {
+    id: 318821007
+    name: "counter_egr"
+    alias: "counter_egr"
+  }
+  spec {
+    unit: BOTH
+  }
+  direct_table_id: 33580279
+}
+direct_counters {
+  preamble {
+    id: 318797092
+    name: "counter_cloud_ing"
+    alias: "counter_cloud_ing"
+  }
+  spec {
+    unit: BOTH
+  }
+  direct_table_id: 33608834
+}
+direct_counters {
+  preamble {
+    id: 318823059
+    name: "counter_cloud_egr"
+    alias: "counter_cloud_egr"
+  }
+  spec {
+    unit: BOTH
+  }
+  direct_table_id: 33564143
+}
+type_info {
+}
