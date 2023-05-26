@@ -1,0 +1,80 @@
+version: "3.1"
+services:
+  controller:
+    image: yifanw11/nbn_testrun:controller
+    container_name: controller
+    volumes:
+      - ./controller_config.yaml:/Controller/src/controller_config.yaml
+      - ./tna_nbnswitch.bin:/Controller/src/tna_binary.bin
+      - ~/Intel/bf-sde-9.6.0/install/share/tofinopd/tna_nbnswitch/bf-rt.json:/Controller/src/tna_nbnswitch/bf-rt.json
+      - ~/Intel/bf-sde-9.6.0/install/share/tofinopd/tna_nbnswitch/pipe/context.json:/Controller/src/tna_nbnswitch/pipe/context.json
+      - ~/Intel/bf-sde-9.6.0/install/share/tofinopd/tna_nbnswitch/pipe/tofino.bin:/Controller/src/tna_nbnswitch/pipe/tofino.bin
+#      - ./p4info.pb.txt:/p4runtime-sh/src/p4info.pb.txt
+    ports:
+      - "4444:4444"
+    networks:
+      - promgraph_default
+  
+  prometheus:
+    image: prom/prometheus
+    depends_on:
+      - controller
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - promgraph_default
+    
+  grafana:
+    image: grafana/grafana
+    depends_on:
+      - prometheus
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana.ini:/etc/grafana/grafana.ini
+      - ./provisioning/:/etc/grafana/provisioning/
+    networks:
+      - promgraph_default
+    
+  flaskapp:
+    image: yifanw11/nbn_testrun:flaskapp
+    container_name: flaskapp
+    depends_on:
+      - grafana
+    ports:
+      - "5000:5000"
+      - "5656:5656"
+    volumes:
+      - ./flask_config.yaml:/app/flask_config.yaml
+    networks:
+      - promgraph_default
+
+  reactapp:
+    image: yifanw11/nbn_testrun:reactapp
+    container_name: reactapp
+    depends_on:
+      - flaskapp
+    ports: 
+      - "3001:3001"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - promgraph_default
+
+#  bgpcontroller:
+#    image: yifanw11/nbn_testrun:bgpcontroller
+#    container_name: bgpcontroller
+#    depends_on:
+#      - flaskapp
+#    ports:
+#      - "179:179"
+#    networks:
+#      - promgraph_default
+  
+networks:
+  promgraph_default:
+    name: promgraph_default
