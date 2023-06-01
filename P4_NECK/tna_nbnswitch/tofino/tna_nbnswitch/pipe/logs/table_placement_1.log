@@ -1,0 +1,823 @@
+Table Placement ignores container conflicts? 0
+table placement starting pipe
+ingress: [2566521] 1 00 000 0000 00001 000011 0000110
+  tbl_tna_nbnswitch419
+  tbl_tna_nbnswitch420
+  counting_table_ing_0{ E -1+0, 0 0K }
+  counting_table_cloud_ing_0{ E -1+0, 0 0K }
+  port_type_0{ E -1+1, 1 0K }
+  cond-7(ingress::ig_md.traffic_type == 0; => $true, 1 => $false)
+    $true: [2568570]
+      cond-8(ingress::hdr.ethernet.ether_type == 2054; => $true, ingress::hdr.vlan_tag[1].ether_type == 2054; => $true, 1 => $false)
+        $true: [2567676]
+          port_forward_0{ E -1+0, 2 0K }
+        $false: [2567053] 0 01
+          cloud_access_0{ T 32+1, 0 0K }
+          check_dst_cloud_0{ T 32+1, 0 0K }
+          cond-9(ingress::dst_cloud_0 => $true, 1 => $false)
+            $true: [2567220] 0 00 000
+              tbl_tna_nbnswitch441
+              update_src_mac_0{ T 32+1, 8 0K }
+              update_dst_mac_0{ T 32+1, 8 0K }
+              ipv4_forward_0{ T 32+1, 2 0K }
+            $false: [2567676]...
+    $false: [2568572]
+      cond-10(ingress::ig_md.traffic_type == 1; => $true, 1 => $false)
+        $true: [2567676]...
+        $false: [2568568]
+          cond-11(ingress::ig_md.traffic_type == 2; => $true, 1 => $false)
+            $true: [2568564]
+              cond-12(ingress::hdr.ethernet.ether_type == 2054; => $true, ingress::hdr.vlan_tag[1].ether_type == 2054; => $true, 1 => $false)
+                $true: [2567778] 1
+                  arp_response_0{ E 22+1, 4 0K }
+                  port_forward_0{ E -1+0, 2 0K }
+                $false: [2568029] 0 00 000 0000
+                  tbl_tna_nbnswitch471
+                  reverse_cloud_access_0{ T 32+1, 0 0K }
+                  update_src_mac_0{ T 32+1, 8 0K }
+                  update_dst_mac_0{ T 32+1, 8 0K }
+                  ipv4_forward_0{ T 32+1, 2 0K }
+  counting_table_egr_0{ E -1+0, 0 0K }
+  counting_table_cloud_egr_0{ E -1+0, 0 0K }
+egress: [2574996]
+
+stage 0, work: [ 2566521 ], partly placed 0, placed 0
+    { id=0 ram=0 tcam=0 mram=0 eixb=0 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch419
+  Group table: tbl_tna_nbnswitch420
+  Group table: counting_table_ing_0
+  Group table: counting_table_cloud_ing_0
+  Group table: port_type_0
+  Group table: cond-7
+  Group table: counting_table_egr_0
+  Group table: counting_table_cloud_egr_0
+tbl_tna_nbnswitch419 is not a gateway! Aborting search for merge choices
+try_place_table(tbl_tna_nbnswitch419, stage=0)
+  Initial stage is 0, initial entries is 1
+  Selected stage: 0    Furthest stage: 0
+  try_place_table returning 1 of tbl_tna_nbnswitch419 in stage 0
+    Pl vector: [ tbl_tna_nbnswitch419 ]
+  - skipping tbl_tna_nbnswitch420 due to in-sequence control dependence on tbl_tna_nbnswitch419
+counting_table_ing_0 is not a gateway! Aborting search for merge choices
+try_place_table(counting_table_ing_0, stage=0)
+  Initial stage is 0, initial entries is 512
+  Selected stage: 0    Furthest stage: 0
+  try_place_table returning 1024 of counting_table_ing_0 in stage 0
+    Pl vector: [ counting_table_ing_0 ]
+counting_table_cloud_ing_0 is not a gateway! Aborting search for merge choices
+try_place_table(counting_table_cloud_ing_0, stage=0)
+  Initial stage is 0, initial entries is 512
+  Selected stage: 0    Furthest stage: 0
+  try_place_table returning 1024 of counting_table_cloud_ing_0 in stage 0
+    Pl vector: [ counting_table_cloud_ing_0 ]
+port_type_0 is not a gateway! Aborting search for merge choices
+try_place_table(port_type_0, stage=0)
+  Initial stage is 0, initial entries is 512
+  Selected stage: 0    Furthest stage: 0
+  try_place_table returning 1024 of port_type_0 in stage 0
+    Pl vector: [ port_type_0 ]
+  - skipping cond-7 due to in-sequence control dependence on port_type_0
+  - skipping counting_table_egr_0 due to in-sequence control dependence on port_type_0
+  - skipping counting_table_cloud_egr_0 due to in-sequence control dependence on port_type_0
+found 4 tables that could be placed: [ tbl_tna_nbnswitch419, counting_table_ing_0, counting_table_cloud_ing_0, port_type_0 ]
+Initial best is first table seen: tbl_tna_nbnswitch419
+For trial t : counting_table_ing_0 with best: tbl_tna_nbnswitch419
+    Keeping best tbl_tna_nbnswitch419 for reason: longer downward prop control-included dependence tail chain
+For trial t : counting_table_cloud_ing_0 with best: tbl_tna_nbnswitch419
+    Keeping best tbl_tna_nbnswitch419 for reason: longer downward prop control-included dependence tail chain
+For trial t : port_type_0 with best: tbl_tna_nbnswitch419
+    Updating best to port_type_0 from tbl_tna_nbnswitch419 for reason: longer downward prop control-included dependence tail chain
+placing 1024 entries of port_type_0 in stage 0(0) FormatType(02)
+stage 0, work: [ 2566521 ], partly placed 0, placed 1
+    { id=1 ram=1 tcam=0 mram=0 eixb=2 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch419
+  Group table: tbl_tna_nbnswitch420
+  Group table: counting_table_ing_0
+  Group table: counting_table_cloud_ing_0
+  Group table: port_type_0
+  Group table: cond-7
+  Group table: counting_table_egr_0
+  Group table: counting_table_cloud_egr_0
+tbl_tna_nbnswitch419 is not a gateway! Aborting search for merge choices
+try_place_table(tbl_tna_nbnswitch419, stage=0)
+  Initial stage is 0, initial entries is 1
+  Selected stage: 0    Furthest stage: 1
+  try_place_table returning 1 of tbl_tna_nbnswitch419 in stage 0
+    Pl vector: [ tbl_tna_nbnswitch419 ]
+  - skipping tbl_tna_nbnswitch420 due to in-sequence control dependence on tbl_tna_nbnswitch419
+counting_table_ing_0 is not a gateway! Aborting search for merge choices
+try_place_table(counting_table_ing_0, stage=0)
+  Initial stage is 0, initial entries is 512
+  Selected stage: 0    Furthest stage: 1
+  try_place_table returning 1024 of counting_table_ing_0 in stage 0
+    Pl vector: [ counting_table_ing_0 ]
+counting_table_cloud_ing_0 is not a gateway! Aborting search for merge choices
+try_place_table(counting_table_cloud_ing_0, stage=0)
+  Initial stage is 0, initial entries is 512
+  Selected stage: 0    Furthest stage: 1
+  try_place_table returning 1024 of counting_table_cloud_ing_0 in stage 0
+    Pl vector: [ counting_table_cloud_ing_0 ]
+    - skipping port_type_0 as its already done
+try_place_table(cond-7, stage=0)
+  - dependency between port_type_0 and table advances stage
+  Initial stage is 1, initial entries is 0
+  Selected stage: 1    Furthest stage: 1
+  try_place_table returning 0 of cond-7 in stage 1
+    Pl vector: [ cond-7 ]
+  - skipping counting_table_egr_0 due to in-sequence control dependence on cond-7
+  - skipping counting_table_cloud_egr_0 due to in-sequence control dependence on cond-7
+found 4 tables that could be placed: [ tbl_tna_nbnswitch419, counting_table_ing_0, counting_table_cloud_ing_0, cond-7 ]
+Initial best is first table seen: tbl_tna_nbnswitch419
+For trial t : counting_table_ing_0 with best: tbl_tna_nbnswitch419
+    Keeping best tbl_tna_nbnswitch419 for reason: longer downward prop control-included dependence tail chain
+For trial t : counting_table_cloud_ing_0 with best: tbl_tna_nbnswitch419
+    Keeping best tbl_tna_nbnswitch419 for reason: longer downward prop control-included dependence tail chain
+For trial t : cond-7 with best: tbl_tna_nbnswitch419
+    Keeping best tbl_tna_nbnswitch419 for reason: earlier stage calculated
+placing 1 entries of tbl_tna_nbnswitch419 in stage 0(1) FormatType(02)
+stage 0, work: [ 2566521 ], partly placed 0, placed 2
+    { id=1 ram=1 tcam=0 mram=0 eixb=2 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch419
+  Group table: tbl_tna_nbnswitch420
+  Group table: counting_table_ing_0
+  Group table: counting_table_cloud_ing_0
+  Group table: port_type_0
+  Group table: cond-7
+  Group table: counting_table_egr_0
+  Group table: counting_table_cloud_egr_0
+    - skipping tbl_tna_nbnswitch419 as its already done
+tbl_tna_nbnswitch420 is not a gateway! Aborting search for merge choices
+try_place_table(tbl_tna_nbnswitch420, stage=0)
+  - dependency between tbl_tna_nbnswitch419 and table advances stage
+  Initial stage is 1, initial entries is 1
+  Selected stage: 1    Furthest stage: 1
+  try_place_table returning 1 of tbl_tna_nbnswitch420 in stage 1
+    Pl vector: [ tbl_tna_nbnswitch420 ]
+counting_table_ing_0 is not a gateway! Aborting search for merge choices
+try_place_table(counting_table_ing_0, stage=0)
+  Initial stage is 0, initial entries is 512
+  Selected stage: 0    Furthest stage: 1
+  try_place_table returning 1024 of counting_table_ing_0 in stage 0
+    Pl vector: [ counting_table_ing_0 ]
+counting_table_cloud_ing_0 is not a gateway! Aborting search for merge choices
+try_place_table(counting_table_cloud_ing_0, stage=0)
+  Initial stage is 0, initial entries is 512
+  Selected stage: 0    Furthest stage: 1
+  try_place_table returning 1024 of counting_table_cloud_ing_0 in stage 0
+    Pl vector: [ counting_table_cloud_ing_0 ]
+    - skipping port_type_0 as its already done
+try_place_table(cond-7, stage=0)
+  - dependency between port_type_0 and table advances stage
+  Initial stage is 1, initial entries is 0
+  Selected stage: 1    Furthest stage: 1
+  try_place_table returning 0 of cond-7 in stage 1
+    Pl vector: [ cond-7 ]
+  - skipping counting_table_egr_0 due to in-sequence control dependence on cond-7
+  - skipping counting_table_cloud_egr_0 due to in-sequence control dependence on cond-7
+found 4 tables that could be placed: [ tbl_tna_nbnswitch420, counting_table_ing_0, counting_table_cloud_ing_0, cond-7 ]
+Initial best is first table seen: tbl_tna_nbnswitch420
+For trial t : counting_table_ing_0 with best: tbl_tna_nbnswitch420
+    Updating best to counting_table_ing_0 from tbl_tna_nbnswitch420 for reason: earlier stage calculated
+For trial t : counting_table_cloud_ing_0 with best: counting_table_ing_0
+    Updating best to counting_table_cloud_ing_0 from counting_table_ing_0 for reason: default choice
+For trial t : cond-7 with best: counting_table_cloud_ing_0
+    Keeping best counting_table_cloud_ing_0 for reason: earlier stage calculated
+placing 1024 entries of counting_table_cloud_ing_0 in stage 0(2) FormatType(02)
+stage 0, work: [ 2566521 ], partly placed 0, placed 3
+    { id=2 ram=3 tcam=0 mram=1 eixb=4 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch419
+  Group table: tbl_tna_nbnswitch420
+  Group table: counting_table_ing_0
+  Group table: counting_table_cloud_ing_0
+  Group table: port_type_0
+  Group table: cond-7
+  Group table: counting_table_egr_0
+  Group table: counting_table_cloud_egr_0
+    - skipping tbl_tna_nbnswitch419 as its already done
+tbl_tna_nbnswitch420 is not a gateway! Aborting search for merge choices
+try_place_table(tbl_tna_nbnswitch420, stage=0)
+  - dependency between tbl_tna_nbnswitch419 and table advances stage
+  Initial stage is 1, initial entries is 1
+  Selected stage: 1    Furthest stage: 1
+  try_place_table returning 1 of tbl_tna_nbnswitch420 in stage 1
+    Pl vector: [ tbl_tna_nbnswitch420 ]
+counting_table_ing_0 is not a gateway! Aborting search for merge choices
+try_place_table(counting_table_ing_0, stage=0)
+  Initial stage is 0, initial entries is 512
+  Selected stage: 0    Furthest stage: 1
+  try_place_table returning 1024 of counting_table_ing_0 in stage 0
+    Pl vector: [ counting_table_ing_0 ]
+    - skipping counting_table_cloud_ing_0 as its already done
+    - skipping port_type_0 as its already done
+try_place_table(cond-7, stage=0)
+  - dependency between port_type_0 and table advances stage
+  Initial stage is 1, initial entries is 0
+  Selected stage: 1    Furthest stage: 1
+  try_place_table returning 0 of cond-7 in stage 1
+    Pl vector: [ cond-7 ]
+  - skipping counting_table_egr_0 due to in-sequence control dependence on cond-7
+  - skipping counting_table_cloud_egr_0 due to in-sequence control dependence on cond-7
+found 3 tables that could be placed: [ tbl_tna_nbnswitch420, counting_table_ing_0, cond-7 ]
+Initial best is first table seen: tbl_tna_nbnswitch420
+For trial t : counting_table_ing_0 with best: tbl_tna_nbnswitch420
+    Updating best to counting_table_ing_0 from tbl_tna_nbnswitch420 for reason: earlier stage calculated
+For trial t : cond-7 with best: counting_table_ing_0
+    Keeping best counting_table_ing_0 for reason: earlier stage calculated
+placing 1024 entries of counting_table_ing_0 in stage 0(3) FormatType(02)
+stage 0, work: [ 2566521 ], partly placed 0, placed 4
+    { id=3 ram=5 tcam=0 mram=2 eixb=6 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch419
+  Group table: tbl_tna_nbnswitch420
+  Group table: counting_table_ing_0
+  Group table: counting_table_cloud_ing_0
+  Group table: port_type_0
+  Group table: cond-7
+  Group table: counting_table_egr_0
+  Group table: counting_table_cloud_egr_0
+    - skipping tbl_tna_nbnswitch419 as its already done
+tbl_tna_nbnswitch420 is not a gateway! Aborting search for merge choices
+try_place_table(tbl_tna_nbnswitch420, stage=0)
+  - dependency between tbl_tna_nbnswitch419 and table advances stage
+  Initial stage is 1, initial entries is 1
+  Selected stage: 1    Furthest stage: 1
+  try_place_table returning 1 of tbl_tna_nbnswitch420 in stage 1
+    Pl vector: [ tbl_tna_nbnswitch420 ]
+    - skipping counting_table_ing_0 as its already done
+    - skipping counting_table_cloud_ing_0 as its already done
+    - skipping port_type_0 as its already done
+try_place_table(cond-7, stage=0)
+  - dependency between port_type_0 and table advances stage
+  Initial stage is 1, initial entries is 0
+  Selected stage: 1    Furthest stage: 1
+  try_place_table returning 0 of cond-7 in stage 1
+    Pl vector: [ cond-7 ]
+  - skipping counting_table_egr_0 due to in-sequence control dependence on cond-7
+  - skipping counting_table_cloud_egr_0 due to in-sequence control dependence on cond-7
+found 2 tables that could be placed: [ tbl_tna_nbnswitch420, cond-7 ]
+Initial best is first table seen: tbl_tna_nbnswitch420
+For trial t : cond-7 with best: tbl_tna_nbnswitch420
+    Updating best to cond-7 from tbl_tna_nbnswitch420 for reason: longer downward prop control-included dependence tail chain
+placing 0 entries of cond-7 in stage 1(10) FormatType(02)
+potential backfill tbl_tna_nbnswitch420 before cond-7
+stage 1, work: [ 2568570, 2568572 ], partly placed 0, placed 5
+    { id=0 ram=0 tcam=0 mram=0 eixb=1 tixb=0 malu=0 salu=0 }
+  Group table: cond-8
+try_place_table(cond-8, stage=1)
+  Merging with match table cloud_access_0
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 512 of cloud_access_0 in stage 1
+  Merging with match table check_dst_cloud_0
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 512 of check_dst_cloud_0 in stage 1
+    Pl vector: [ cloud_access_0, check_dst_cloud_0 ]
+  Group table: cond-10
+try_place_table(cond-10, stage=1)
+  Initial stage is 1, initial entries is 0
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 0 of cond-10 in stage 1
+    Pl vector: [ cond-10 ]
+found 3 tables that could be placed: [ cloud_access_0, check_dst_cloud_0, cond-10 ]
+Initial best is first table seen: cloud_access_0
+For trial t : check_dst_cloud_0 with best: cloud_access_0
+    Updating best to check_dst_cloud_0 from cloud_access_0 for reason: longer downward prop control-included dependence tail chain
+For trial t : cond-10 with best: check_dst_cloud_0
+    Updating best to cond-10 from check_dst_cloud_0 for reason: control dom set has more placeable tables
+placing 0 entries of cond-10 in stage 1(11) FormatType(02)
+stage 1, work: [ 2568570, 2568568 ], partly placed 0, placed 6
+    { id=0 ram=0 tcam=0 mram=0 eixb=2 tixb=0 malu=0 salu=0 }
+  Group table: cond-8
+try_place_table(cond-8, stage=1)
+  Merging with match table cloud_access_0
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 512 of cloud_access_0 in stage 1
+  Merging with match table check_dst_cloud_0
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 512 of check_dst_cloud_0 in stage 1
+    Pl vector: [ cloud_access_0, check_dst_cloud_0 ]
+  Group table: cond-11
+try_place_table(cond-11, stage=1)
+  Initial stage is 1, initial entries is 0
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 0 of cond-11 in stage 1
+    Pl vector: [ cond-11 ]
+found 3 tables that could be placed: [ cloud_access_0, check_dst_cloud_0, cond-11 ]
+Initial best is first table seen: cloud_access_0
+For trial t : check_dst_cloud_0 with best: cloud_access_0
+    Updating best to check_dst_cloud_0 from cloud_access_0 for reason: longer downward prop control-included dependence tail chain
+For trial t : cond-11 with best: check_dst_cloud_0
+    Updating best to cond-11 from check_dst_cloud_0 for reason: control dom set has more placeable tables
+placing 0 entries of cond-11 in stage 1(12) FormatType(02)
+stage 1, work: [ 2568570, 2568564 ], partly placed 0, placed 7
+    { id=0 ram=0 tcam=0 mram=0 eixb=3 tixb=0 malu=0 salu=0 }
+  Group table: cond-8
+try_place_table(cond-8, stage=1)
+  Merging with match table cloud_access_0
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 512 of cloud_access_0 in stage 1
+  Merging with match table check_dst_cloud_0
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 512 of check_dst_cloud_0 in stage 1
+    Pl vector: [ cloud_access_0, check_dst_cloud_0 ]
+  Group table: cond-12
+try_place_table(cond-12, stage=1)
+  Merging with match table tbl_tna_nbnswitch471
+  Initial stage is 1, initial entries is 1
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 1 of tbl_tna_nbnswitch471 in stage 1
+  Merging with match table reverse_cloud_access_0
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 512 of reverse_cloud_access_0 in stage 1
+  Merging with match table arp_response_0
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 4096 of arp_response_0 in stage 1
+    Pl vector: [ tbl_tna_nbnswitch471, reverse_cloud_access_0, arp_response_0 ]
+found 5 tables that could be placed: [ cloud_access_0, check_dst_cloud_0, tbl_tna_nbnswitch471, reverse_cloud_access_0, arp_response_0 ]
+Initial best is first table seen: cloud_access_0
+For trial t : check_dst_cloud_0 with best: cloud_access_0
+    Updating best to check_dst_cloud_0 from cloud_access_0 for reason: longer downward prop control-included dependence tail chain
+For trial t : tbl_tna_nbnswitch471 with best: check_dst_cloud_0
+    Updating best to tbl_tna_nbnswitch471 from check_dst_cloud_0 for reason: control dom set has more placeable tables
+For trial t : reverse_cloud_access_0 with best: tbl_tna_nbnswitch471
+    Updating best to reverse_cloud_access_0 from tbl_tna_nbnswitch471 for reason: default choice
+For trial t : arp_response_0 with best: reverse_cloud_access_0
+    Updating best to arp_response_0 from reverse_cloud_access_0 for reason: longer downward prop control-included dependence tail chain
+placing 4096 entries of arp_response_0 (with gw cond-12) in stage 1(13) FormatType(02)
+stage 1, work: [ 2568570, 2567778, 2568029 ], partly placed 0, placed 8
+    { id=1 ram=4 tcam=0 mram=0 eixb=7 tixb=0 malu=0 salu=0 }
+  Group table: cond-8
+try_place_table(cond-8, stage=1)
+  Merging with match table cloud_access_0
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 512 of cloud_access_0 in stage 1
+  Merging with match table check_dst_cloud_0
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 512 of check_dst_cloud_0 in stage 1
+    Pl vector: [ cloud_access_0, check_dst_cloud_0 ]
+  Group table: arp_response_0
+  Group table: port_forward_0
+    - skipping arp_response_0 as its already done
+    - skipping port_forward_0 as a parent is not yet placed
+  Group table: tbl_tna_nbnswitch471
+  Group table: reverse_cloud_access_0
+  Group table: update_src_mac_0
+  Group table: update_dst_mac_0
+  Group table: ipv4_forward_0
+tbl_tna_nbnswitch471 is not a gateway! Aborting search for merge choices
+try_place_table(tbl_tna_nbnswitch471, stage=1)
+  Initial stage is 1, initial entries is 1
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 1 of tbl_tna_nbnswitch471 in stage 1
+    Pl vector: [ tbl_tna_nbnswitch471 ]
+reverse_cloud_access_0 is not a gateway! Aborting search for merge choices
+try_place_table(reverse_cloud_access_0, stage=1)
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 512 of reverse_cloud_access_0 in stage 1
+    Pl vector: [ reverse_cloud_access_0 ]
+    - skipping update_src_mac_0 as a parent is not yet placed
+    - skipping update_dst_mac_0 as a parent is not yet placed
+    - skipping ipv4_forward_0 as a parent is not yet placed
+found 4 tables that could be placed: [ cloud_access_0, check_dst_cloud_0, tbl_tna_nbnswitch471, reverse_cloud_access_0 ]
+Initial best is first table seen: cloud_access_0
+For trial t : check_dst_cloud_0 with best: cloud_access_0
+    Updating best to check_dst_cloud_0 from cloud_access_0 for reason: longer downward prop control-included dependence tail chain
+For trial t : tbl_tna_nbnswitch471 with best: check_dst_cloud_0
+    Keeping best check_dst_cloud_0 for reason: longer downward prop control-included dependence tail chain
+For trial t : reverse_cloud_access_0 with best: check_dst_cloud_0
+    Keeping best check_dst_cloud_0 for reason: longer downward prop control-included dependence tail chain
+placing 512 entries of check_dst_cloud_0 (with gw cond-8) in stage 1(14) FormatType(02)
+stage 1, work: [ 2568029, 2567053 ], partly placed 0, placed 9
+    { id=2 ram=5 tcam=1 mram=0 eixb=11 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch471
+  Group table: reverse_cloud_access_0
+  Group table: update_src_mac_0
+  Group table: update_dst_mac_0
+  Group table: ipv4_forward_0
+tbl_tna_nbnswitch471 is not a gateway! Aborting search for merge choices
+try_place_table(tbl_tna_nbnswitch471, stage=1)
+  Initial stage is 1, initial entries is 1
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 1 of tbl_tna_nbnswitch471 in stage 1
+    Pl vector: [ tbl_tna_nbnswitch471 ]
+reverse_cloud_access_0 is not a gateway! Aborting search for merge choices
+try_place_table(reverse_cloud_access_0, stage=1)
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 512 of reverse_cloud_access_0 in stage 1
+    Pl vector: [ reverse_cloud_access_0 ]
+    - skipping update_src_mac_0 as a parent is not yet placed
+    - skipping update_dst_mac_0 as a parent is not yet placed
+    - skipping ipv4_forward_0 as a parent is not yet placed
+  Group table: cloud_access_0
+  Group table: check_dst_cloud_0
+  Group table: cond-9
+cloud_access_0 is not a gateway! Aborting search for merge choices
+try_place_table(cloud_access_0, stage=1)
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 512 of cloud_access_0 in stage 1
+    Pl vector: [ cloud_access_0 ]
+    - skipping check_dst_cloud_0 as its already done
+  - skipping cond-9 because it depends on cloud_access_0
+    - removing tbl_tna_nbnswitch441 from merge list because it depends on cloud_access_0
+    - skipping gateway cond-9 until mergeable tables are available
+found 3 tables that could be placed: [ tbl_tna_nbnswitch471, reverse_cloud_access_0, cloud_access_0 ]
+Initial best is first table seen: tbl_tna_nbnswitch471
+For trial t : reverse_cloud_access_0 with best: tbl_tna_nbnswitch471
+    Updating best to reverse_cloud_access_0 from tbl_tna_nbnswitch471 for reason: default choice
+For trial t : cloud_access_0 with best: reverse_cloud_access_0
+    Updating best to cloud_access_0 from reverse_cloud_access_0 for reason: default choice
+placing 512 entries of cloud_access_0 in stage 1(15) FormatType(02)
+stage 1, work: [ 2568029, 2567053 ], partly placed 0, placed 10
+    { id=3 ram=6 tcam=2 mram=0 eixb=15 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch471
+  Group table: reverse_cloud_access_0
+  Group table: update_src_mac_0
+  Group table: update_dst_mac_0
+  Group table: ipv4_forward_0
+tbl_tna_nbnswitch471 is not a gateway! Aborting search for merge choices
+try_place_table(tbl_tna_nbnswitch471, stage=1)
+  Initial stage is 1, initial entries is 1
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 1 of tbl_tna_nbnswitch471 in stage 1
+    Pl vector: [ tbl_tna_nbnswitch471 ]
+reverse_cloud_access_0 is not a gateway! Aborting search for merge choices
+try_place_table(reverse_cloud_access_0, stage=1)
+  Initial stage is 1, initial entries is 512
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 512 of reverse_cloud_access_0 in stage 1
+    Pl vector: [ reverse_cloud_access_0 ]
+    - skipping update_src_mac_0 as a parent is not yet placed
+    - skipping update_dst_mac_0 as a parent is not yet placed
+    - skipping ipv4_forward_0 as a parent is not yet placed
+  Group table: cloud_access_0
+  Group table: check_dst_cloud_0
+  Group table: cond-9
+    - skipping cloud_access_0 as its already done
+    - skipping check_dst_cloud_0 as its already done
+try_place_table(cond-9, stage=1)
+  Merging with match table tbl_tna_nbnswitch441
+  - dependency between check_dst_cloud_0 and table advances stage
+  Initial stage is 2, initial entries is 1
+  Selected stage: 2    Furthest stage: 2
+  try_place_table returning 1 of tbl_tna_nbnswitch441 in stage 2
+    Pl vector: [ tbl_tna_nbnswitch441 ]
+found 3 tables that could be placed: [ tbl_tna_nbnswitch471, reverse_cloud_access_0, tbl_tna_nbnswitch441 ]
+Initial best is first table seen: tbl_tna_nbnswitch471
+For trial t : reverse_cloud_access_0 with best: tbl_tna_nbnswitch471
+    Updating best to reverse_cloud_access_0 from tbl_tna_nbnswitch471 for reason: default choice
+For trial t : tbl_tna_nbnswitch441 with best: reverse_cloud_access_0
+    Keeping best reverse_cloud_access_0 for reason: earlier stage calculated
+placing 512 entries of reverse_cloud_access_0 in stage 1(16) FormatType(02)
+stage 1, work: [ 2568029, 2567053 ], partly placed 0, placed 11
+    { id=4 ram=7 tcam=3 mram=0 eixb=19 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch471
+  Group table: reverse_cloud_access_0
+  Group table: update_src_mac_0
+  Group table: update_dst_mac_0
+  Group table: ipv4_forward_0
+tbl_tna_nbnswitch471 is not a gateway! Aborting search for merge choices
+try_place_table(tbl_tna_nbnswitch471, stage=1)
+  Initial stage is 1, initial entries is 1
+  Selected stage: 1    Furthest stage: 2
+  try_place_table returning 1 of tbl_tna_nbnswitch471 in stage 1
+    Pl vector: [ tbl_tna_nbnswitch471 ]
+    - skipping reverse_cloud_access_0 as its already done
+    - skipping update_src_mac_0 as a parent is not yet placed
+    - skipping update_dst_mac_0 as a parent is not yet placed
+    - skipping ipv4_forward_0 as a parent is not yet placed
+  Group table: cloud_access_0
+  Group table: check_dst_cloud_0
+  Group table: cond-9
+    - skipping cloud_access_0 as its already done
+    - skipping check_dst_cloud_0 as its already done
+try_place_table(cond-9, stage=1)
+  Merging with match table tbl_tna_nbnswitch441
+  - dependency between check_dst_cloud_0 and table advances stage
+  Initial stage is 2, initial entries is 1
+  Selected stage: 2    Furthest stage: 2
+  try_place_table returning 1 of tbl_tna_nbnswitch441 in stage 2
+    Pl vector: [ tbl_tna_nbnswitch441 ]
+found 2 tables that could be placed: [ tbl_tna_nbnswitch471, tbl_tna_nbnswitch441 ]
+Initial best is first table seen: tbl_tna_nbnswitch471
+For trial t : tbl_tna_nbnswitch441 with best: tbl_tna_nbnswitch471
+    Keeping best tbl_tna_nbnswitch471 for reason: earlier stage calculated
+placing 1 entries of tbl_tna_nbnswitch471 in stage 1(17) FormatType(02)
+stage 1, work: [ 2568029, 2567053 ], partly placed 0, placed 12
+    { id=4 ram=7 tcam=3 mram=0 eixb=19 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch471
+  Group table: reverse_cloud_access_0
+  Group table: update_src_mac_0
+  Group table: update_dst_mac_0
+  Group table: ipv4_forward_0
+    - skipping tbl_tna_nbnswitch471 as its already done
+    - skipping reverse_cloud_access_0 as its already done
+    - skipping update_src_mac_0 as a parent is not yet placed
+    - skipping update_dst_mac_0 as a parent is not yet placed
+    - skipping ipv4_forward_0 as a parent is not yet placed
+  Group table: cloud_access_0
+  Group table: check_dst_cloud_0
+  Group table: cond-9
+    - skipping cloud_access_0 as its already done
+    - skipping check_dst_cloud_0 as its already done
+try_place_table(cond-9, stage=1)
+  Merging with match table tbl_tna_nbnswitch441
+  - dependency between check_dst_cloud_0 and table advances stage
+  Initial stage is 2, initial entries is 1
+  Selected stage: 2    Furthest stage: 2
+  try_place_table returning 1 of tbl_tna_nbnswitch441 in stage 2
+    Pl vector: [ tbl_tna_nbnswitch441 ]
+found 1 tables that could be placed: [ tbl_tna_nbnswitch441 ]
+Initial best is first table seen: tbl_tna_nbnswitch441
+try to backfill tbl_tna_nbnswitch420 before cond-7
+  - dependency between tbl_tna_nbnswitch419 and table advances stage
+placing 1 entries of tbl_tna_nbnswitch420 in stage 1(10) FormatType(02) (backfilled)
+stage 1, work: [ 2567053 ], partly placed 0, placed 13
+    { id=4 ram=7 tcam=3 mram=0 eixb=19 tixb=0 malu=0 salu=0 }
+  Group table: cloud_access_0
+  Group table: check_dst_cloud_0
+  Group table: cond-9
+    - skipping cloud_access_0 as its already done
+    - skipping check_dst_cloud_0 as its already done
+try_place_table(cond-9, stage=1)
+  Merging with match table tbl_tna_nbnswitch441
+  - dependency between check_dst_cloud_0 and table advances stage
+  Initial stage is 2, initial entries is 1
+  Selected stage: 2    Furthest stage: 2
+  try_place_table returning 1 of tbl_tna_nbnswitch441 in stage 2
+    Pl vector: [ tbl_tna_nbnswitch441 ]
+found 1 tables that could be placed: [ tbl_tna_nbnswitch441 ]
+Initial best is first table seen: tbl_tna_nbnswitch441
+placing 1 entries of tbl_tna_nbnswitch441 (with gw cond-9) in stage 2(20) FormatType(02)
+stage 2, work: [ 2567220, 2567676 ], partly placed 0, placed 14
+    { id=0 ram=0 tcam=0 mram=0 eixb=0 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch441
+  Group table: update_src_mac_0
+  Group table: update_dst_mac_0
+  Group table: ipv4_forward_0
+    - skipping tbl_tna_nbnswitch441 as its already done
+update_src_mac_0 is not a gateway! Aborting search for merge choices
+try_place_table(update_src_mac_0, stage=2)
+  Initial stage is 2, initial entries is 512
+  Selected stage: 2    Furthest stage: 3
+  try_place_table returning 512 of update_src_mac_0 in stage 2
+    Pl vector: [ update_src_mac_0 ]
+update_dst_mac_0 is not a gateway! Aborting search for merge choices
+try_place_table(update_dst_mac_0, stage=2)
+  Initial stage is 2, initial entries is 512
+  Selected stage: 2    Furthest stage: 3
+  try_place_table returning 512 of update_dst_mac_0 in stage 2
+    Pl vector: [ update_dst_mac_0 ]
+ipv4_forward_0 is not a gateway! Aborting search for merge choices
+try_place_table(ipv4_forward_0, stage=2)
+  Initial stage is 2, initial entries is 512
+  Selected stage: 2    Furthest stage: 3
+  try_place_table returning 512 of ipv4_forward_0 in stage 2
+    Pl vector: [ ipv4_forward_0 ]
+  Group table: port_forward_0
+port_forward_0 is not a gateway! Aborting search for merge choices
+try_place_table(port_forward_0, stage=2)
+  Initial stage is 2, initial entries is 512
+  Selected stage: 2    Furthest stage: 3
+  try_place_table returning 1024 of port_forward_0 in stage 2
+    Pl vector: [ port_forward_0 ]
+found 4 tables that could be placed: [ update_src_mac_0, update_dst_mac_0, ipv4_forward_0, port_forward_0 ]
+Initial best is first table seen: update_src_mac_0
+For trial t : update_dst_mac_0 with best: update_src_mac_0
+    Updating best to update_dst_mac_0 from update_src_mac_0 for reason: default choice
+For trial t : ipv4_forward_0 with best: update_dst_mac_0
+    Updating best to ipv4_forward_0 from update_dst_mac_0 for reason: longer downward prop control-included dependence tail chain
+For trial t : port_forward_0 with best: ipv4_forward_0
+    Updating best to port_forward_0 from ipv4_forward_0 for reason: default choice
+placing 1024 entries of port_forward_0 in stage 2(21) FormatType(02)
+stage 2, work: [ 2567220, 2568572 ], partly placed 0, placed 15
+    { id=1 ram=1 tcam=0 mram=0 eixb=2 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch441
+  Group table: update_src_mac_0
+  Group table: update_dst_mac_0
+  Group table: ipv4_forward_0
+    - skipping tbl_tna_nbnswitch441 as its already done
+update_src_mac_0 is not a gateway! Aborting search for merge choices
+try_place_table(update_src_mac_0, stage=2)
+  Initial stage is 2, initial entries is 512
+  Selected stage: 2    Furthest stage: 3
+  try_place_table returning 512 of update_src_mac_0 in stage 2
+    Pl vector: [ update_src_mac_0 ]
+update_dst_mac_0 is not a gateway! Aborting search for merge choices
+try_place_table(update_dst_mac_0, stage=2)
+  Initial stage is 2, initial entries is 512
+  Selected stage: 2    Furthest stage: 3
+  try_place_table returning 512 of update_dst_mac_0 in stage 2
+    Pl vector: [ update_dst_mac_0 ]
+ipv4_forward_0 is not a gateway! Aborting search for merge choices
+try_place_table(ipv4_forward_0, stage=2)
+  Initial stage is 2, initial entries is 512
+  Selected stage: 2    Furthest stage: 3
+  try_place_table returning 512 of ipv4_forward_0 in stage 2
+    Pl vector: [ ipv4_forward_0 ]
+  Group table: cond-10
+    - skipping cond-10 as its already done
+found 3 tables that could be placed: [ update_src_mac_0, update_dst_mac_0, ipv4_forward_0 ]
+Initial best is first table seen: update_src_mac_0
+For trial t : update_dst_mac_0 with best: update_src_mac_0
+    Updating best to update_dst_mac_0 from update_src_mac_0 for reason: default choice
+For trial t : ipv4_forward_0 with best: update_dst_mac_0
+    Updating best to ipv4_forward_0 from update_dst_mac_0 for reason: longer downward prop control-included dependence tail chain
+placing 512 entries of ipv4_forward_0 in stage 2(22) FormatType(02)
+stage 2, work: [ 2567220 ], partly placed 0, placed 16
+    { id=2 ram=2 tcam=1 mram=0 eixb=6 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch441
+  Group table: update_src_mac_0
+  Group table: update_dst_mac_0
+  Group table: ipv4_forward_0
+    - skipping tbl_tna_nbnswitch441 as its already done
+update_src_mac_0 is not a gateway! Aborting search for merge choices
+try_place_table(update_src_mac_0, stage=2)
+  Initial stage is 2, initial entries is 512
+  Selected stage: 2    Furthest stage: 3
+  try_place_table returning 512 of update_src_mac_0 in stage 2
+    Pl vector: [ update_src_mac_0 ]
+update_dst_mac_0 is not a gateway! Aborting search for merge choices
+try_place_table(update_dst_mac_0, stage=2)
+  Initial stage is 2, initial entries is 512
+  Selected stage: 2    Furthest stage: 3
+  try_place_table returning 512 of update_dst_mac_0 in stage 2
+    Pl vector: [ update_dst_mac_0 ]
+    - skipping ipv4_forward_0 as its already done
+found 2 tables that could be placed: [ update_src_mac_0, update_dst_mac_0 ]
+Initial best is first table seen: update_src_mac_0
+For trial t : update_dst_mac_0 with best: update_src_mac_0
+    Updating best to update_dst_mac_0 from update_src_mac_0 for reason: default choice
+placing 512 entries of update_dst_mac_0 in stage 2(23) FormatType(02)
+stage 2, work: [ 2567220 ], partly placed 0, placed 17
+    { id=3 ram=4 tcam=2 mram=0 eixb=10 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch441
+  Group table: update_src_mac_0
+  Group table: update_dst_mac_0
+  Group table: ipv4_forward_0
+    - skipping tbl_tna_nbnswitch441 as its already done
+update_src_mac_0 is not a gateway! Aborting search for merge choices
+try_place_table(update_src_mac_0, stage=2)
+  Initial stage is 2, initial entries is 512
+  Selected stage: 2    Furthest stage: 3
+  try_place_table returning 512 of update_src_mac_0 in stage 2
+    Pl vector: [ update_src_mac_0 ]
+    - skipping update_dst_mac_0 as its already done
+    - skipping ipv4_forward_0 as its already done
+found 1 tables that could be placed: [ update_src_mac_0 ]
+Initial best is first table seen: update_src_mac_0
+placing 512 entries of update_src_mac_0 in stage 2(24) FormatType(02)
+stage 2, work: [ 2566521 ], partly placed 0, placed 18
+    { id=4 ram=6 tcam=3 mram=0 eixb=14 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch419
+  Group table: tbl_tna_nbnswitch420
+  Group table: counting_table_ing_0
+  Group table: counting_table_cloud_ing_0
+  Group table: port_type_0
+  Group table: cond-7
+  Group table: counting_table_egr_0
+  Group table: counting_table_cloud_egr_0
+    - skipping tbl_tna_nbnswitch419 as its already done
+    - skipping tbl_tna_nbnswitch420 as its already done
+    - skipping counting_table_ing_0 as its already done
+    - skipping counting_table_cloud_ing_0 as its already done
+    - skipping port_type_0 as its already done
+    - skipping cond-7 as its already done
+counting_table_egr_0 is not a gateway! Aborting search for merge choices
+try_place_table(counting_table_egr_0, stage=2)
+  - dependency between ipv4_forward_0 and table advances stage
+  Initial stage is 3, initial entries is 512
+  Selected stage: 3    Furthest stage: 3
+  try_place_table returning 1024 of counting_table_egr_0 in stage 3
+    Pl vector: [ counting_table_egr_0 ]
+counting_table_cloud_egr_0 is not a gateway! Aborting search for merge choices
+try_place_table(counting_table_cloud_egr_0, stage=2)
+  - dependency between ipv4_forward_0 and table advances stage
+  Initial stage is 3, initial entries is 512
+  Selected stage: 3    Furthest stage: 3
+  try_place_table returning 1024 of counting_table_cloud_egr_0 in stage 3
+    Pl vector: [ counting_table_cloud_egr_0 ]
+found 2 tables that could be placed: [ counting_table_egr_0, counting_table_cloud_egr_0 ]
+Initial best is first table seen: counting_table_egr_0
+For trial t : counting_table_cloud_egr_0 with best: counting_table_egr_0
+    Updating best to counting_table_cloud_egr_0 from counting_table_egr_0 for reason: default choice
+placing 1024 entries of counting_table_cloud_egr_0 in stage 3(30) FormatType(02)
+stage 3, work: [ 2566521 ], partly placed 0, placed 19
+    { id=1 ram=2 tcam=0 mram=1 eixb=2 tixb=0 malu=0 salu=0 }
+  Group table: tbl_tna_nbnswitch419
+  Group table: tbl_tna_nbnswitch420
+  Group table: counting_table_ing_0
+  Group table: counting_table_cloud_ing_0
+  Group table: port_type_0
+  Group table: cond-7
+  Group table: counting_table_egr_0
+  Group table: counting_table_cloud_egr_0
+    - skipping tbl_tna_nbnswitch419 as its already done
+    - skipping tbl_tna_nbnswitch420 as its already done
+    - skipping counting_table_ing_0 as its already done
+    - skipping counting_table_cloud_ing_0 as its already done
+    - skipping port_type_0 as its already done
+    - skipping cond-7 as its already done
+counting_table_egr_0 is not a gateway! Aborting search for merge choices
+try_place_table(counting_table_egr_0, stage=3)
+  Initial stage is 3, initial entries is 512
+  Selected stage: 3    Furthest stage: 4
+  try_place_table returning 1024 of counting_table_egr_0 in stage 3
+    Pl vector: [ counting_table_egr_0 ]
+    - skipping counting_table_cloud_egr_0 as its already done
+found 1 tables that could be placed: [ counting_table_egr_0 ]
+Initial best is first table seen: counting_table_egr_0
+placing 1024 entries of counting_table_egr_0 in stage 3(31) FormatType(02)
+Table placement placed 20 tables in 4 stages
+  Table counting_table_egr_0 logical id 0x31 entries=1024
+    attached table counter_egr entries=512
+  Table counting_table_cloud_egr_0 logical id 0x30 entries=1024
+    attached table counter_cloud_egr entries=512
+  Table update_src_mac_0 logical id 0x24 entries=512
+  Table update_dst_mac_0 logical id 0x23 entries=512
+  Table ipv4_forward_0 logical id 0x22 entries=512
+  Table port_forward_0 logical id 0x21 entries=1024
+  Table tbl_tna_nbnswitch441 logical id 0x20 entries=1
+  Gateway cond-9 is also logical id 0x20
+  Table tbl_tna_nbnswitch471 logical id 0x18 entries=1
+  Table reverse_cloud_access_0 logical id 0x17 entries=512
+  Table cloud_access_0 logical id 0x16 entries=512
+  Table check_dst_cloud_0 logical id 0x15 entries=512
+  Gateway cond-8 is also logical id 0x15
+  Table arp_response_0 logical id 0x14 entries=4096
+  Gateway cond-12 is also logical id 0x14
+  Table cond-11 logical id 0x13 entries=0
+  Table cond-10 logical id 0x12 entries=0
+  Table cond-7 logical id 0x11 entries=0
+  Table tbl_tna_nbnswitch420 logical id 0x10 entries=1
+  Table counting_table_ing_0 logical id 0x3 entries=1024
+    attached table counter_ing entries=512
+  Table counting_table_cloud_ing_0 logical id 0x2 entries=1024
+    attached table counter_cloud_ing entries=512
+  Table tbl_tna_nbnswitch419 logical id 0x1 entries=1
+  Table port_type_0 logical id 0x0 entries=1024
+Finished table placement decisions pipe
+  Adding Ternary Indirect table to tbl_tna_nbnswitch419
+  Adding Ternary Indirect table to tbl_tna_nbnswitch420
+folding gateway cond-8 onto check_dst_cloud_0
+  Adding Ternary Indirect table to check_dst_cloud_0
+  Adding Ternary Indirect table to cloud_access_0
+folding gateway cond-9 onto tbl_tna_nbnswitch441
+  Adding Ternary Indirect table to tbl_tna_nbnswitch441
+  Adding Ternary Indirect table to update_src_mac_0
+  Adding Action Data Table to update_src_mac_0
+  Adding Ternary Indirect table to update_dst_mac_0
+  Adding Action Data Table to update_dst_mac_0
+  Adding Ternary Indirect table to ipv4_forward_0
+folding gateway cond-12 onto arp_response_0
+  Adding Ternary Indirect table to tbl_tna_nbnswitch471
+  Adding Ternary Indirect table to reverse_cloud_access_0
+table placement completed pipe
+ingress: [2566521] 0 00 000 0000 00000 000000 0000000
+  0: port_type_0{ E -1+3, 1 [1x1 1K] }
+  1: tbl_tna_nbnswitch419
+  2: counting_table_cloud_ing_0{ E -1+0, 0 [1x1 1K] }
+  3: counting_table_ing_0{ E -1+0, 0 [1x1 1K] }
+  10: tbl_tna_nbnswitch420
+  11: cond-7(ingress::ig_md.traffic_type == 0; => $true, 1 => $false)
+    $true: [2568570]
+      15: check_dst_cloud_0(ingress::hdr.ethernet.ether_type == 2054; => $true, ingress::hdr.vlan_tag[1].ether_type == 2054; => $true, 1){ GT 32+1, 0 0K }
+        $true: [2567676]
+          21: port_forward_0{ E -1+9, 2 [1x1 1K] }
+        $default: [2567053] 0
+          16: cloud_access_0{ T 32+1, 0 0K }
+          20: tbl_tna_nbnswitch441(ingress::dst_cloud_0, 1 => $false)
+            $false: [2567676]...
+            $default: [2567220] 0 00
+              22: ipv4_forward_0{ T 32+10, 2 0K }
+              23: update_dst_mac_0{ T 32+1, 8 0K }
+              24: update_src_mac_0{ T 32+1, 8 0K }
+    $false: [2568572]
+      12: cond-10(ingress::ig_md.traffic_type == 1; => $true, 1 => $false)
+        $true: [2567676]...
+        $false: [2568568]
+          13: cond-11(ingress::ig_md.traffic_type == 2; => $true, 1 => $false)
+            $true: [2568564]
+              14: arp_response_0(ingress::hdr.ethernet.ether_type == 2054;, ingress::hdr.vlan_tag[1].ether_type == 2054;, 1 => $false){ GE 22+33, 4 [1x1 1K 1K 1K 1K] }
+                $false: [2568029] 0 00 000 0000
+                  17: reverse_cloud_access_0{ T 32+1, 0 0K }
+                  18: tbl_tna_nbnswitch471
+                  22: ipv4_forward_0{ T 32+10, 2 0K }
+                  23: update_dst_mac_0{ T 32+1, 8 0K }
+                  24: update_src_mac_0{ T 32+1, 8 0K }
+                $default: [2567778]
+                  21: port_forward_0{ E -1+9, 2 [1x1 1K] }
+  30: counting_table_cloud_egr_0{ E -1+0, 0 [1x1 1K] }
+  31: counting_table_egr_0{ E -1+0, 0 [1x1 1K] }
+egress: [2574996]
+

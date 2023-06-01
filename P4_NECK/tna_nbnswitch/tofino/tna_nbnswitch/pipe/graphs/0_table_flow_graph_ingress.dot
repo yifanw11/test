@@ -1,0 +1,152 @@
+digraph ingress {
+tbl_tna_nbnswitch419 [ shape=record, style="filled", fillcolor=cornsilk, label="tbl_tna_nbnswitch419\l\l
+W:\l
+ ig_intr_md_for_dprsr.digest_type\l
+ ig_md.ingress_port\l
+ "];
+tbl_tna_nbnswitch420 [ shape=record, style="filled", fillcolor=cornsilk, label="tbl_tna_nbnswitch420\l\l
+R:\l
+ ig_intr_md.ingress_port\l
+\lW:\l
+ ig_md.ingress_port\l
+ "];
+counting_table_ing_0 [ shape=record, style="filled", fillcolor=cornsilk, label="counting_table_ing_0\l\l
+M:\l
+ ig_intr_md.ingress_port\l
+\l "];
+counting_table_cloud_ing_0 [ shape=record, style="filled", fillcolor=cornsilk, label="counting_table_cloud_ing_0\l\l
+M:\l
+ ig_intr_md.ingress_port\l
+\l "];
+port_type_0 [ shape=record, style="filled", fillcolor=cornsilk, label="port_type_0\l\l
+M:\l
+ ig_intr_md.ingress_port\l
+\lW:\l
+ ig_md.traffic_type\l
+ "];
+cond_7 [ shape=record, style="filled", fillcolor=cornsilk, label="ig_md.traffic_type == 0\l\l
+ "];
+cond_8 [ shape=record, style="filled", fillcolor=cornsilk, label="hdr.ethernet.ether_type == 2054 || hdr.vlan_tag[1].ether_type == 2054\l\l
+ "];
+cond_10 [ shape=record, style="filled", fillcolor=cornsilk, label="ig_md.traffic_type == 1\l\l
+ "];
+port_forward_0 [ shape=record, style="filled", fillcolor=cornsilk, label="port_forward_0\l\l
+M:\l
+ ig_intr_md.ingress_port\l
+\lW:\l
+ ig_intr_md_for_tm.ucast_egress_port\l
+ "];
+cloud_access_0 [ shape=record, style="filled", fillcolor=cornsilk, label="cloud_access_0\l\l
+M:\l
+ hdr.ipv4.src_addr\l
+\l "];
+counting_table_egr_0 [ shape=record, style="filled", fillcolor=cornsilk, label="counting_table_egr_0\l\l
+M:\l
+ ig_intr_md_for_tm.ucast_egress_port\l
+\l "];
+check_dst_cloud_0 [ shape=record, style="filled", fillcolor=cornsilk, label="check_dst_cloud_0\l\l
+M:\l
+ hdr.ipv4.dst_addr\l
+\lW:\l
+ dst_cloud_0\l
+ "];
+cond_9 [ shape=record, style="filled", fillcolor=cornsilk, label="dst_cloud_0\l\l
+ "];
+tbl_tna_nbnswitch441 [ shape=record, style="filled", fillcolor=cornsilk, label="tbl_tna_nbnswitch441\l\l
+W:\l
+ hdr.vlan_tag.$stkvalid\l
+ hdr.ethernet.ether_type\l
+ "];
+update_src_mac_0 [ shape=record, style="filled", fillcolor=cornsilk, label="update_src_mac_0\l\l
+M:\l
+ hdr.ipv4.dst_addr\l
+\lW:\l
+ hdr.ethernet.src_addr\l
+ "];
+update_dst_mac_0 [ shape=record, style="filled", fillcolor=cornsilk, label="update_dst_mac_0\l\l
+M:\l
+ hdr.ipv4.dst_addr\l
+\lW:\l
+ hdr.ethernet.dst_addr\l
+ "];
+ipv4_forward_0 [ shape=record, style="filled", fillcolor=cornsilk, label="ipv4_forward_0\l\l
+M:\l
+ hdr.ipv4.dst_addr\l
+\lW:\l
+ ig_intr_md_for_tm.ucast_egress_port\l
+ "];
+cond_11 [ shape=record, style="filled", fillcolor=cornsilk, label="ig_md.traffic_type == 2\l\l
+ "];
+cond_12 [ shape=record, style="filled", fillcolor=cornsilk, label="hdr.ethernet.ether_type == 2054 || hdr.vlan_tag[1].ether_type == 2054\l\l
+ "];
+arp_response_0 [ shape=record, style="filled", fillcolor=cornsilk, label="arp_response_0\l\l
+M:\l
+ hdr.arp.tpa_addr\l
+\lR:\l
+ ig_intr_md.ingress_port\l
+ hdr.arp.tpa_addr\l
+ temp_ip_0\l
+ hdr.arp.sha_addr\l
+ hdr.ethernet.src_addr\l
+\lW:\l
+ ig_intr_md_for_tm.ucast_egress_port\l
+ hdr.arp.spa_addr\l
+ hdr.arp.tpa_addr\l
+ hdr.arp.tha_addr\l
+ hdr.arp.sha_addr\l
+ hdr.arp.opcode\l
+ hdr.ethernet.dst_addr\l
+ hdr.ethernet.src_addr\l
+ "];
+tbl_tna_nbnswitch471 [ shape=record, style="filled", fillcolor=cornsilk, label="tbl_tna_nbnswitch471\l\l
+W:\l
+ hdr.vlan_tag[0].pcp\l
+ hdr.vlan_tag[0].dei\l
+ hdr.vlan_tag[0].vid\l
+ hdr.vlan_tag[0].ether_type\l
+ hdr.vlan_tag[1].pcp\l
+ hdr.vlan_tag[1].dei\l
+ hdr.vlan_tag[1].vid\l
+ hdr.vlan_tag[1].ether_type\l
+ hdr.ethernet.ether_type\l
+ hdr.vlan_tag.$stkvalid\l
+ "];
+reverse_cloud_access_0 [ shape=record, style="filled", fillcolor=cornsilk, label="reverse_cloud_access_0\l\l
+M:\l
+ hdr.ipv4.dst_addr\l
+\l "];
+counting_table_cloud_egr_0 [ shape=record, style="filled", fillcolor=cornsilk, label="counting_table_cloud_egr_0\l\l
+M:\l
+ ig_intr_md_for_tm.ucast_egress_port\l
+\l "];
+    PARSER -> tbl_tna_nbnswitch419
+    tbl_tna_nbnswitch419 -> tbl_tna_nbnswitch420
+    tbl_tna_nbnswitch420 -> counting_table_ing_0
+    counting_table_ing_0 -> counting_table_cloud_ing_0
+    counting_table_cloud_ing_0 -> port_type_0
+    port_type_0 -> cond_7
+    cond_7 -> cond_8
+    cond_7 -> cond_10
+    cond_8 -> port_forward_0
+    cond_8 -> cloud_access_0
+    port_forward_0 -> counting_table_egr_0
+    cloud_access_0 -> check_dst_cloud_0
+    check_dst_cloud_0 -> cond_9
+    cond_9 -> tbl_tna_nbnswitch441
+    cond_9 -> port_forward_0
+    tbl_tna_nbnswitch441 -> update_src_mac_0
+    update_src_mac_0 -> update_dst_mac_0
+    update_dst_mac_0 -> ipv4_forward_0
+    ipv4_forward_0 -> counting_table_egr_0
+    cond_10 -> port_forward_0
+    cond_10 -> cond_11
+    cond_11 -> cond_12
+    cond_11 -> counting_table_egr_0
+    cond_12 -> arp_response_0
+    cond_12 -> tbl_tna_nbnswitch471
+    arp_response_0 -> port_forward_0
+    tbl_tna_nbnswitch471 -> reverse_cloud_access_0
+    reverse_cloud_access_0 -> update_src_mac_0
+    counting_table_egr_0 -> counting_table_cloud_egr_0
+    counting_table_cloud_egr_0 -> DEPARSER
+}

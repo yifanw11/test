@@ -1,0 +1,34 @@
+Table allocation done 1 time(s), state = INITIAL
+Number of stages in table allocation: 4
+  Number of stages for ingress table allocation: 4
+  Number of stages for egress table allocation: 0
+Critical path length through the table dependency graph: 4
+Number of tables allocated: 20
++-------+---------------------------+
+|Stage  |Table Name                 |
++-------+---------------------------+
+|0      |.port_type                 |
+|0      |tbl_tna_nbnswitch419       |
+|0      |.counting_table_cloud_ing  |
+|0      |.counting_table_ing        |
+|1      |tbl_tna_nbnswitch420       |
+|1      |cond-7                     |
+|1      |cond-10                    |
+|1      |cond-11                    |
+|1      |.arp_response              |
+|1      |.check_dst_cloud           |
+|1      |.cloud_access              |
+|1      |.reverse_cloud_access      |
+|1      |tbl_tna_nbnswitch471       |
+|2      |tbl_tna_nbnswitch441       |
+|2      |.port_forward              |
+|2      |.ipv4_forward              |
+|2      |.update_dst_mac            |
+|2      |.update_src_mac            |
+|3      |.counting_table_cloud_egr  |
+|3      |.counting_table_egr        |
+|1      |cond-8                     |
+|2      |cond-9                     |
+|1      |cond-12                    |
++-------+---------------------------+
+

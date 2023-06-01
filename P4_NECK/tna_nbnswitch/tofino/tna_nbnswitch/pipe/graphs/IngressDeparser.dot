@@ -1,0 +1,29 @@
+digraph IngressDeparser {
+subgraph cluster {
+graph [
+label="", labeljust=r, style=bold];
+0[label=__START__, margin="", shape=rectangle, style=solid];
+1[label=__EXIT__, margin="", shape=rectangle, style=solid];
+2[label="ig_dprsr_md.digest_type == 1;", margin="", shape=rectangle, style=solid];
+3[label="digest_a_0/digest_a.pack({
+  port:ig_md.ingress_port;
+  AVC_pcp:hdr.vlan_tag[0].pcp;
+  AVC_dei:hdr.vlan_tag[0].dei;
+  AVC_vid:hdr.vlan_tag[0].vid;
+  CVC_pcp:hdr.vlan_tag[1].pcp;
+  CVC_dei:hdr.vlan_tag[1].dei;
+  CVC_vid:hdr.vlan_tag[1].vid;
+  dst_mac:hdr.ethernet.dst_addr;
+  src_mac:hdr.ethernet.src_addr;
+  dst_ip:hdr.ipv4.dst_addr;
+  src_ip:hdr.ipv4.src_addr; });", margin="", shape=rectangle, style=solid];
+4[label="pkt.emit<ethernet_h>(hdr.ethernet);
+...
+pkt.emit<tcp_h>(hdr.tcp);", margin="", shape=rectangle, style=solid];
+0 -> 2[label=""];
+2 -> 3[label=TRUE];
+2 -> 4[label=FALSE];
+3 -> 4[label=""];
+4 -> 1[label=""];
+}
+}

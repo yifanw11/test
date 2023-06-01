@@ -1,0 +1,1131 @@
+FindDependencyGraph : After Instruction Selection
+ingress: [2566521] 0 00 000 0000 00000 000000 0000000
+  tbl_tna_nbnswitch419
+  tbl_tna_nbnswitch420
+  counting_table_ing_0
+  counting_table_cloud_ing_0
+  port_type_0
+  cond-7(ingress::ig_md.traffic_type == 0; => $true, 1 => $false)
+    $true: [2568570]
+      cond-8(ingress::hdr.ethernet.ether_type == 2054; => $true, ingress::hdr.vlan_tag[1].ether_type == 2054; => $true, 1 => $false)
+        $true: [2567676]
+          port_forward_0
+        $false: [2567053] 0 00
+          cloud_access_0
+          check_dst_cloud_0
+          cond-9(ingress::dst_cloud_0 => $true, 1 => $false)
+            $true: [2567220] 0 00 000
+              tbl_tna_nbnswitch441
+              update_src_mac_0
+              update_dst_mac_0
+              ipv4_forward_0
+            $false: [2567676]...
+    $false: [2568572]
+      cond-10(ingress::ig_md.traffic_type == 1; => $true, 1 => $false)
+        $true: [2567676]...
+        $false: [2568568]
+          cond-11(ingress::ig_md.traffic_type == 2; => $true, 1 => $false)
+            $true: [2568564]
+              cond-12(ingress::hdr.ethernet.ether_type == 2054; => $true, ingress::hdr.vlan_tag[1].ether_type == 2054; => $true, 1 => $false)
+                $true: [2567778] 0
+                  arp_response_0
+                  port_forward_0
+                $false: [2568029] 0 00 000 0000
+                  tbl_tna_nbnswitch471
+                  reverse_cloud_access_0
+                  update_src_mac_0
+                  update_dst_mac_0
+                  ipv4_forward_0
+  counting_table_egr_0
+  counting_table_cloud_egr_0
+egress: [2574996]
+
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch419
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch420
+DepStagesThruDomFrontier postorder : counting_table_ing_0
+DepStagesThruDomFrontier postorder : counting_table_cloud_ing_0
+DepStagesThruDomFrontier postorder : port_type_0
+DepStagesThruDomFrontier postorder : port_forward_0
+DepStagesThruDomFrontier postorder : cloud_access_0
+DepStagesThruDomFrontier postorder : check_dst_cloud_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch441
+DepStagesThruDomFrontier postorder : update_src_mac_0
+DepStagesThruDomFrontier postorder : update_dst_mac_0
+DepStagesThruDomFrontier postorder : ipv4_forward_0
+DepStagesThruDomFrontier postorder : cond-9
+DepStagesThruDomFrontier postorder : cond-8
+DepStagesThruDomFrontier postorder : arp_response_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch471
+DepStagesThruDomFrontier postorder : reverse_cloud_access_0
+DepStagesThruDomFrontier postorder : cond-12
+DepStagesThruDomFrontier postorder : cond-11
+DepStagesThruDomFrontier postorder : cond-10
+DepStagesThruDomFrontier postorder : cond-7
+DepStagesThruDomFrontier postorder : counting_table_egr_0
+DepStagesThruDomFrontier postorder : counting_table_cloud_egr_0
+    Maximum stage number according to dependences: 
+      INGRESS: 3
+      EGRESS: -1
+GRAPH
+    cond-7 -- CONTROL_COND_TRUE --> cond-8
+    cond-8 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-8 -- CONTROL_COND_FALSE --> cloud_access_0
+    cond-8 -- CONTROL_COND_FALSE --> check_dst_cloud_0
+    cond-8 -- CONTROL_COND_FALSE --> cond-9
+    cond-9 -- CONTROL_COND_TRUE --> tbl_tna_nbnswitch441
+    cond-9 -- CONTROL_COND_TRUE --> update_src_mac_0
+    cond-9 -- CONTROL_COND_TRUE --> update_dst_mac_0
+    cond-9 -- CONTROL_COND_TRUE --> ipv4_forward_0
+    cond-9 -- CONTROL_COND_FALSE --> port_forward_0
+    cond-7 -- CONTROL_COND_FALSE --> cond-10
+    cond-10 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-10 -- CONTROL_COND_FALSE --> cond-11
+    cond-11 -- CONTROL_COND_TRUE --> cond-12
+    cond-12 -- CONTROL_COND_TRUE --> arp_response_0
+    cond-12 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-12 -- CONTROL_COND_FALSE --> tbl_tna_nbnswitch471
+    cond-12 -- CONTROL_COND_FALSE --> reverse_cloud_access_0
+    cond-12 -- CONTROL_COND_FALSE --> update_src_mac_0
+    cond-12 -- CONTROL_COND_FALSE --> update_dst_mac_0
+    cond-12 -- CONTROL_COND_FALSE --> ipv4_forward_0
+    cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> cond-9
+    check_dst_cloud_0 -- ANTI_NEXT_TABLE_CONTROL --> cond-9
+    arp_response_0 -- ANTI_NEXT_TABLE_CONTROL --> port_forward_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    tbl_tna_nbnswitch419 -- OUTPUT --> tbl_tna_nbnswitch420
+    port_type_0 -- ACTION_READ --> cond-7
+    check_dst_cloud_0 -- ACTION_READ --> cond-9
+    cond-8 -- ANTI_ACTION_READ --> tbl_tna_nbnswitch441
+    port_type_0 -- ACTION_READ --> cond-10
+    port_type_0 -- ACTION_READ --> cond-11
+    arp_response_0 -- OUTPUT --> port_forward_0
+    cond-12 -- ANTI_ACTION_READ --> tbl_tna_nbnswitch471
+    ipv4_forward_0 -- IXBAR_READ --> counting_table_egr_0
+    port_forward_0 -- IXBAR_READ --> counting_table_egr_0
+    arp_response_0 -- IXBAR_READ --> counting_table_egr_0
+    ipv4_forward_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    port_forward_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    arp_response_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    ipv4_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    ipv4_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    port_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    port_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> cond-9
+    check_dst_cloud_0 -- ANTI_NEXT_TABLE_DATA --> cond-9
+    arp_response_0 -- ANTI_NEXT_TABLE_DATA --> port_forward_0
+    arp_response_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    arp_response_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    tbl_tna_nbnswitch419 -- ANTI_NEXT_TABLE_DATA --> tbl_tna_nbnswitch420
+    port_type_0 -- ANTI_NEXT_TABLE_DATA --> cond-7
+MIN STAGE INFO
+    Each table also indicates its dependency chain length
+ Stage #1
+     cond-7 2
+	- Edge ACTION_READ port_type_0
+     cond-8 2
+	- Edge CONTROL_COND_TRUE cond-7
+     cloud_access_0 1
+	- Edge CONTROL_COND_FALSE cond-8
+     check_dst_cloud_0 2
+	- Edge CONTROL_COND_FALSE cond-8
+     cond-10 2
+	- Edge CONTROL_COND_FALSE cond-7
+	- Edge ACTION_READ port_type_0
+     cond-11 2
+	- Edge CONTROL_COND_FALSE cond-10
+	- Edge ACTION_READ port_type_0
+     cond-12 2
+	- Edge CONTROL_COND_TRUE cond-11
+     arp_response_0 2
+	- Edge CONTROL_COND_TRUE cond-12
+     tbl_tna_nbnswitch471 1
+	- Edge CONTROL_COND_FALSE cond-12
+	- Edge ANTI_ACTION_READ cond-12
+     reverse_cloud_access_0 1
+	- Edge CONTROL_COND_FALSE cond-12
+     tbl_tna_nbnswitch420 0
+	- Edge OUTPUT tbl_tna_nbnswitch419
+ Stage #2
+     port_forward_0 1
+	- Edge CONTROL_COND_FALSE cond-9
+	- Edge OUTPUT arp_response_0
+     cond-9 1
+	- Edge ACTION_READ check_dst_cloud_0
+     tbl_tna_nbnswitch441 1
+	- Edge CONTROL_COND_TRUE cond-9
+     update_src_mac_0 0
+	- Edge CONTROL_COND_TRUE cond-9
+	- Edge ANTI_NEXT_TABLE_CONTROL tbl_tna_nbnswitch441
+	- Edge ANTI_NEXT_TABLE_DATA tbl_tna_nbnswitch441
+     update_dst_mac_0 0
+	- Edge CONTROL_COND_TRUE cond-9
+	- Edge ANTI_NEXT_TABLE_CONTROL tbl_tna_nbnswitch441
+	- Edge ANTI_NEXT_TABLE_DATA tbl_tna_nbnswitch441
+     ipv4_forward_0 1
+	- Edge CONTROL_COND_TRUE cond-9
+	- Edge ANTI_NEXT_TABLE_CONTROL tbl_tna_nbnswitch441
+	- Edge ANTI_NEXT_TABLE_DATA tbl_tna_nbnswitch441
+ Stage #0
+     tbl_tna_nbnswitch419 1
+     counting_table_ing_0 0
+     counting_table_cloud_ing_0 0
+     port_type_0 3
+ Stage #3
+     counting_table_egr_0 0
+	- Edge IXBAR_READ ipv4_forward_0
+	- Edge IXBAR_READ port_forward_0
+     counting_table_cloud_egr_0 0
+	- Edge IXBAR_READ ipv4_forward_0
+	- Edge IXBAR_READ port_forward_0
+
+FindDependencyGraph : Just Before PHV allocation
+ingress: [2566521] 0 00 000 0000 00000 000000 0000000
+  tbl_tna_nbnswitch419
+  tbl_tna_nbnswitch420
+  counting_table_ing_0
+  counting_table_cloud_ing_0
+  port_type_0
+  cond-7(ingress::ig_md.traffic_type == 0; => $true, 1 => $false)
+    $true: [2568570]
+      cond-8(ingress::hdr.ethernet.ether_type == 2054; => $true, ingress::hdr.vlan_tag[1].ether_type == 2054; => $true, 1 => $false)
+        $true: [2567676]
+          port_forward_0
+        $false: [2567053] 0 00
+          cloud_access_0
+          check_dst_cloud_0
+          cond-9(ingress::dst_cloud_0 => $true, 1 => $false)
+            $true: [2567220] 0 00 000
+              tbl_tna_nbnswitch441
+              update_src_mac_0
+              update_dst_mac_0
+              ipv4_forward_0
+            $false: [2567676]...
+    $false: [2568572]
+      cond-10(ingress::ig_md.traffic_type == 1; => $true, 1 => $false)
+        $true: [2567676]...
+        $false: [2568568]
+          cond-11(ingress::ig_md.traffic_type == 2; => $true, 1 => $false)
+            $true: [2568564]
+              cond-12(ingress::hdr.ethernet.ether_type == 2054; => $true, ingress::hdr.vlan_tag[1].ether_type == 2054; => $true, 1 => $false)
+                $true: [2567778] 0
+                  arp_response_0
+                  port_forward_0
+                $false: [2568029] 0 00 000 0000
+                  tbl_tna_nbnswitch471
+                  reverse_cloud_access_0
+                  update_src_mac_0
+                  update_dst_mac_0
+                  ipv4_forward_0
+  counting_table_egr_0
+  counting_table_cloud_egr_0
+egress: [2574996]
+
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch419
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch420
+DepStagesThruDomFrontier postorder : counting_table_ing_0
+DepStagesThruDomFrontier postorder : counting_table_cloud_ing_0
+DepStagesThruDomFrontier postorder : port_type_0
+DepStagesThruDomFrontier postorder : port_forward_0
+DepStagesThruDomFrontier postorder : cloud_access_0
+DepStagesThruDomFrontier postorder : check_dst_cloud_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch441
+DepStagesThruDomFrontier postorder : update_src_mac_0
+DepStagesThruDomFrontier postorder : update_dst_mac_0
+DepStagesThruDomFrontier postorder : ipv4_forward_0
+DepStagesThruDomFrontier postorder : cond-9
+DepStagesThruDomFrontier postorder : cond-8
+DepStagesThruDomFrontier postorder : arp_response_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch471
+DepStagesThruDomFrontier postorder : reverse_cloud_access_0
+DepStagesThruDomFrontier postorder : cond-12
+DepStagesThruDomFrontier postorder : cond-11
+DepStagesThruDomFrontier postorder : cond-10
+DepStagesThruDomFrontier postorder : cond-7
+DepStagesThruDomFrontier postorder : counting_table_egr_0
+DepStagesThruDomFrontier postorder : counting_table_cloud_egr_0
+    Maximum stage number according to dependences: 
+      INGRESS: 3
+      EGRESS: -1
+GRAPH
+    cond-7 -- CONTROL_COND_TRUE --> cond-8
+    cond-8 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-8 -- CONTROL_COND_FALSE --> cloud_access_0
+    cond-8 -- CONTROL_COND_FALSE --> check_dst_cloud_0
+    cond-8 -- CONTROL_COND_FALSE --> cond-9
+    cond-9 -- CONTROL_COND_TRUE --> tbl_tna_nbnswitch441
+    cond-9 -- CONTROL_COND_TRUE --> update_src_mac_0
+    cond-9 -- CONTROL_COND_TRUE --> update_dst_mac_0
+    cond-9 -- CONTROL_COND_TRUE --> ipv4_forward_0
+    cond-9 -- CONTROL_COND_FALSE --> port_forward_0
+    cond-7 -- CONTROL_COND_FALSE --> cond-10
+    cond-10 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-10 -- CONTROL_COND_FALSE --> cond-11
+    cond-11 -- CONTROL_COND_TRUE --> cond-12
+    cond-12 -- CONTROL_COND_TRUE --> arp_response_0
+    cond-12 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-12 -- CONTROL_COND_FALSE --> tbl_tna_nbnswitch471
+    cond-12 -- CONTROL_COND_FALSE --> reverse_cloud_access_0
+    cond-12 -- CONTROL_COND_FALSE --> update_src_mac_0
+    cond-12 -- CONTROL_COND_FALSE --> update_dst_mac_0
+    cond-12 -- CONTROL_COND_FALSE --> ipv4_forward_0
+    cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> cond-9
+    check_dst_cloud_0 -- ANTI_NEXT_TABLE_CONTROL --> cond-9
+    arp_response_0 -- ANTI_NEXT_TABLE_CONTROL --> port_forward_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    tbl_tna_nbnswitch419 -- OUTPUT --> tbl_tna_nbnswitch420
+    port_type_0 -- ACTION_READ --> cond-7
+    check_dst_cloud_0 -- ACTION_READ --> cond-9
+    cond-8 -- ANTI_ACTION_READ --> tbl_tna_nbnswitch441
+    port_type_0 -- ACTION_READ --> cond-10
+    port_type_0 -- ACTION_READ --> cond-11
+    arp_response_0 -- OUTPUT --> port_forward_0
+    cond-12 -- ANTI_ACTION_READ --> tbl_tna_nbnswitch471
+    ipv4_forward_0 -- IXBAR_READ --> counting_table_egr_0
+    port_forward_0 -- IXBAR_READ --> counting_table_egr_0
+    arp_response_0 -- IXBAR_READ --> counting_table_egr_0
+    ipv4_forward_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    port_forward_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    arp_response_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    ipv4_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    ipv4_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    port_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    port_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> cond-9
+    check_dst_cloud_0 -- ANTI_NEXT_TABLE_DATA --> cond-9
+    arp_response_0 -- ANTI_NEXT_TABLE_DATA --> port_forward_0
+    arp_response_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    arp_response_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    tbl_tna_nbnswitch419 -- ANTI_NEXT_TABLE_DATA --> tbl_tna_nbnswitch420
+    port_type_0 -- ANTI_NEXT_TABLE_DATA --> cond-7
+MIN STAGE INFO
+    Each table also indicates its dependency chain length
+ Stage #1
+     cond-7 2
+	- Edge ACTION_READ port_type_0
+     cond-8 2
+	- Edge CONTROL_COND_TRUE cond-7
+     cloud_access_0 1
+	- Edge CONTROL_COND_FALSE cond-8
+     check_dst_cloud_0 2
+	- Edge CONTROL_COND_FALSE cond-8
+     cond-10 2
+	- Edge CONTROL_COND_FALSE cond-7
+	- Edge ACTION_READ port_type_0
+     cond-11 2
+	- Edge CONTROL_COND_FALSE cond-10
+	- Edge ACTION_READ port_type_0
+     cond-12 2
+	- Edge CONTROL_COND_TRUE cond-11
+     arp_response_0 2
+	- Edge CONTROL_COND_TRUE cond-12
+     tbl_tna_nbnswitch471 1
+	- Edge CONTROL_COND_FALSE cond-12
+	- Edge ANTI_ACTION_READ cond-12
+     reverse_cloud_access_0 1
+	- Edge CONTROL_COND_FALSE cond-12
+     tbl_tna_nbnswitch420 0
+	- Edge OUTPUT tbl_tna_nbnswitch419
+ Stage #2
+     port_forward_0 1
+	- Edge CONTROL_COND_FALSE cond-9
+	- Edge OUTPUT arp_response_0
+     cond-9 1
+	- Edge ACTION_READ check_dst_cloud_0
+     tbl_tna_nbnswitch441 1
+	- Edge CONTROL_COND_TRUE cond-9
+     update_src_mac_0 0
+	- Edge CONTROL_COND_TRUE cond-9
+	- Edge ANTI_NEXT_TABLE_CONTROL tbl_tna_nbnswitch441
+	- Edge ANTI_NEXT_TABLE_DATA tbl_tna_nbnswitch441
+     update_dst_mac_0 0
+	- Edge CONTROL_COND_TRUE cond-9
+	- Edge ANTI_NEXT_TABLE_CONTROL tbl_tna_nbnswitch441
+	- Edge ANTI_NEXT_TABLE_DATA tbl_tna_nbnswitch441
+     ipv4_forward_0 1
+	- Edge CONTROL_COND_TRUE cond-9
+	- Edge ANTI_NEXT_TABLE_CONTROL tbl_tna_nbnswitch441
+	- Edge ANTI_NEXT_TABLE_DATA tbl_tna_nbnswitch441
+ Stage #0
+     tbl_tna_nbnswitch419 1
+     counting_table_ing_0 0
+     counting_table_cloud_ing_0 0
+     port_type_0 3
+ Stage #3
+     counting_table_egr_0 0
+	- Edge IXBAR_READ ipv4_forward_0
+	- Edge IXBAR_READ port_forward_0
+     counting_table_cloud_egr_0 0
+	- Edge IXBAR_READ ipv4_forward_0
+	- Edge IXBAR_READ port_forward_0
+
+ingress: [2566521] 1 00 000 0000 00001 000011 0000110
+  tbl_tna_nbnswitch419
+  tbl_tna_nbnswitch420
+  counting_table_ing_0{ E -1+0, 0 0K }
+  counting_table_cloud_ing_0{ E -1+0, 0 0K }
+  port_type_0{ E -1+1, 1 0K }
+  cond-7(ingress::ig_md.traffic_type == 0; => $true, 1 => $false)
+    $true: [2568570]
+      cond-8(ingress::hdr.ethernet.ether_type == 2054; => $true, ingress::hdr.vlan_tag[1].ether_type == 2054; => $true, 1 => $false)
+        $true: [2567676]
+          port_forward_0{ E -1+0, 2 0K }
+        $false: [2567053] 0 01
+          cloud_access_0{ T 32+1, 0 0K }
+          check_dst_cloud_0{ T 32+1, 0 0K }
+          cond-9(ingress::dst_cloud_0 => $true, 1 => $false)
+            $true: [2567220] 0 00 000
+              tbl_tna_nbnswitch441
+              update_src_mac_0{ T 32+1, 8 0K }
+              update_dst_mac_0{ T 32+1, 8 0K }
+              ipv4_forward_0{ T 32+1, 2 0K }
+            $false: [2567676]...
+    $false: [2568572]
+      cond-10(ingress::ig_md.traffic_type == 1; => $true, 1 => $false)
+        $true: [2567676]...
+        $false: [2568568]
+          cond-11(ingress::ig_md.traffic_type == 2; => $true, 1 => $false)
+            $true: [2568564]
+              cond-12(ingress::hdr.ethernet.ether_type == 2054; => $true, ingress::hdr.vlan_tag[1].ether_type == 2054; => $true, 1 => $false)
+                $true: [2567778] 1
+                  arp_response_0{ E 22+1, 4 0K }
+                  port_forward_0{ E -1+0, 2 0K }
+                $false: [2568029] 0 00 000 0000
+                  tbl_tna_nbnswitch471
+                  reverse_cloud_access_0{ T 32+1, 0 0K }
+                  update_src_mac_0{ T 32+1, 8 0K }
+                  update_dst_mac_0{ T 32+1, 8 0K }
+                  ipv4_forward_0{ T 32+1, 2 0K }
+  counting_table_egr_0{ E -1+0, 0 0K }
+  counting_table_cloud_egr_0{ E -1+0, 0 0K }
+egress: [2574996]
+
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch419
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch420
+DepStagesThruDomFrontier postorder : counting_table_ing_0
+DepStagesThruDomFrontier postorder : counting_table_cloud_ing_0
+DepStagesThruDomFrontier postorder : port_type_0
+DepStagesThruDomFrontier postorder : port_forward_0
+DepStagesThruDomFrontier postorder : cloud_access_0
+DepStagesThruDomFrontier postorder : check_dst_cloud_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch441
+DepStagesThruDomFrontier postorder : update_src_mac_0
+DepStagesThruDomFrontier postorder : update_dst_mac_0
+DepStagesThruDomFrontier postorder : ipv4_forward_0
+DepStagesThruDomFrontier postorder : cond-9
+DepStagesThruDomFrontier postorder : cond-8
+DepStagesThruDomFrontier postorder : arp_response_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch471
+DepStagesThruDomFrontier postorder : reverse_cloud_access_0
+DepStagesThruDomFrontier postorder : cond-12
+DepStagesThruDomFrontier postorder : cond-11
+DepStagesThruDomFrontier postorder : cond-10
+DepStagesThruDomFrontier postorder : cond-7
+DepStagesThruDomFrontier postorder : counting_table_egr_0
+DepStagesThruDomFrontier postorder : counting_table_cloud_egr_0
+    Maximum stage number according to dependences: 
+      INGRESS: 3
+      EGRESS: -1
+GRAPH
+    cond-7 -- CONTROL_COND_TRUE --> cond-8
+    cond-8 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-8 -- CONTROL_COND_FALSE --> cloud_access_0
+    cond-8 -- CONTROL_COND_FALSE --> check_dst_cloud_0
+    cond-8 -- CONTROL_COND_FALSE --> cond-9
+    cond-9 -- CONTROL_COND_TRUE --> tbl_tna_nbnswitch441
+    cond-9 -- CONTROL_COND_TRUE --> update_src_mac_0
+    cond-9 -- CONTROL_COND_TRUE --> update_dst_mac_0
+    cond-9 -- CONTROL_COND_TRUE --> ipv4_forward_0
+    cond-9 -- CONTROL_COND_FALSE --> port_forward_0
+    cond-7 -- CONTROL_COND_FALSE --> cond-10
+    cond-10 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-10 -- CONTROL_COND_FALSE --> cond-11
+    cond-11 -- CONTROL_COND_TRUE --> cond-12
+    cond-12 -- CONTROL_COND_TRUE --> arp_response_0
+    cond-12 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-12 -- CONTROL_COND_FALSE --> tbl_tna_nbnswitch471
+    cond-12 -- CONTROL_COND_FALSE --> reverse_cloud_access_0
+    cond-12 -- CONTROL_COND_FALSE --> update_src_mac_0
+    cond-12 -- CONTROL_COND_FALSE --> update_dst_mac_0
+    cond-12 -- CONTROL_COND_FALSE --> ipv4_forward_0
+    cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> cond-9
+    check_dst_cloud_0 -- ANTI_NEXT_TABLE_CONTROL --> cond-9
+    arp_response_0 -- ANTI_NEXT_TABLE_CONTROL --> port_forward_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    tbl_tna_nbnswitch419 -- OUTPUT --> tbl_tna_nbnswitch420
+    port_type_0 -- ACTION_READ --> cond-7
+    check_dst_cloud_0 -- ACTION_READ --> cond-9
+    cond-8 -- ANTI_ACTION_READ --> tbl_tna_nbnswitch441
+    port_type_0 -- ACTION_READ --> cond-10
+    port_type_0 -- ACTION_READ --> cond-11
+    arp_response_0 -- OUTPUT --> port_forward_0
+    cond-12 -- ANTI_ACTION_READ --> tbl_tna_nbnswitch471
+    ipv4_forward_0 -- IXBAR_READ --> counting_table_egr_0
+    port_forward_0 -- IXBAR_READ --> counting_table_egr_0
+    arp_response_0 -- IXBAR_READ --> counting_table_egr_0
+    ipv4_forward_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    port_forward_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    arp_response_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    ipv4_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    ipv4_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    port_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    port_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> cond-9
+    check_dst_cloud_0 -- ANTI_NEXT_TABLE_DATA --> cond-9
+    arp_response_0 -- ANTI_NEXT_TABLE_DATA --> port_forward_0
+    arp_response_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    arp_response_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    tbl_tna_nbnswitch419 -- ANTI_NEXT_TABLE_DATA --> tbl_tna_nbnswitch420
+    port_type_0 -- ANTI_NEXT_TABLE_DATA --> cond-7
+MIN STAGE INFO
+    Each table also indicates its dependency chain length
+ Stage #1
+     cond-7 2
+	- Edge ACTION_READ port_type_0
+     cond-8 2
+	- Edge CONTROL_COND_TRUE cond-7
+     cloud_access_0 1
+	- Edge CONTROL_COND_FALSE cond-8
+     check_dst_cloud_0 2
+	- Edge CONTROL_COND_FALSE cond-8
+     cond-10 2
+	- Edge CONTROL_COND_FALSE cond-7
+	- Edge ACTION_READ port_type_0
+     cond-11 2
+	- Edge CONTROL_COND_FALSE cond-10
+	- Edge ACTION_READ port_type_0
+     cond-12 2
+	- Edge CONTROL_COND_TRUE cond-11
+     arp_response_0 2
+	- Edge CONTROL_COND_TRUE cond-12
+     tbl_tna_nbnswitch471 1
+	- Edge CONTROL_COND_FALSE cond-12
+	- Edge ANTI_ACTION_READ cond-12
+     reverse_cloud_access_0 1
+	- Edge CONTROL_COND_FALSE cond-12
+     tbl_tna_nbnswitch420 0
+	- Edge OUTPUT tbl_tna_nbnswitch419
+ Stage #2
+     port_forward_0 1
+	- Edge CONTROL_COND_FALSE cond-9
+	- Edge OUTPUT arp_response_0
+     cond-9 1
+	- Edge ACTION_READ check_dst_cloud_0
+     tbl_tna_nbnswitch441 1
+	- Edge CONTROL_COND_TRUE cond-9
+     update_src_mac_0 0
+	- Edge CONTROL_COND_TRUE cond-9
+	- Edge ANTI_NEXT_TABLE_CONTROL tbl_tna_nbnswitch441
+	- Edge ANTI_NEXT_TABLE_DATA tbl_tna_nbnswitch441
+     update_dst_mac_0 0
+	- Edge CONTROL_COND_TRUE cond-9
+	- Edge ANTI_NEXT_TABLE_CONTROL tbl_tna_nbnswitch441
+	- Edge ANTI_NEXT_TABLE_DATA tbl_tna_nbnswitch441
+     ipv4_forward_0 1
+	- Edge CONTROL_COND_TRUE cond-9
+	- Edge ANTI_NEXT_TABLE_CONTROL tbl_tna_nbnswitch441
+	- Edge ANTI_NEXT_TABLE_DATA tbl_tna_nbnswitch441
+ Stage #0
+     tbl_tna_nbnswitch419 1
+     counting_table_ing_0 0
+     counting_table_cloud_ing_0 0
+     port_type_0 3
+ Stage #3
+     counting_table_egr_0 0
+	- Edge IXBAR_READ ipv4_forward_0
+	- Edge IXBAR_READ port_forward_0
+     counting_table_cloud_egr_0 0
+	- Edge IXBAR_READ ipv4_forward_0
+	- Edge IXBAR_READ port_forward_0
+
+FindDependencyGraph : Before Table Placement
+ingress: [2566521] 1 00 000 0000 00001 000011 0000110
+  tbl_tna_nbnswitch419
+  tbl_tna_nbnswitch420
+  counting_table_ing_0{ E -1+0, 0 0K }
+  counting_table_cloud_ing_0{ E -1+0, 0 0K }
+  port_type_0{ E -1+1, 1 0K }
+  cond-7(ingress::ig_md.traffic_type == 0; => $true, 1 => $false)
+    $true: [2568570]
+      cond-8(ingress::hdr.ethernet.ether_type == 2054; => $true, ingress::hdr.vlan_tag[1].ether_type == 2054; => $true, 1 => $false)
+        $true: [2567676]
+          port_forward_0{ E -1+0, 2 0K }
+        $false: [2567053] 0 01
+          cloud_access_0{ T 32+1, 0 0K }
+          check_dst_cloud_0{ T 32+1, 0 0K }
+          cond-9(ingress::dst_cloud_0 => $true, 1 => $false)
+            $true: [2567220] 0 00 000
+              tbl_tna_nbnswitch441
+              update_src_mac_0{ T 32+1, 8 0K }
+              update_dst_mac_0{ T 32+1, 8 0K }
+              ipv4_forward_0{ T 32+1, 2 0K }
+            $false: [2567676]...
+    $false: [2568572]
+      cond-10(ingress::ig_md.traffic_type == 1; => $true, 1 => $false)
+        $true: [2567676]...
+        $false: [2568568]
+          cond-11(ingress::ig_md.traffic_type == 2; => $true, 1 => $false)
+            $true: [2568564]
+              cond-12(ingress::hdr.ethernet.ether_type == 2054; => $true, ingress::hdr.vlan_tag[1].ether_type == 2054; => $true, 1 => $false)
+                $true: [2567778] 1
+                  arp_response_0{ E 22+1, 4 0K }
+                  port_forward_0{ E -1+0, 2 0K }
+                $false: [2568029] 0 00 000 0000
+                  tbl_tna_nbnswitch471
+                  reverse_cloud_access_0{ T 32+1, 0 0K }
+                  update_src_mac_0{ T 32+1, 8 0K }
+                  update_dst_mac_0{ T 32+1, 8 0K }
+                  ipv4_forward_0{ T 32+1, 2 0K }
+  counting_table_egr_0{ E -1+0, 0 0K }
+  counting_table_cloud_egr_0{ E -1+0, 0 0K }
+egress: [2574996]
+
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch419
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch420
+DepStagesThruDomFrontier postorder : counting_table_ing_0
+DepStagesThruDomFrontier postorder : counting_table_cloud_ing_0
+DepStagesThruDomFrontier postorder : port_type_0
+DepStagesThruDomFrontier postorder : port_forward_0
+DepStagesThruDomFrontier postorder : cloud_access_0
+DepStagesThruDomFrontier postorder : check_dst_cloud_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch441
+DepStagesThruDomFrontier postorder : update_src_mac_0
+DepStagesThruDomFrontier postorder : update_dst_mac_0
+DepStagesThruDomFrontier postorder : ipv4_forward_0
+DepStagesThruDomFrontier postorder : cond-9
+DepStagesThruDomFrontier postorder : cond-8
+DepStagesThruDomFrontier postorder : arp_response_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch471
+DepStagesThruDomFrontier postorder : reverse_cloud_access_0
+DepStagesThruDomFrontier postorder : cond-12
+DepStagesThruDomFrontier postorder : cond-11
+DepStagesThruDomFrontier postorder : cond-10
+DepStagesThruDomFrontier postorder : cond-7
+DepStagesThruDomFrontier postorder : counting_table_egr_0
+DepStagesThruDomFrontier postorder : counting_table_cloud_egr_0
+    Maximum stage number according to dependences: 
+      INGRESS: 3
+      EGRESS: -1
+GRAPH
+    cond-7 -- CONTROL_COND_TRUE --> cond-8
+    cond-8 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-8 -- CONTROL_COND_FALSE --> cloud_access_0
+    cond-8 -- CONTROL_COND_FALSE --> check_dst_cloud_0
+    cond-8 -- CONTROL_COND_FALSE --> cond-9
+    cond-9 -- CONTROL_COND_TRUE --> tbl_tna_nbnswitch441
+    cond-9 -- CONTROL_COND_TRUE --> update_src_mac_0
+    cond-9 -- CONTROL_COND_TRUE --> update_dst_mac_0
+    cond-9 -- CONTROL_COND_TRUE --> ipv4_forward_0
+    cond-9 -- CONTROL_COND_FALSE --> port_forward_0
+    cond-7 -- CONTROL_COND_FALSE --> cond-10
+    cond-10 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-10 -- CONTROL_COND_FALSE --> cond-11
+    cond-11 -- CONTROL_COND_TRUE --> cond-12
+    cond-12 -- CONTROL_COND_TRUE --> arp_response_0
+    cond-12 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-12 -- CONTROL_COND_FALSE --> tbl_tna_nbnswitch471
+    cond-12 -- CONTROL_COND_FALSE --> reverse_cloud_access_0
+    cond-12 -- CONTROL_COND_FALSE --> update_src_mac_0
+    cond-12 -- CONTROL_COND_FALSE --> update_dst_mac_0
+    cond-12 -- CONTROL_COND_FALSE --> ipv4_forward_0
+    cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> cond-9
+    check_dst_cloud_0 -- ANTI_NEXT_TABLE_CONTROL --> cond-9
+    arp_response_0 -- ANTI_NEXT_TABLE_CONTROL --> port_forward_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    tbl_tna_nbnswitch419 -- OUTPUT --> tbl_tna_nbnswitch420
+    port_type_0 -- ACTION_READ --> cond-7
+    check_dst_cloud_0 -- ACTION_READ --> cond-9
+    cond-8 -- ANTI_ACTION_READ --> tbl_tna_nbnswitch441
+    port_type_0 -- ACTION_READ --> cond-10
+    port_type_0 -- ACTION_READ --> cond-11
+    arp_response_0 -- OUTPUT --> port_forward_0
+    cond-12 -- ANTI_ACTION_READ --> tbl_tna_nbnswitch471
+    ipv4_forward_0 -- IXBAR_READ --> counting_table_egr_0
+    port_forward_0 -- IXBAR_READ --> counting_table_egr_0
+    arp_response_0 -- IXBAR_READ --> counting_table_egr_0
+    ipv4_forward_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    port_forward_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    arp_response_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    ipv4_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    ipv4_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    port_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    port_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    tbl_tna_nbnswitch441 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> cond-9
+    check_dst_cloud_0 -- ANTI_NEXT_TABLE_DATA --> cond-9
+    arp_response_0 -- ANTI_NEXT_TABLE_DATA --> port_forward_0
+    arp_response_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    arp_response_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    tbl_tna_nbnswitch419 -- ANTI_NEXT_TABLE_DATA --> tbl_tna_nbnswitch420
+    port_type_0 -- ANTI_NEXT_TABLE_DATA --> cond-7
+MIN STAGE INFO
+    Each table also indicates its dependency chain length
+ Stage #1
+     cond-7 2
+	- Edge ACTION_READ port_type_0
+     cond-8 2
+	- Edge CONTROL_COND_TRUE cond-7
+     cloud_access_0 1
+	- Edge CONTROL_COND_FALSE cond-8
+     check_dst_cloud_0 2
+	- Edge CONTROL_COND_FALSE cond-8
+     cond-10 2
+	- Edge CONTROL_COND_FALSE cond-7
+	- Edge ACTION_READ port_type_0
+     cond-11 2
+	- Edge CONTROL_COND_FALSE cond-10
+	- Edge ACTION_READ port_type_0
+     cond-12 2
+	- Edge CONTROL_COND_TRUE cond-11
+     arp_response_0 2
+	- Edge CONTROL_COND_TRUE cond-12
+     tbl_tna_nbnswitch471 1
+	- Edge CONTROL_COND_FALSE cond-12
+	- Edge ANTI_ACTION_READ cond-12
+     reverse_cloud_access_0 1
+	- Edge CONTROL_COND_FALSE cond-12
+     tbl_tna_nbnswitch420 0
+	- Edge OUTPUT tbl_tna_nbnswitch419
+ Stage #2
+     port_forward_0 1
+	- Edge CONTROL_COND_FALSE cond-9
+	- Edge OUTPUT arp_response_0
+     cond-9 1
+	- Edge ACTION_READ check_dst_cloud_0
+     tbl_tna_nbnswitch441 1
+	- Edge CONTROL_COND_TRUE cond-9
+     update_src_mac_0 0
+	- Edge CONTROL_COND_TRUE cond-9
+	- Edge ANTI_NEXT_TABLE_CONTROL tbl_tna_nbnswitch441
+	- Edge ANTI_NEXT_TABLE_DATA tbl_tna_nbnswitch441
+     update_dst_mac_0 0
+	- Edge CONTROL_COND_TRUE cond-9
+	- Edge ANTI_NEXT_TABLE_CONTROL tbl_tna_nbnswitch441
+	- Edge ANTI_NEXT_TABLE_DATA tbl_tna_nbnswitch441
+     ipv4_forward_0 1
+	- Edge CONTROL_COND_TRUE cond-9
+	- Edge ANTI_NEXT_TABLE_CONTROL tbl_tna_nbnswitch441
+	- Edge ANTI_NEXT_TABLE_DATA tbl_tna_nbnswitch441
+ Stage #0
+     tbl_tna_nbnswitch419 1
+     counting_table_ing_0 0
+     counting_table_cloud_ing_0 0
+     port_type_0 3
+ Stage #3
+     counting_table_egr_0 0
+	- Edge IXBAR_READ ipv4_forward_0
+	- Edge IXBAR_READ port_forward_0
+     counting_table_cloud_egr_0 0
+	- Edge IXBAR_READ ipv4_forward_0
+	- Edge IXBAR_READ port_forward_0
+
+FindDependencyGraph : After Table Placement
+ingress: [2566521] 0 00 000 0100 10000 100001 1000010
+  0: port_type_0{ E -1+3, 1 [1x1 1K] }
+  1: tbl_tna_nbnswitch419
+  2: counting_table_cloud_ing_0{ E -1+0, 0 [1x1 1K] }
+  3: counting_table_ing_0{ E -1+0, 0 [1x1 1K] }
+  10: tbl_tna_nbnswitch420
+  11: cond-7(ingress::ig_md.traffic_type == 0; => $true, 1 => $false)
+    $true: [2568570]
+      15: check_dst_cloud_0(ingress::hdr.ethernet.ether_type == 2054; => $true, ingress::hdr.vlan_tag[1].ether_type == 2054; => $true, 1){ GT 32+1, 0 0K }
+        $true: [2567676]
+          21: port_forward_0{ E -1+9, 2 [1x1 1K] }
+        $default: [2567053] 0
+          16: cloud_access_0{ T 32+1, 0 0K }
+          20: tbl_tna_nbnswitch441(ingress::dst_cloud_0, 1 => $false)
+            $false: [2567676]...
+            $default: [2567220] 0 00
+              22: ipv4_forward_0{ T 32+10, 2 0K }
+              23: update_dst_mac_0{ T 32+1, 8 0K }
+              24: update_src_mac_0{ T 32+1, 8 0K }
+    $false: [2568572]
+      12: cond-10(ingress::ig_md.traffic_type == 1; => $true, 1 => $false)
+        $true: [2567676]...
+        $false: [2568568]
+          13: cond-11(ingress::ig_md.traffic_type == 2; => $true, 1 => $false)
+            $true: [2568564]
+              14: arp_response_0(ingress::hdr.ethernet.ether_type == 2054;, ingress::hdr.vlan_tag[1].ether_type == 2054;, 1 => $false){ GE 22+33, 4 [1x1 1K 1K 1K 1K] }
+                $false: [2568029] 0 00 000 0000
+                  17: reverse_cloud_access_0{ T 32+1, 0 0K }
+                  18: tbl_tna_nbnswitch471
+                  22: ipv4_forward_0{ T 32+10, 2 0K }
+                  23: update_dst_mac_0{ T 32+1, 8 0K }
+                  24: update_src_mac_0{ T 32+1, 8 0K }
+                $default: [2567778]
+                  21: port_forward_0{ E -1+9, 2 [1x1 1K] }
+  30: counting_table_cloud_egr_0{ E -1+0, 0 [1x1 1K] }
+  31: counting_table_egr_0{ E -1+0, 0 [1x1 1K] }
+egress: [2574996]
+
+DepStagesThruDomFrontier postorder : port_type_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch419
+DepStagesThruDomFrontier postorder : counting_table_cloud_ing_0
+DepStagesThruDomFrontier postorder : counting_table_ing_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch420
+DepStagesThruDomFrontier postorder : port_forward_0
+DepStagesThruDomFrontier postorder : cloud_access_0
+DepStagesThruDomFrontier postorder : ipv4_forward_0
+DepStagesThruDomFrontier postorder : update_dst_mac_0
+DepStagesThruDomFrontier postorder : update_src_mac_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch441
+DepStagesThruDomFrontier postorder : check_dst_cloud_0
+DepStagesThruDomFrontier postorder : reverse_cloud_access_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch471
+DepStagesThruDomFrontier postorder : arp_response_0
+DepStagesThruDomFrontier postorder : cond-11
+DepStagesThruDomFrontier postorder : cond-10
+DepStagesThruDomFrontier postorder : cond-7
+DepStagesThruDomFrontier postorder : counting_table_cloud_egr_0
+DepStagesThruDomFrontier postorder : counting_table_egr_0
+    Maximum stage number according to dependences: 
+      INGRESS: 3
+      EGRESS: -1
+GRAPH
+    cond-7 -- CONTROL_COND_TRUE --> check_dst_cloud_0
+    check_dst_cloud_0 -- CONTROL_COND_TRUE --> port_forward_0
+    check_dst_cloud_0 -- CONTROL_DEFAULT_NEXT_TABLE --> cloud_access_0
+    check_dst_cloud_0 -- CONTROL_DEFAULT_NEXT_TABLE --> tbl_tna_nbnswitch441
+    tbl_tna_nbnswitch441 -- CONTROL_COND_FALSE --> port_forward_0
+    tbl_tna_nbnswitch441 -- CONTROL_DEFAULT_NEXT_TABLE --> ipv4_forward_0
+    tbl_tna_nbnswitch441 -- CONTROL_DEFAULT_NEXT_TABLE --> update_dst_mac_0
+    tbl_tna_nbnswitch441 -- CONTROL_DEFAULT_NEXT_TABLE --> update_src_mac_0
+    cond-7 -- CONTROL_COND_FALSE --> cond-10
+    cond-10 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-10 -- CONTROL_COND_FALSE --> cond-11
+    cond-11 -- CONTROL_COND_TRUE --> arp_response_0
+    arp_response_0 -- CONTROL_COND_FALSE --> reverse_cloud_access_0
+    arp_response_0 -- CONTROL_COND_FALSE --> tbl_tna_nbnswitch471
+    arp_response_0 -- CONTROL_COND_FALSE --> ipv4_forward_0
+    arp_response_0 -- CONTROL_COND_FALSE --> update_dst_mac_0
+    arp_response_0 -- CONTROL_COND_FALSE --> update_src_mac_0
+    arp_response_0 -- CONTROL_DEFAULT_NEXT_TABLE --> port_forward_0
+    cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> tbl_tna_nbnswitch441
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    tbl_tna_nbnswitch419 -- OUTPUT --> tbl_tna_nbnswitch420
+    port_type_0 -- ACTION_READ --> cond-7
+    check_dst_cloud_0 -- ACTION_READ --> tbl_tna_nbnswitch441
+    check_dst_cloud_0 -- ANTI_ACTION_READ --> tbl_tna_nbnswitch441
+    port_type_0 -- ACTION_READ --> cond-10
+    port_type_0 -- ACTION_READ --> cond-11
+    arp_response_0 -- ANTI_ACTION_READ --> tbl_tna_nbnswitch471
+    arp_response_0 -- OUTPUT --> port_forward_0
+    ipv4_forward_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    port_forward_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    arp_response_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    ipv4_forward_0 -- IXBAR_READ --> counting_table_egr_0
+    port_forward_0 -- IXBAR_READ --> counting_table_egr_0
+    arp_response_0 -- IXBAR_READ --> counting_table_egr_0
+    ipv4_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    ipv4_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    port_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    port_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> tbl_tna_nbnswitch441
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    update_dst_mac_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    update_src_mac_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    update_dst_mac_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    update_src_mac_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    port_type_0 -- ANTI_NEXT_TABLE_DATA --> cond-7
+    tbl_tna_nbnswitch419 -- ANTI_NEXT_TABLE_DATA --> tbl_tna_nbnswitch420
+MIN STAGE INFO
+    Each table also indicates its dependency chain length
+ Stage #1
+     cond-7 2
+	- Edge ACTION_READ port_type_0
+     check_dst_cloud_0 2
+	- Edge CONTROL_COND_TRUE cond-7
+     cloud_access_0 1
+	- Edge CONTROL_DEFAULT_NEXT_TABLE check_dst_cloud_0
+     cond-10 2
+	- Edge CONTROL_COND_FALSE cond-7
+	- Edge ACTION_READ port_type_0
+     cond-11 2
+	- Edge CONTROL_COND_FALSE cond-10
+	- Edge ACTION_READ port_type_0
+     arp_response_0 2
+	- Edge CONTROL_COND_TRUE cond-11
+     reverse_cloud_access_0 1
+	- Edge CONTROL_COND_FALSE arp_response_0
+     tbl_tna_nbnswitch471 1
+	- Edge CONTROL_COND_FALSE arp_response_0
+	- Edge ANTI_ACTION_READ arp_response_0
+     tbl_tna_nbnswitch420 0
+	- Edge OUTPUT tbl_tna_nbnswitch419
+ Stage #2
+     port_forward_0 1
+	- Edge CONTROL_COND_FALSE tbl_tna_nbnswitch441
+	- Edge OUTPUT arp_response_0
+     tbl_tna_nbnswitch441 1
+	- Edge ACTION_READ check_dst_cloud_0
+     ipv4_forward_0 1
+	- Edge CONTROL_DEFAULT_NEXT_TABLE tbl_tna_nbnswitch441
+     update_dst_mac_0 0
+	- Edge CONTROL_DEFAULT_NEXT_TABLE tbl_tna_nbnswitch441
+     update_src_mac_0 0
+	- Edge CONTROL_DEFAULT_NEXT_TABLE tbl_tna_nbnswitch441
+ Stage #0
+     port_type_0 3
+     tbl_tna_nbnswitch419 1
+     counting_table_cloud_ing_0 0
+     counting_table_ing_0 0
+ Stage #3
+     counting_table_cloud_egr_0 0
+	- Edge IXBAR_READ ipv4_forward_0
+	- Edge IXBAR_READ port_forward_0
+     counting_table_egr_0 0
+	- Edge IXBAR_READ ipv4_forward_0
+	- Edge IXBAR_READ port_forward_0
+
+FindDependencyGraph : Power Calculation
+ingress: [2566521] 0 00 000 0100 10000 100001 1000010
+  0: port_type_0{ E -1+3, 1 [1x1 1K] }
+  1: tbl_tna_nbnswitch419
+  2: counting_table_cloud_ing_0{ E -1+0, 0 [1x1 1K] }
+  3: counting_table_ing_0{ E -1+0, 0 [1x1 1K] }
+  10: tbl_tna_nbnswitch420
+  11: cond-7(ingress::ig_md.traffic_type == 0; => $true, 1 => $false)
+    $true: [2568570]
+      15: check_dst_cloud_0(ingress::hdr.ethernet.ether_type == 2054; => $true, ingress::hdr.vlan_tag[1].ether_type == 2054; => $true, 1){ GT 32+1, 0 0K }
+        $true: [2567676]
+          21: port_forward_0{ E -1+9, 2 [1x1 1K] }
+        $default: [2567053] 0
+          16: cloud_access_0{ T 32+1, 0 0K }
+          20: tbl_tna_nbnswitch441(ingress::dst_cloud_0, 1 => $false)
+            $false: [2567676]...
+            $default: [2567220] 0 00
+              22: ipv4_forward_0{ T 32+10, 2 0K }
+              23: update_dst_mac_0{ T 32+1, 8 0K }
+              24: update_src_mac_0{ T 32+1, 8 0K }
+    $false: [2568572]
+      12: cond-10(ingress::ig_md.traffic_type == 1; => $true, 1 => $false)
+        $true: [2567676]...
+        $false: [2568568]
+          13: cond-11(ingress::ig_md.traffic_type == 2; => $true, 1 => $false)
+            $true: [2568564]
+              14: arp_response_0(ingress::hdr.ethernet.ether_type == 2054;, ingress::hdr.vlan_tag[1].ether_type == 2054;, 1 => $false){ GE 22+33, 4 [1x1 1K 1K 1K 1K] }
+                $false: [2568029] 0 00 000 0000
+                  17: reverse_cloud_access_0{ T 32+1, 0 0K }
+                  18: tbl_tna_nbnswitch471
+                  22: ipv4_forward_0{ T 32+10, 2 0K }
+                  23: update_dst_mac_0{ T 32+1, 8 0K }
+                  24: update_src_mac_0{ T 32+1, 8 0K }
+                $default: [2567778]
+                  21: port_forward_0{ E -1+9, 2 [1x1 1K] }
+  30: counting_table_cloud_egr_0{ E -1+0, 0 [1x1 1K] }
+  31: counting_table_egr_0{ E -1+0, 0 [1x1 1K] }
+egress: [2574996]
+
+DepStagesThruDomFrontier postorder : port_type_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch419
+DepStagesThruDomFrontier postorder : counting_table_cloud_ing_0
+DepStagesThruDomFrontier postorder : counting_table_ing_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch420
+DepStagesThruDomFrontier postorder : port_forward_0
+DepStagesThruDomFrontier postorder : cloud_access_0
+DepStagesThruDomFrontier postorder : ipv4_forward_0
+DepStagesThruDomFrontier postorder : update_dst_mac_0
+DepStagesThruDomFrontier postorder : update_src_mac_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch441
+DepStagesThruDomFrontier postorder : check_dst_cloud_0
+DepStagesThruDomFrontier postorder : reverse_cloud_access_0
+DepStagesThruDomFrontier postorder : tbl_tna_nbnswitch471
+DepStagesThruDomFrontier postorder : arp_response_0
+DepStagesThruDomFrontier postorder : cond-11
+DepStagesThruDomFrontier postorder : cond-10
+DepStagesThruDomFrontier postorder : cond-7
+DepStagesThruDomFrontier postorder : counting_table_cloud_egr_0
+DepStagesThruDomFrontier postorder : counting_table_egr_0
+    Maximum stage number according to dependences: 
+      INGRESS: 3
+      EGRESS: -1
+GRAPH
+    cond-7 -- CONTROL_COND_TRUE --> check_dst_cloud_0
+    check_dst_cloud_0 -- CONTROL_COND_TRUE --> port_forward_0
+    check_dst_cloud_0 -- CONTROL_DEFAULT_NEXT_TABLE --> cloud_access_0
+    check_dst_cloud_0 -- CONTROL_DEFAULT_NEXT_TABLE --> tbl_tna_nbnswitch441
+    tbl_tna_nbnswitch441 -- CONTROL_COND_FALSE --> port_forward_0
+    tbl_tna_nbnswitch441 -- CONTROL_DEFAULT_NEXT_TABLE --> ipv4_forward_0
+    tbl_tna_nbnswitch441 -- CONTROL_DEFAULT_NEXT_TABLE --> update_dst_mac_0
+    tbl_tna_nbnswitch441 -- CONTROL_DEFAULT_NEXT_TABLE --> update_src_mac_0
+    cond-7 -- CONTROL_COND_FALSE --> cond-10
+    cond-10 -- CONTROL_COND_TRUE --> port_forward_0
+    cond-10 -- CONTROL_COND_FALSE --> cond-11
+    cond-11 -- CONTROL_COND_TRUE --> arp_response_0
+    arp_response_0 -- CONTROL_COND_FALSE --> reverse_cloud_access_0
+    arp_response_0 -- CONTROL_COND_FALSE --> tbl_tna_nbnswitch471
+    arp_response_0 -- CONTROL_COND_FALSE --> ipv4_forward_0
+    arp_response_0 -- CONTROL_COND_FALSE --> update_dst_mac_0
+    arp_response_0 -- CONTROL_COND_FALSE --> update_src_mac_0
+    arp_response_0 -- CONTROL_DEFAULT_NEXT_TABLE --> port_forward_0
+    cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> tbl_tna_nbnswitch441
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> ipv4_forward_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> update_dst_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_CONTROL --> update_src_mac_0
+    tbl_tna_nbnswitch419 -- OUTPUT --> tbl_tna_nbnswitch420
+    port_type_0 -- ACTION_READ --> cond-7
+    check_dst_cloud_0 -- ACTION_READ --> tbl_tna_nbnswitch441
+    check_dst_cloud_0 -- ANTI_ACTION_READ --> tbl_tna_nbnswitch441
+    port_type_0 -- ACTION_READ --> cond-10
+    port_type_0 -- ACTION_READ --> cond-11
+    arp_response_0 -- ANTI_ACTION_READ --> tbl_tna_nbnswitch471
+    arp_response_0 -- OUTPUT --> port_forward_0
+    ipv4_forward_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    port_forward_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    arp_response_0 -- IXBAR_READ --> counting_table_cloud_egr_0
+    ipv4_forward_0 -- IXBAR_READ --> counting_table_egr_0
+    port_forward_0 -- IXBAR_READ --> counting_table_egr_0
+    arp_response_0 -- IXBAR_READ --> counting_table_egr_0
+    ipv4_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    ipv4_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    port_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    port_forward_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> tbl_tna_nbnswitch441
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    update_dst_mac_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    update_src_mac_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_cloud_egr_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    tbl_tna_nbnswitch471 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    update_dst_mac_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    update_src_mac_0 -- ANTI_NEXT_TABLE_DATA --> counting_table_egr_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> ipv4_forward_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> update_dst_mac_0
+    reverse_cloud_access_0 -- ANTI_NEXT_TABLE_DATA --> update_src_mac_0
+    port_type_0 -- ANTI_NEXT_TABLE_DATA --> cond-7
+    tbl_tna_nbnswitch419 -- ANTI_NEXT_TABLE_DATA --> tbl_tna_nbnswitch420
+MIN STAGE INFO
+    Each table also indicates its dependency chain length
+ Stage #1
+     cond-7 2
+	- Edge ACTION_READ port_type_0
+     check_dst_cloud_0 2
+	- Edge CONTROL_COND_TRUE cond-7
+     cloud_access_0 1
+	- Edge CONTROL_DEFAULT_NEXT_TABLE check_dst_cloud_0
+     cond-10 2
+	- Edge CONTROL_COND_FALSE cond-7
+	- Edge ACTION_READ port_type_0
+     cond-11 2
+	- Edge CONTROL_COND_FALSE cond-10
+	- Edge ACTION_READ port_type_0
+     arp_response_0 2
+	- Edge CONTROL_COND_TRUE cond-11
+     reverse_cloud_access_0 1
+	- Edge CONTROL_COND_FALSE arp_response_0
+     tbl_tna_nbnswitch471 1
+	- Edge CONTROL_COND_FALSE arp_response_0
+	- Edge ANTI_ACTION_READ arp_response_0
+     tbl_tna_nbnswitch420 0
+	- Edge OUTPUT tbl_tna_nbnswitch419
+ Stage #2
+     port_forward_0 1
+	- Edge CONTROL_COND_FALSE tbl_tna_nbnswitch441
+	- Edge OUTPUT arp_response_0
+     tbl_tna_nbnswitch441 1
+	- Edge ACTION_READ check_dst_cloud_0
+     ipv4_forward_0 1
+	- Edge CONTROL_DEFAULT_NEXT_TABLE tbl_tna_nbnswitch441
+     update_dst_mac_0 0
+	- Edge CONTROL_DEFAULT_NEXT_TABLE tbl_tna_nbnswitch441
+     update_src_mac_0 0
+	- Edge CONTROL_DEFAULT_NEXT_TABLE tbl_tna_nbnswitch441
+ Stage #0
+     port_type_0 3
+     tbl_tna_nbnswitch419 1
+     counting_table_cloud_ing_0 0
+     counting_table_ing_0 0
+ Stage #3
+     counting_table_cloud_egr_0 0
+	- Edge IXBAR_READ ipv4_forward_0
+	- Edge IXBAR_READ port_forward_0
+     counting_table_egr_0 0
+	- Edge IXBAR_READ ipv4_forward_0
+	- Edge IXBAR_READ port_forward_0
+

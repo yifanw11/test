@@ -1,0 +1,1262 @@
+version:
+  version: 1.0.1
+  run_id: "b280d292747592ee"
+  target: Tofino
+phv ingress:
+  ig_intr_md.ingress_port: H0(0..8)
+  hdr.ethernet.dst_addr.0-31: W1
+  hdr.ethernet.dst_addr.32-47: H5
+  hdr.ethernet.src_addr.0-31: W0
+  hdr.ethernet.src_addr.32-47: H4
+  hdr.ethernet.ether_type: H10
+  hdr.ipv4.version: TW0(28..31)
+  hdr.ipv4.ihl: TW0(24..27)
+  hdr.ipv4.diffserv: TW0(16..23)
+  hdr.ipv4.total_len: TW0(0..15)
+  hdr.ipv4.identification: TW2(16..31)
+  hdr.ipv4.flags: TW2(13..15)
+  hdr.ipv4.frag_offset: TW2(0..12)
+  hdr.ipv4.ttl: TW1(24..31)
+  hdr.ipv4.protocol: TW1(16..23)
+  hdr.ipv4.hdr_checksum: TW1(0..15)
+  hdr.ipv4.src_addr: W2
+  hdr.ipv4.dst_addr: W3
+  hdr.arp.hw_type: TW0(16..31)
+  hdr.arp.proto_type: TW0(0..15)
+  hdr.arp.hw_addr_len: TH0(8..15)
+  hdr.arp.proto_addr_len: TH0(0..7)
+  hdr.arp.opcode: H3
+  hdr.arp.sha_addr.0-31: W5
+  hdr.arp.sha_addr.32-47: H6
+  hdr.arp.spa_addr: W3
+  hdr.arp.tha_addr.0-31: W6
+  hdr.arp.tha_addr.32-47: H7
+  hdr.arp.tpa_addr: W2
+  hdr.vlan_tag$0.pcp: H8(13..15)
+  hdr.vlan_tag$0.dei: H8(12)
+  hdr.vlan_tag$0.vid: H8(0..11)
+  hdr.vlan_tag$0.ether_type: H11
+  hdr.vlan_tag$1.pcp: H9(13..15)
+  hdr.vlan_tag$1.dei: H9(12)
+  hdr.vlan_tag$1.vid: H9(0..11)
+  hdr.vlan_tag$1.ether_type: H12
+  ig_intr_md_for_dprsr.digest_type: B0(0..2)
+  ig_md.ingress_port: H1
+  ig_md.traffic_type.0-1: B2(3..4)
+  ig_md.traffic_type.2-7: B1(2..7)
+  ig_intr_md_for_tm.ucast_egress_port: H2(0..8)
+  dst_cloud_0: W4(0)
+  temp_ip_0: W4
+  hdr.ethernet.$valid: B2(0)
+  hdr.ipv4.$valid: B2(1)
+  hdr.arp.$valid: B2(2)
+  hdr.vlan_tag.$stkvalid: B1(0..1)
+  hdr.vlan_tag$0.$valid: B1(1)
+  hdr.vlan_tag$1.$valid: B1(0)
+  context_json:
+    B0:
+    - { name : ig_intr_md_for_dprsr.digest_type, live_start : 0, live_end : deparser, mutually_exclusive_with: [  ] }
+    B1:
+    - { name : ig_md.traffic_type, live_start : 0, live_end : 1, mutually_exclusive_with: [  ] }
+    - { name : hdr.vlan_tag$1.$valid, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    - { name : hdr.vlan_tag.$stkvalid, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    - { name : hdr.vlan_tag$0.$valid, live_start : 1, live_end : deparser, mutually_exclusive_with: [  ] }
+    B2:
+    - { name : ig_md.traffic_type, live_start : 0, live_end : 1, mutually_exclusive_with: [  ] }
+    - { name : hdr.ethernet.$valid, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    - { name : hdr.ipv4.$valid, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    - { name : hdr.arp.$valid, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    H0:
+    - { name : ig_intr_md.ingress_port, live_start : parser, live_end : 2, mutually_exclusive_with: [  ] }
+    H1:
+    - { name : ig_md.ingress_port, live_start : 0, live_end : deparser, mutually_exclusive_with: [  ] }
+    H2:
+    - { name : ig_intr_md_for_tm.ucast_egress_port, live_start : 1, live_end : deparser, mutually_exclusive_with: [  ] }
+    H3:
+    - { name : hdr.arp.opcode, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    H4:
+    - { name : hdr.ethernet.src_addr, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    H5:
+    - { name : hdr.ethernet.dst_addr, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    H6:
+    - { name : hdr.arp.sha_addr, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    H7:
+    - { name : hdr.arp.tha_addr, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    H8:
+    - { name : hdr.vlan_tag$0.pcp, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    - { name : hdr.vlan_tag$0.dei, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    - { name : hdr.vlan_tag$0.vid, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    H9:
+    - { name : hdr.vlan_tag$1.pcp, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    - { name : hdr.vlan_tag$1.dei, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    - { name : hdr.vlan_tag$1.vid, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    H10:
+    - { name : hdr.ethernet.ether_type, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    H11:
+    - { name : hdr.vlan_tag$0.ether_type, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    H12:
+    - { name : hdr.vlan_tag$1.ether_type, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    W0:
+    - { name : hdr.ethernet.src_addr, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    W1:
+    - { name : hdr.ethernet.dst_addr, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    W2:
+    - { name : hdr.ipv4.src_addr, live_start : parser, live_end : deparser, mutually_exclusive_with: [ hdr.arp.tpa_addr ] }
+    - { name : hdr.arp.tpa_addr, live_start : parser, live_end : deparser, mutually_exclusive_with: [ hdr.ipv4.src_addr ] }
+    W3:
+    - { name : hdr.ipv4.dst_addr, live_start : parser, live_end : deparser, mutually_exclusive_with: [ hdr.arp.spa_addr ] }
+    - { name : hdr.arp.spa_addr, live_start : parser, live_end : deparser, mutually_exclusive_with: [ hdr.ipv4.dst_addr ] }
+    W4:
+    - { name : dst_cloud_0, live_start : 1, live_end : 2, mutually_exclusive_with: [ temp_ip_0 ] }
+    - { name : temp_ip_0, live_start : 1, live_end : 1, mutually_exclusive_with: [ dst_cloud_0 ] }
+    W5:
+    - { name : hdr.arp.sha_addr, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+    W6:
+    - { name : hdr.arp.tha_addr, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+phv egress:
+  eg_intr_md.egress_port: H16(0..8)
+  context_json:
+    H16:
+    - { name : eg_intr_md.egress_port, live_start : parser, live_end : deparser, mutually_exclusive_with: [  ] }
+parser ingress:
+  start: $entry_point
+  init_zero: [ H1, B2, B1, W4 ]
+  bitwise_or: [ B1, B2 ]
+  hdr_len_adj: 16
+  states:
+    $entry_point:
+      *:
+        load: { byte1 : 0 }
+        buf_req: 1
+        next: start
+    start:
+      match: [ byte1 ]
+      0b1*******:
+        0..1: H0  # bit[7..15] -> H0 bit[8..0]: ingress::ig_intr_md.ingress_port
+        shift: 8
+        buf_req: 8
+        next: end
+      0b0*******:
+        0..1: H0  # bit[7..15] -> H0 bit[8..0]: ingress::ig_intr_md.ingress_port
+        load: { half : 28..29 }
+        shift: 8
+        buf_req: 30
+        next: TofinoIngressParser_parse_port_metadata
+    TofinoIngressParser_parse_port_metadata:
+      match: [ half ]
+      0x0800:
+        8..9: H5  # ingress::hdr.ethernet.dst_addr[47:32].32-47
+        10..13: W1  # ingress::hdr.ethernet.dst_addr[31:0].0-31
+        14..15: H4  # ingress::hdr.ethernet.src_addr[47:32].32-47
+        16..19: W0  # ingress::hdr.ethernet.src_addr[31:0].0-31
+        20..21: H10  # ingress::hdr.ethernet.ether_type
+        B2: 1  # value 1 -> B2 bit[0]: ingress::hdr.ethernet.$valid
+        shift: 22
+        buf_req: 22
+        next: parse_ipv4
+      0x86dd:
+        8..9: H5  # ingress::hdr.ethernet.dst_addr[47:32].32-47
+        10..13: W1  # ingress::hdr.ethernet.dst_addr[31:0].0-31
+        14..15: H4  # ingress::hdr.ethernet.src_addr[47:32].32-47
+        16..19: W0  # ingress::hdr.ethernet.src_addr[31:0].0-31
+        20..21: H10  # ingress::hdr.ethernet.ether_type
+        B2: 1  # value 1 -> B2 bit[0]: ingress::hdr.ethernet.$valid
+        shift: 22
+        buf_req: 22
+        next: end
+      0x0806:
+        8..9: H5  # ingress::hdr.ethernet.dst_addr[47:32].32-47
+        10..13: W1  # ingress::hdr.ethernet.dst_addr[31:0].0-31
+        14..15: H4  # ingress::hdr.ethernet.src_addr[47:32].32-47
+        16..19: W0  # ingress::hdr.ethernet.src_addr[31:0].0-31
+        20..21: H10  # ingress::hdr.ethernet.ether_type
+        B2: 1  # value 1 -> B2 bit[0]: ingress::hdr.ethernet.$valid
+        shift: 22
+        buf_req: 22
+        next: parse_arp
+      0x8100:
+        8..9: H5  # ingress::hdr.ethernet.dst_addr[47:32].32-47
+        10..13: W1  # ingress::hdr.ethernet.dst_addr[31:0].0-31
+        14..15: H4  # ingress::hdr.ethernet.src_addr[47:32].32-47
+        16..19: W0  # ingress::hdr.ethernet.src_addr[31:0].0-31
+        20..21: H10  # ingress::hdr.ethernet.ether_type
+        B2: 1  # value 1 -> B2 bit[0]: ingress::hdr.ethernet.$valid
+        load: { half : 24..25 }
+        shift: 22
+        buf_req: 26
+        next: parse_vlan
+      0x88a8:
+        8..9: H5  # ingress::hdr.ethernet.dst_addr[47:32].32-47
+        10..13: W1  # ingress::hdr.ethernet.dst_addr[31:0].0-31
+        14..15: H4  # ingress::hdr.ethernet.src_addr[47:32].32-47
+        16..19: W0  # ingress::hdr.ethernet.src_addr[31:0].0-31
+        20..21: H10  # ingress::hdr.ethernet.ether_type
+        B2: 1  # value 1 -> B2 bit[0]: ingress::hdr.ethernet.$valid
+        load: { half : 24..25 }
+        shift: 22
+        buf_req: 26
+        next: parse_vlan
+      0x****:
+        8..9: H5  # ingress::hdr.ethernet.dst_addr[47:32].32-47
+        10..13: W1  # ingress::hdr.ethernet.dst_addr[31:0].0-31
+        14..15: H4  # ingress::hdr.ethernet.src_addr[47:32].32-47
+        16..19: W0  # ingress::hdr.ethernet.src_addr[31:0].0-31
+        20..21: H10  # ingress::hdr.ethernet.ether_type
+        B2: 1  # value 1 -> B2 bit[0]: ingress::hdr.ethernet.$valid
+        shift: 22
+        buf_req: 22
+        next: end
+    parse_ipv4:
+      *:
+        0..3: TW0
+            # - bit[0..3] -> TW0 bit[31..28]: ingress::hdr.ipv4.version
+            # - bit[4..7] -> TW0 bit[27..24]: ingress::hdr.ipv4.ihl
+            # - bit[8..15] -> TW0 bit[23..16]: ingress::hdr.ipv4.diffserv
+            # - bit[16..31] -> TW0 bit[15..0]: ingress::hdr.ipv4.total_len
+        4..7: TW2
+            # - bit[32..47] -> TW2 bit[31..16]: ingress::hdr.ipv4.identification
+            # - bit[48..50] -> TW2 bit[15..13]: ingress::hdr.ipv4.flags
+            # - bit[51..63] -> TW2 bit[12..0]: ingress::hdr.ipv4.frag_offset
+        8..11: TW1
+            # - bit[64..71] -> TW1 bit[31..24]: ingress::hdr.ipv4.ttl
+            # - bit[72..79] -> TW1 bit[23..16]: ingress::hdr.ipv4.protocol
+            # - bit[80..95] -> TW1 bit[15..0]: ingress::hdr.ipv4.hdr_checksum
+        12..15: W2  # ingress::hdr.ipv4.src_addr
+        B2: 2  # value 1 -> B2 bit[1]: ingress::hdr.ipv4.$valid
+        shift: 16
+        buf_req: 16
+        next: parse_ipv4.$split_0
+    parse_ipv4.$split_0:
+      *:
+        0..3: W3  # ingress::hdr.ipv4.dst_addr
+        shift: 4
+        buf_req: 4
+        next: end
+    parse_arp:
+      *:
+        0..3: TW0
+            # - bit[0..15] -> TW0 bit[31..16]: ingress::hdr.arp.hw_type
+            # - bit[16..31] -> TW0 bit[15..0]: ingress::hdr.arp.proto_type
+        4..5: TH0
+            # - bit[32..39] -> TH0 bit[15..8]: ingress::hdr.arp.hw_addr_len
+            # - bit[40..47] -> TH0 bit[7..0]: ingress::hdr.arp.proto_addr_len
+        6..7: H3  # ingress::hdr.arp.opcode
+        8..9: H6  # ingress::hdr.arp.sha_addr[47:32].32-47
+        10..13: W5  # ingress::hdr.arp.sha_addr[31:0].0-31
+        14..17: W3  # ingress::hdr.arp.spa_addr
+        18..19: H7  # ingress::hdr.arp.tha_addr[47:32].32-47
+        20..23: W6  # ingress::hdr.arp.tha_addr[31:0].0-31
+        B2: 4  # value 1 -> B2 bit[2]: ingress::hdr.arp.$valid
+        shift: 24
+        buf_req: 24
+        next: parse_arp.$split_0
+    parse_arp.$split_0:
+      *:
+        0..3: W2  # ingress::hdr.arp.tpa_addr
+        shift: 4
+        buf_req: 4
+        next: end
+    parse_vlan:
+      match: [ half ]
+      0x0800:
+        0..1: H8
+            # - bit[0..2] -> H8 bit[15..13]: ingress::hdr.vlan_tag[0].pcp
+            # - bit[3] -> H8 bit[12]: ingress::hdr.vlan_tag[0].dei
+            # - bit[4..15] -> H8 bit[11..0]: ingress::hdr.vlan_tag[0].vid
+        2..3: H11  # ingress::hdr.vlan_tag[0].ether_type
+        B1: 2  # value 2 -> B1 bit[1..0]: ingress::hdr.vlan_tag.$stkvalid
+        shift: 4
+        buf_req: 4
+        next: parse_ipv4
+      0x86dd:
+        0..1: H8
+            # - bit[0..2] -> H8 bit[15..13]: ingress::hdr.vlan_tag[0].pcp
+            # - bit[3] -> H8 bit[12]: ingress::hdr.vlan_tag[0].dei
+            # - bit[4..15] -> H8 bit[11..0]: ingress::hdr.vlan_tag[0].vid
+        2..3: H11  # ingress::hdr.vlan_tag[0].ether_type
+        B1: 2  # value 2 -> B1 bit[1..0]: ingress::hdr.vlan_tag.$stkvalid
+        shift: 4
+        buf_req: 4
+        next: end
+      0x0806:
+        0..1: H8
+            # - bit[0..2] -> H8 bit[15..13]: ingress::hdr.vlan_tag[0].pcp
+            # - bit[3] -> H8 bit[12]: ingress::hdr.vlan_tag[0].dei
+            # - bit[4..15] -> H8 bit[11..0]: ingress::hdr.vlan_tag[0].vid
+        2..3: H11  # ingress::hdr.vlan_tag[0].ether_type
+        B1: 2  # value 2 -> B1 bit[1..0]: ingress::hdr.vlan_tag.$stkvalid
+        shift: 4
+        buf_req: 4
+        next: parse_arp
+      0x8100:
+        0..1: H8
+            # - bit[0..2] -> H8 bit[15..13]: ingress::hdr.vlan_tag[0].pcp
+            # - bit[3] -> H8 bit[12]: ingress::hdr.vlan_tag[0].dei
+            # - bit[4..15] -> H8 bit[11..0]: ingress::hdr.vlan_tag[0].vid
+        2..3: H11  # ingress::hdr.vlan_tag[0].ether_type
+        B1: 2  # value 2 -> B1 bit[1..0]: ingress::hdr.vlan_tag.$stkvalid
+        load: { half : 6..7 }
+        shift: 4
+        buf_req: 8
+        next: parse_vlan.$it1
+      0x****:
+        0..1: H8
+            # - bit[0..2] -> H8 bit[15..13]: ingress::hdr.vlan_tag[0].pcp
+            # - bit[3] -> H8 bit[12]: ingress::hdr.vlan_tag[0].dei
+            # - bit[4..15] -> H8 bit[11..0]: ingress::hdr.vlan_tag[0].vid
+        2..3: H11  # ingress::hdr.vlan_tag[0].ether_type
+        B1: 2  # value 2 -> B1 bit[1..0]: ingress::hdr.vlan_tag.$stkvalid
+        shift: 4
+        buf_req: 4
+        next: end
+    parse_vlan.$it1:
+      match: [ half ]
+      0x0800:
+        0..1: H9
+            # - bit[0..2] -> H9 bit[15..13]: ingress::hdr.vlan_tag[1].pcp
+            # - bit[3] -> H9 bit[12]: ingress::hdr.vlan_tag[1].dei
+            # - bit[4..15] -> H9 bit[11..0]: ingress::hdr.vlan_tag[1].vid
+        2..3: H12  # ingress::hdr.vlan_tag[1].ether_type
+        B1: 1  # value 1 -> B1 bit[1..0]: ingress::hdr.vlan_tag.$stkvalid
+        shift: 4
+        buf_req: 4
+        next: parse_ipv4
+      0x86dd:
+        0..1: H9
+            # - bit[0..2] -> H9 bit[15..13]: ingress::hdr.vlan_tag[1].pcp
+            # - bit[3] -> H9 bit[12]: ingress::hdr.vlan_tag[1].dei
+            # - bit[4..15] -> H9 bit[11..0]: ingress::hdr.vlan_tag[1].vid
+        2..3: H12  # ingress::hdr.vlan_tag[1].ether_type
+        B1: 1  # value 1 -> B1 bit[1..0]: ingress::hdr.vlan_tag.$stkvalid
+        shift: 4
+        buf_req: 4
+        next: end
+      0x0806:
+        0..1: H9
+            # - bit[0..2] -> H9 bit[15..13]: ingress::hdr.vlan_tag[1].pcp
+            # - bit[3] -> H9 bit[12]: ingress::hdr.vlan_tag[1].dei
+            # - bit[4..15] -> H9 bit[11..0]: ingress::hdr.vlan_tag[1].vid
+        2..3: H12  # ingress::hdr.vlan_tag[1].ether_type
+        B1: 1  # value 1 -> B1 bit[1..0]: ingress::hdr.vlan_tag.$stkvalid
+        shift: 4
+        buf_req: 4
+        next: parse_arp
+      0x8100:
+        0..1: H9
+            # - bit[0..2] -> H9 bit[15..13]: ingress::hdr.vlan_tag[1].pcp
+            # - bit[3] -> H9 bit[12]: ingress::hdr.vlan_tag[1].dei
+            # - bit[4..15] -> H9 bit[11..0]: ingress::hdr.vlan_tag[1].vid
+        2..3: H12  # ingress::hdr.vlan_tag[1].ether_type
+        B1: 1  # value 1 -> B1 bit[1..0]: ingress::hdr.vlan_tag.$stkvalid
+        shift: 4
+        buf_req: 4
+        next: end
+      0x****:
+        0..1: H9
+            # - bit[0..2] -> H9 bit[15..13]: ingress::hdr.vlan_tag[1].pcp
+            # - bit[3] -> H9 bit[12]: ingress::hdr.vlan_tag[1].dei
+            # - bit[4..15] -> H9 bit[11..0]: ingress::hdr.vlan_tag[1].vid
+        2..3: H12  # ingress::hdr.vlan_tag[1].ether_type
+        B1: 1  # value 1 -> B1 bit[1..0]: ingress::hdr.vlan_tag.$stkvalid
+        shift: 4
+        buf_req: 4
+        next: end
+deparser ingress:
+  dictionary:
+    H5: B2(0)  # ingress::hdr.ethernet.dst_addr.32-47 if ingress::hdr.ethernet.$valid
+    W1: B2(0)  # ingress::hdr.ethernet.dst_addr.0-31 if ingress::hdr.ethernet.$valid
+    H4: B2(0)  # ingress::hdr.ethernet.src_addr.32-47 if ingress::hdr.ethernet.$valid
+    W0: B2(0)  # ingress::hdr.ethernet.src_addr.0-31 if ingress::hdr.ethernet.$valid
+    H10: B2(0)  # ingress::hdr.ethernet.ether_type if ingress::hdr.ethernet.$valid
+    H8: B1(1)
+        # - bit[15..13]: ingress::hdr.vlan_tag[0].pcp if ingress::hdr.vlan_tag[0].$valid
+        # - bit[12]: ingress::hdr.vlan_tag[0].dei if ingress::hdr.vlan_tag[0].$valid
+        # - bit[11..0]: ingress::hdr.vlan_tag[0].vid if ingress::hdr.vlan_tag[0].$valid
+    H11: B1(1)  # ingress::hdr.vlan_tag[0].ether_type if ingress::hdr.vlan_tag[0].$valid
+    H9: B1(0)
+        # - bit[15..13]: ingress::hdr.vlan_tag[1].pcp if ingress::hdr.vlan_tag[1].$valid
+        # - bit[12]: ingress::hdr.vlan_tag[1].dei if ingress::hdr.vlan_tag[1].$valid
+        # - bit[11..0]: ingress::hdr.vlan_tag[1].vid if ingress::hdr.vlan_tag[1].$valid
+    H12: B1(0)  # ingress::hdr.vlan_tag[1].ether_type if ingress::hdr.vlan_tag[1].$valid
+    TW0: B2(1)
+        # - bit[31..28]: ingress::hdr.ipv4.version if ingress::hdr.ipv4.$valid
+        # - bit[27..24]: ingress::hdr.ipv4.ihl if ingress::hdr.ipv4.$valid
+        # - bit[23..16]: ingress::hdr.ipv4.diffserv if ingress::hdr.ipv4.$valid
+        # - bit[15..0]: ingress::hdr.ipv4.total_len if ingress::hdr.ipv4.$valid
+    TW2: B2(1)
+        # - bit[31..16]: ingress::hdr.ipv4.identification if ingress::hdr.ipv4.$valid
+        # - bit[15..13]: ingress::hdr.ipv4.flags if ingress::hdr.ipv4.$valid
+        # - bit[12..0]: ingress::hdr.ipv4.frag_offset if ingress::hdr.ipv4.$valid
+    TW1: B2(1)
+        # - bit[31..24]: ingress::hdr.ipv4.ttl if ingress::hdr.ipv4.$valid
+        # - bit[23..16]: ingress::hdr.ipv4.protocol if ingress::hdr.ipv4.$valid
+        # - bit[15..0]: ingress::hdr.ipv4.hdr_checksum if ingress::hdr.ipv4.$valid
+    W2: B2(1)  # ingress::hdr.ipv4.src_addr if ingress::hdr.ipv4.$valid
+    W3: B2(1)  # ingress::hdr.ipv4.dst_addr if ingress::hdr.ipv4.$valid
+    TW0: B2(2)
+        # - bit[31..16]: ingress::hdr.arp.hw_type if ingress::hdr.arp.$valid
+        # - bit[15..0]: ingress::hdr.arp.proto_type if ingress::hdr.arp.$valid
+    TH0: B2(2)
+        # - bit[15..8]: ingress::hdr.arp.hw_addr_len if ingress::hdr.arp.$valid
+        # - bit[7..0]: ingress::hdr.arp.proto_addr_len if ingress::hdr.arp.$valid
+    H3: B2(2)  # ingress::hdr.arp.opcode if ingress::hdr.arp.$valid
+    H6: B2(2)  # ingress::hdr.arp.sha_addr.32-47 if ingress::hdr.arp.$valid
+    W5: B2(2)  # ingress::hdr.arp.sha_addr.0-31 if ingress::hdr.arp.$valid
+    W3: B2(2)  # ingress::hdr.arp.spa_addr if ingress::hdr.arp.$valid
+    H7: B2(2)  # ingress::hdr.arp.tha_addr.32-47 if ingress::hdr.arp.$valid
+    W6: B2(2)  # ingress::hdr.arp.tha_addr.0-31 if ingress::hdr.arp.$valid
+    W2: B2(2)  # ingress::hdr.arp.tpa_addr if ingress::hdr.arp.$valid
+  egress_unicast_port: H2(0..8)  # bit[8..0]: ingress::ig_intr_md_for_tm.ucast_egress_port
+  learning:
+    select: B0(0..2)  # bit[2..0]: ingress::ig_intr_md_for_dprsr.digest_type
+    1:
+      - B0(0..2)  # bit[2..0]: ingress::ig_intr_md_for_dprsr.digest_type
+      - H1  # ingress::ig_md.ingress_port
+      - H8
+          # - bit[15..13]: ingress::hdr.vlan_tag[0].pcp
+          # - bit[12]: ingress::hdr.vlan_tag[0].dei
+          # - bit[11..0]: ingress::hdr.vlan_tag[0].vid
+      - H9
+          # - bit[15..13]: ingress::hdr.vlan_tag[1].pcp
+          # - bit[12]: ingress::hdr.vlan_tag[1].dei
+          # - bit[11..0]: ingress::hdr.vlan_tag[1].vid
+      - H5  # ingress::hdr.ethernet.dst_addr.32-47
+      - W1  # ingress::hdr.ethernet.dst_addr.0-31
+      - H4  # ingress::hdr.ethernet.src_addr.32-47
+      - W0  # ingress::hdr.ethernet.src_addr.0-31
+      - W3  # ingress::hdr.ipv4.dst_addr
+      - W2  # ingress::hdr.ipv4.src_addr
+    context_json:
+      1:
+        - [ ig_md.ingress_port, 1, 16, 7, 0]
+        - [ hdr.vlan_tag$0.pcp, 3, 3, 7, 0]
+        - [ hdr.vlan_tag$0.dei, 3, 1, 4, 0]
+        - [ hdr.vlan_tag$0.vid, 3, 12, 3, 0]
+        - [ hdr.vlan_tag$1.pcp, 5, 3, 7, 0]
+        - [ hdr.vlan_tag$1.dei, 5, 1, 4, 0]
+        - [ hdr.vlan_tag$1.vid, 5, 12, 3, 0]
+        - [ hdr.ethernet.dst_addr, 7, 16, 7, 32]
+        - [ hdr.ethernet.dst_addr, 9, 32, 7, 0]
+        - [ hdr.ethernet.src_addr, 13, 16, 7, 32]
+        - [ hdr.ethernet.src_addr, 15, 32, 7, 0]
+        - [ hdr.ipv4.dst_addr, 19, 32, 7, 0]
+        - [ hdr.ipv4.src_addr, 23, 32, 7, 0]
+      name: [ IngressDeparser.digest_a ]
+parser egress:
+  start: $entry_point.start
+  hdr_len_adj: 27
+  meta_opt: 8191
+  states:
+    $entry_point.start:
+      *:
+        0..1: H16  # bit[7..15] -> H16 bit[8..0]: egress::eg_intr_md.egress_port
+        intr_md: 9
+        shift: 27
+        buf_req: 27
+        next: end
+deparser egress:
+  dictionary: {}
+  egress_unicast_port: H16(0..8)  # bit[8..0]: egress::eg_intr_md.egress_port
+stage 0 ingress:
+  phase0_match IngressParser.$PORT_METADATA:
+    p4:
+      name: IngressParser.$PORT_METADATA
+      size: 288
+      preferred_match_type: exact
+      match_type: exact
+    size: 288
+    p4_param_order:
+      ig_intr_md.ingress_port: { type: exact, size: 9 }
+    format: {ig_intr_md: 0..63}
+    constant_value: 0
+    actions:
+      set_port_metadata:
+      - handle: 0x20000000
+      - p4_param_order: { ig_intr_md: 64 } 
+  exact_match port_type_0 0:
+    p4: { name: port_type, size: 512 }
+    p4_param_order: 
+      ig_intr_md.ingress_port: { type: exact, size: 9, full_size: 9, key_name: "ingress_port_type" }
+    row: 7
+    bus: 1
+    column: 3
+    stash: 
+      row: [ 7 ]
+      col: [ 3 ]
+      unit: [ 1 ]
+    ways:
+      - [0, 0, 0x0, [7, 3]]
+    input_xbar:
+      exact group 0: { 0: ig_intr_md.ingress_port }
+      hash 0:
+        0..7: ig_intr_md.ingress_port(0..7)
+        8: ig_intr_md.ingress_port(8)
+      hash group 0:
+        table: [0]
+        seed: 0x0
+    format: { action(0): 0..0, immediate(0): 1..2, version(0): 112..115 }
+    match_group_map: [ [ 0 ] ]
+    hit: [  tbl_tna_nbnswitch419 ]
+    miss:  tbl_tna_nbnswitch419
+    action_bus: { 0 : immediate(0..1) }
+    instruction: port_type_0(action, $DEFAULT)
+    actions:
+      detect_source(0, 1):
+      - p4_param_order: { traffic: 2 }
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: false, reason: has_const_default_action }
+      - handle: 0x20000007
+      - next_table: 0
+      - { traffic: immediate(0..1) }
+      - set ig_md.traffic_type.2-7, 0
+      - set ig_md.traffic_type.0-1, traffic
+      unk_source(1, 2):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: true, is_constant: true }
+      - handle: 0x20000008
+      - next_table: 0
+      - {  }
+      - set ig_md.traffic_type.0-1, 0
+      - set ig_md.traffic_type.2-7, 1
+    default_action: unk_source
+  ternary_match tbl_tna_nbnswitch419 1:
+    p4: { name: tbl_tna_nbnswitch419, hidden: true }
+    hit: [  counting_table_cloud_ing_0 ]
+    miss:  counting_table_cloud_ing_0
+    indirect: tbl_tna_nbnswitch419$tind
+  ternary_indirect tbl_tna_nbnswitch419$tind:
+    row: 0
+    bus: 0
+    format: { action: 0..0 }
+    instruction: tbl_tna_nbnswitch419$tind(action, $DEFAULT)
+    actions:
+      tna_nbnswitch419(0, 3):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: true, is_constant: true }
+      - handle: 0x20000001
+      - next_table: 0
+      - set ig_intr_md_for_dprsr.digest_type, 1
+      - set ig_md.ingress_port(9..15), 0
+    default_action: tna_nbnswitch419
+  exact_match counting_table_cloud_ing_0 2:
+    p4: { name: counting_table_cloud_ing, size: 512 }
+    p4_param_order: 
+      ig_intr_md.ingress_port: { type: exact, size: 9, full_size: 9, key_name: "ingress_port_count" }
+    row: 7
+    bus: 0
+    column: 2
+    stash: 
+      row: [ 7 ]
+      col: [ 2 ]
+      unit: [ 0 ]
+    ways:
+      - [0, 1, 0x0, [7, 2]]
+    input_xbar:
+      exact group 0: { 0: ig_intr_md.ingress_port }
+      hash 0:
+        10..17: ig_intr_md.ingress_port(0..7)
+        18: ig_intr_md.ingress_port(8)
+      hash group 0:
+        table: [0]
+        seed: 0x0
+    format: { version(0): 112..115 }
+    match_group_map: [ [ 0 ] ]
+    hit: [  counting_table_ing_0 ]
+    miss:  counting_table_ing_0
+    stats: counting_table_cloud_ing_0$stats.counter_cloud_ing($DIRECT, $DEFAULT)
+    instruction: counting_table_cloud_ing_0($DEFAULT, $DEFAULT)
+    actions:
+      hit_counting_table_cloud_ing(0, 0):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: false, reason: has_const_default_action }
+      - handle: 0x20000005
+      - next_table: 0
+      - counting_table_cloud_ing_0$stats.counter_cloud_ing($DIRECT)
+      nop(-1, 4):
+      - hit_allowed: { allowed: false, reason: user_indicated_default_only }
+      - default_only_action: { allowed: true, is_constant: true }
+      - handle: 0x20000006
+      - next_table: 0
+    default_only_action: nop
+  counter counting_table_cloud_ing_0$stats.counter_cloud_ing:
+    p4: { name: counter_cloud_ing }
+    row: 13
+    logical_bus: S
+    column: [ 0, 1 ]
+    maprams: [ 0, 1 ]
+    vpns: [ 0, 1 ]
+    home_row: 13
+    count: packets_and_bytes
+    format: {packets(0): 64..91, bytes(0): 92..127, packets(1): 0..27, bytes(1): 28..63}
+    lrt:
+    - { threshold: 404246592, interval: 25265664 }
+    - { threshold: 404246592, interval: 25265664 }
+    - { threshold: 404246592, interval: 25265664 }
+  exact_match counting_table_ing_0 3:
+    p4: { name: counting_table_ing, size: 512 }
+    p4_param_order: 
+      ig_intr_md.ingress_port: { type: exact, size: 9, full_size: 9, key_name: "ingress_port_count" }
+    row: 6
+    bus: 0
+    column: 2
+    stash: 
+      row: [ 6 ]
+      col: [ 2 ]
+      unit: [ 0 ]
+    ways:
+      - [0, 2, 0x0, [6, 2]]
+    input_xbar:
+      exact group 0: { 0: ig_intr_md.ingress_port }
+      hash 0:
+        20..27: ig_intr_md.ingress_port(0..7)
+        28: ig_intr_md.ingress_port(8)
+      hash group 0:
+        table: [0]
+        seed: 0x0
+    format: { version(0): 112..115 }
+    match_group_map: [ [ 0 ] ]
+    hit: [  tbl_tna_nbnswitch420 ]
+    miss:  tbl_tna_nbnswitch420
+    stats: counting_table_ing_0$stats.counter_ing($DIRECT, $DEFAULT)
+    instruction: counting_table_ing_0($DEFAULT, $DEFAULT)
+    actions:
+      hit_counting_table_ing(0, 0):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: false, reason: has_const_default_action }
+      - handle: 0x20000003
+      - next_table: 0
+      - counting_table_ing_0$stats.counter_ing($DIRECT)
+      nop(-1, 5):
+      - hit_allowed: { allowed: false, reason: user_indicated_default_only }
+      - default_only_action: { allowed: true, is_constant: true }
+      - handle: 0x20000004
+      - next_table: 0
+    default_only_action: nop
+  counter counting_table_ing_0$stats.counter_ing:
+    p4: { name: counter_ing }
+    row: 9
+    logical_bus: S
+    column: [ 0, 1 ]
+    maprams: [ 0, 1 ]
+    vpns: [ 0, 1 ]
+    home_row: 9
+    count: packets_and_bytes
+    format: {packets(0): 64..91, bytes(0): 92..127, packets(1): 0..27, bytes(1): 28..63}
+    lrt:
+    - { threshold: 404246592, interval: 25265664 }
+    - { threshold: 404246592, interval: 25265664 }
+    - { threshold: 404246592, interval: 25265664 }
+stage 1 ingress:
+  dependency: match
+  ternary_match tbl_tna_nbnswitch420 0:
+    p4: { name: tbl_tna_nbnswitch420, hidden: true }
+    hit: [  cond-7 ]
+    miss:  cond-7
+    indirect: tbl_tna_nbnswitch420$tind
+  ternary_indirect tbl_tna_nbnswitch420$tind:
+    row: 1
+    bus: 1
+    format: { action: 0..0 }
+    instruction: tbl_tna_nbnswitch420$tind(action, $DEFAULT)
+    actions:
+      tna_nbnswitch420(0, 1):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: true, is_constant: true }
+      - handle: 0x20000002
+      - next_table: 0
+      - set ig_md.ingress_port(0..8), ig_intr_md.ingress_port
+    default_action: tna_nbnswitch420
+  gateway cond-7 1:
+    name: cond-7
+    input_xbar:
+      exact group 0: { 2: ig_md.traffic_type.2-7, 11: ig_md.traffic_type.0-1 }
+    row: 1
+    bus: 1
+    unit: 1
+    match: { 3: ig_md.traffic_type.0-1, 10: ig_md.traffic_type.2-7 }
+    0b000000*****00:  check_dst_cloud_0
+    miss:  cond-10
+    condition: 
+      expression: "(ig_md.traffic_type == 0)"
+      true:  check_dst_cloud_0
+      false:  cond-10
+  ternary_match check_dst_cloud_0 5:
+    p4: { name: check_dst_cloud, size: 512 }
+    p4_param_order: 
+      hdr.ipv4.dst_addr: { type: lpm, size: 32, full_size: 32, key_name: "cloud_dst_ip" }
+    row: 2
+    bus: 0
+    column: 0
+    input_xbar:
+      ternary group 0: { 0: hdr.ipv4.dst_addr }
+    match:
+    - { group: 0, byte_config: 3, dirtcam: 0x55 }
+    gateway:
+      name: cond-8
+      input_xbar:
+        exact group 0: { 48: hdr.ethernet.ether_type, 64: hdr.vlan_tag$1.ether_type }
+      row: 7
+      bus: 0
+      unit: 0
+      match: { 0: hdr.ethernet.ether_type(0..7), 8: hdr.ethernet.ether_type(8..15), 16: hdr.vlan_tag$1.ether_type(0..7), 24: hdr.vlan_tag$1.ether_type(8..15) }
+      0x****0806:  port_forward_0
+      0x0806****:  port_forward_0
+      miss: run_table
+      condition: 
+        expression: "(hdr.ethernet.ether_type == 2054 || hdr.vlan_tag[1].ether_type == 2054)"
+        true:  port_forward_0
+        false:  check_dst_cloud_0
+    hit: [  cloud_access_0 ]
+    miss:  cloud_access_0
+    indirect: check_dst_cloud_0$tind
+  ternary_indirect check_dst_cloud_0$tind:
+    row: 2
+    bus: 0
+    column: 2
+    input_xbar:
+      ternary group 0: { 0: hdr.ipv4.dst_addr }
+    format: { action: 0..1 }
+    instruction: check_dst_cloud_0$tind(action, $DEFAULT)
+    actions:
+      valid_cloud_dst(1, 3):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: false, reason: has_const_default_action }
+      - handle: 0x2000000d
+      - next_table: 0
+      - set dst_cloud_0, 1
+      invalid_cloud_dst(2, 0):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: true, is_constant: true }
+      - handle: 0x2000000e
+      - next_table: 0
+    default_action: invalid_cloud_dst
+  ternary_match cloud_access_0 6:
+    p4: { name: cloud_access, size: 512 }
+    p4_param_order: 
+      hdr.ipv4.src_addr: { type: lpm, size: 32, full_size: 32, key_name: "src_ip" }
+    row: 1
+    bus: 0
+    column: 0
+    input_xbar:
+      ternary group 1: { 0: hdr.ipv4.src_addr(16..31), 16: hdr.ipv4.src_addr(0..15) }
+    match:
+    - { group: 1, byte_config: 3, dirtcam: 0x55 }
+    hit: [  tbl_tna_nbnswitch441 ]
+    miss:  tbl_tna_nbnswitch441
+    indirect: cloud_access_0$tind
+  ternary_indirect cloud_access_0$tind:
+    row: 1
+    bus: 0
+    column: 2
+    input_xbar:
+      ternary group 1: { 0: hdr.ipv4.src_addr(16..31), 16: hdr.ipv4.src_addr(0..15) }
+    format: { action: 0..0 }
+    instruction: cloud_access_0$tind(action, $DEFAULT)
+    actions:
+      set_cloud_access(0, 0):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: false, reason: has_const_default_action }
+      - handle: 0x2000000b
+      - next_table: 0
+      no_access(1, 4):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: true, is_constant: true }
+      - handle: 0x2000000c
+      - next_table: 0
+    default_action: no_access
+  gateway cond-10 2:
+    name: cond-10
+    input_xbar:
+      exact group 0: { 2: ig_md.traffic_type.2-7, 11: ig_md.traffic_type.0-1 }
+    row: 1
+    bus: 0
+    unit: 0
+    match: { 3: ig_md.traffic_type.0-1, 10: ig_md.traffic_type.2-7 }
+    0b000000*****01:  port_forward_0
+    miss:  cond-11
+    condition: 
+      expression: "(ig_md.traffic_type == 1)"
+      true:  port_forward_0
+      false:  cond-11
+  gateway cond-11 3:
+    name: cond-11
+    input_xbar:
+      exact group 0: { 2: ig_md.traffic_type.2-7, 11: ig_md.traffic_type.0-1 }
+    row: 0
+    bus: 1
+    unit: 1
+    match: { 3: ig_md.traffic_type.0-1, 10: ig_md.traffic_type.2-7 }
+    0b000000*****10:  arp_response_0
+    miss:  counting_table_cloud_egr_0
+    condition: 
+      expression: "(ig_md.traffic_type == 2)"
+      true:  arp_response_0
+      false:  counting_table_cloud_egr_0
+  exact_match arp_response_0 4:
+    p4: { name: arp_response, size: 512 }
+    p4_param_order: 
+      hdr.arp.tpa_addr: { type: exact, size: 32, full_size: 32, key_name: "arp_ip" }
+    row: 7
+    bus: 0
+    column: [ 2, 6, 7, 8 ]
+    stash: 
+      row: [ 7 ]
+      col: [ 2 ]
+      unit: [ 0 ]
+    ways:
+      - [0, 0, 0x0, [7, 2]]
+      - [0, 1, 0x0, [7, 6]]
+      - [0, 2, 0x0, [7, 7]]
+      - [0, 3, 0x0, [7, 8]]
+    input_xbar:
+      exact group 0: { 16: hdr.arp.tpa_addr(16..31), 32: hdr.arp.tpa_addr(0..15) }
+      hash 0:
+        0..7: random(hdr.arp.tpa_addr(16..31), hdr.arp.tpa_addr(10..15)) ^ hdr.arp.tpa_addr(0..7)
+        8..9: random(hdr.arp.tpa_addr(16..31), hdr.arp.tpa_addr(10..15)) ^ hdr.arp.tpa_addr(8..9)
+        11..18: random(hdr.arp.tpa_addr(16..31), hdr.arp.tpa_addr(10..15)) ^ hdr.arp.tpa_addr(0..7)
+        19: random(hdr.arp.tpa_addr(16..31), hdr.arp.tpa_addr(10..15)) ^ hdr.arp.tpa_addr(8)
+        10: random(hdr.arp.tpa_addr(16..31), hdr.arp.tpa_addr(10..15)) ^ hdr.arp.tpa_addr(9)
+        22..29: random(hdr.arp.tpa_addr(16..31), hdr.arp.tpa_addr(10..15)) ^ hdr.arp.tpa_addr(0..7)
+        20..21: random(hdr.arp.tpa_addr(16..31), hdr.arp.tpa_addr(10..15)) ^ hdr.arp.tpa_addr(8..9)
+        33..39: random(hdr.arp.tpa_addr(16..31), hdr.arp.tpa_addr(10..15)) ^ hdr.arp.tpa_addr(0..6)
+        30: random(hdr.arp.tpa_addr(16..31), hdr.arp.tpa_addr(10..15)) ^ hdr.arp.tpa_addr(7)
+        31..32: random(hdr.arp.tpa_addr(16..31), hdr.arp.tpa_addr(10..15)) ^ hdr.arp.tpa_addr(8..9)
+      hash group 0:
+        table: [0]
+        seed: 0x643280a50e
+    format: { action(0): 0..1, immediate(0): 2..33, version(0): 112..115, match(0): 34..55 }
+    match: [ hdr.arp.tpa_addr(10..15), hdr.arp.tpa_addr(16..23), hdr.arp.tpa_addr(24..31) ]
+    match_group_map: [ [ 0 ] ]
+    gateway:
+      name: cond-12
+      input_xbar:
+        exact group 0: { 48: hdr.ethernet.ether_type, 64: hdr.vlan_tag$1.ether_type }
+      row: 0
+      bus: 0
+      unit: 0
+      match: { 0: hdr.ethernet.ether_type(0..7), 8: hdr.ethernet.ether_type(8..15), 16: hdr.vlan_tag$1.ether_type(0..7), 24: hdr.vlan_tag$1.ether_type(8..15) }
+      0x****0806: run_table
+      0x0806****: run_table
+      miss:  reverse_cloud_access_0
+      condition: 
+        expression: "(hdr.ethernet.ether_type == 2054 || hdr.vlan_tag[1].ether_type == 2054)"
+        true:  arp_response_0
+        false:  reverse_cloud_access_0
+    hit: [  port_forward_0 ]
+    miss:  port_forward_0
+    action_bus: { 96..99 : immediate(0..31) }
+    instruction: arp_response_0(action, $DEFAULT)
+    actions:
+      nop(1, 0):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: true, is_constant: true }
+      - handle: 0x20000016
+      - next_table: 0
+      - {  }
+      Ingress.cloud_arp(2, 2):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: false, reason: has_const_default_action }
+      - handle: 0x20000017
+      - next_table: 0
+      - { $constant0: immediate(0..31), $constant0: 4218536088, $constant1: immediate(0..31), $constant1: 4218536088 }
+      - set ig_intr_md_for_tm.ucast_egress_port, ig_intr_md.ingress_port
+      - set hdr.arp.spa_addr, hdr.arp.tpa_addr
+      - set hdr.arp.tpa_addr, temp_ip_0
+      - set hdr.arp.tha_addr.0-31, hdr.arp.sha_addr.0-31
+      - set hdr.arp.tha_addr.32-47, hdr.arp.sha_addr.32-47
+      - set hdr.arp.sha_addr.0-31, $constant1
+      - set hdr.arp.sha_addr.32-47, 144
+      - set hdr.arp.opcode, 2
+      - set hdr.ethernet.dst_addr.0-31, hdr.ethernet.src_addr.0-31
+      - set hdr.ethernet.dst_addr.32-47, hdr.ethernet.src_addr.32-47
+      - set hdr.ethernet.src_addr.0-31, $constant0
+      - set hdr.ethernet.src_addr.32-47, 144
+    default_action: nop
+  ternary_match reverse_cloud_access_0 7:
+    p4: { name: reverse_cloud_access, size: 512 }
+    p4_param_order: 
+      hdr.ipv4.dst_addr: { type: lpm, size: 32, full_size: 32, key_name: "dst_ip_access" }
+    row: 0
+    bus: 0
+    column: 0
+    input_xbar:
+      ternary group 0: { 0: hdr.ipv4.dst_addr }
+    match:
+    - { group: 0, byte_config: 3, dirtcam: 0x55 }
+    hit: [  tbl_tna_nbnswitch471 ]
+    miss:  tbl_tna_nbnswitch471
+    indirect: reverse_cloud_access_0$tind
+  ternary_indirect reverse_cloud_access_0$tind:
+    row: 0
+    bus: 0
+    column: 2
+    input_xbar:
+      ternary group 0: { 0: hdr.ipv4.dst_addr }
+    format: { action: 0..0 }
+    instruction: reverse_cloud_access_0$tind(action, $DEFAULT)
+    actions:
+      set_cloud_access(0, 0):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: false, reason: has_const_default_action }
+      - handle: 0x20000019
+      - next_table: 0
+      no_access(1, 5):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: true, is_constant: true }
+      - handle: 0x2000001a
+      - next_table: 0
+    default_action: no_access
+  ternary_match tbl_tna_nbnswitch471 8:
+    p4: { name: tbl_tna_nbnswitch471, hidden: true }
+    hit: [  ipv4_forward_0 ]
+    miss:  ipv4_forward_0
+    indirect: tbl_tna_nbnswitch471$tind
+  ternary_indirect tbl_tna_nbnswitch471$tind:
+    row: 0
+    bus: 1
+    format: { action: 0..0 }
+    instruction: tbl_tna_nbnswitch471$tind(action, $DEFAULT)
+    actions:
+      tna_nbnswitch471(0, 6):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: true, is_constant: true }
+      - handle: 0x20000018
+      - next_table: 0
+      - set hdr.vlan_tag$0.ether_type, 33024
+      - set hdr.vlan_tag$1.ether_type, 2048
+      - set hdr.ethernet.ether_type, 33024
+      - set B1(0..1), 3
+      - set H8, 36136
+      - set H9, 32870
+    default_action: tna_nbnswitch471
+stage 2 ingress:
+  dependency: match
+  exact_match port_forward_0 1:
+    p4: { name: port_forward, size: 512 }
+    p4_param_order: 
+      ig_intr_md.ingress_port: { type: exact, size: 9, full_size: 9, key_name: "ingress_port" }
+    row: 7
+    bus: 0
+    column: 2
+    stash: 
+      row: [ 7 ]
+      col: [ 2 ]
+      unit: [ 0 ]
+    ways:
+      - [0, 0, 0x0, [7, 2]]
+    input_xbar:
+      exact group 0: { 8: ig_intr_md.ingress_port(8), 16: ig_intr_md.ingress_port(0..7) }
+      hash 0:
+        0: ig_intr_md.ingress_port(8)
+        1..8: ig_intr_md.ingress_port(0..7)
+      hash group 0:
+        table: [0]
+        seed: 0x0
+    format: { immediate(0): 0..8, version(0): 112..115 }
+    match_group_map: [ [ 0 ] ]
+    hit: [  counting_table_cloud_egr_0 ]
+    miss:  counting_table_cloud_egr_0
+    action_bus: { 32..33 : immediate(0..8) }
+    instruction: port_forward_0($DEFAULT, $DEFAULT)
+    actions:
+      set_egr_port(0, 2):
+      - p4_param_order: { dst_port: 9 }
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: false, reason: has_const_default_action }
+      - handle: 0x20000009
+      - next_table: 0
+      - { dst_port_1: immediate(0..8), dst_port: dst_port_1 }
+      - set ig_intr_md_for_tm.ucast_egress_port, dst_port
+      nop(-1, 0):
+      - hit_allowed: { allowed: false, reason: user_indicated_default_only }
+      - default_only_action: { allowed: true, is_constant: true }
+      - handle: 0x2000000a
+      - next_table: 0
+      - {  }
+    default_only_action: nop
+  ternary_match tbl_tna_nbnswitch441 0:
+    p4: { name: tbl_tna_nbnswitch441, hidden: true }
+    gateway:
+      name: cond-9
+      input_xbar:
+        exact group 0: { 0: dst_cloud_0 }
+      row: 7
+      bus: 0
+      unit: 0
+      match: { 0: dst_cloud_0 }
+      0b*******1: run_table
+      miss:  port_forward_0
+      condition: 
+        expression: "(dst_cloud_0)"
+        true:  tbl_tna_nbnswitch441
+        false:  port_forward_0
+    hit: [  ipv4_forward_0 ]
+    miss:  ipv4_forward_0
+    indirect: tbl_tna_nbnswitch441$tind
+  ternary_indirect tbl_tna_nbnswitch441$tind:
+    row: 0
+    bus: 1
+    format: { action: 0..0 }
+    instruction: tbl_tna_nbnswitch441$tind(action, $DEFAULT)
+    actions:
+      tna_nbnswitch441(1, 1):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: true, is_constant: true }
+      - handle: 0x2000000f
+      - next_table: 0
+      - set hdr.ethernet.ether_type, 2048
+      - set B1(0..1), 0
+    default_action: tna_nbnswitch441
+  ternary_match ipv4_forward_0 2:
+    p4: { name: ipv4_forward, size: 512 }
+    p4_param_order: 
+      hdr.ipv4.dst_addr: { type: lpm, size: 32, full_size: 32, key_name: "dst_ip" }
+    row: 1
+    bus: 0
+    column: 0
+    input_xbar:
+      ternary group 0: { 0: hdr.ipv4.dst_addr }
+    match:
+    - { group: 0, byte_config: 3, dirtcam: 0x55 }
+    hit: [  update_dst_mac_0 ]
+    miss:  update_dst_mac_0
+    indirect: ipv4_forward_0$tind
+  ternary_indirect ipv4_forward_0$tind:
+    row: 1
+    bus: 0
+    column: 2
+    input_xbar:
+      ternary group 0: { 0: hdr.ipv4.dst_addr }
+    format: { action: 0..0, immediate: 1..9 }
+    action_bus: { 36..37 : immediate(0..8) }
+    instruction: ipv4_forward_0$tind(action, $DEFAULT)
+    actions:
+      set_egr_port(0, 4):
+      - p4_param_order: { dst_port: 9 }
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: false, reason: has_const_default_action }
+      - handle: 0x20000014
+      - next_table: 0
+      - { dst_port_2: immediate(0..8), dst_port: dst_port_2 }
+      - set ig_intr_md_for_tm.ucast_egress_port, dst_port
+      nop(1, 0):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: true, is_constant: true }
+      - handle: 0x20000015
+      - next_table: 0
+      - {  }
+    default_action: nop
+  ternary_match update_dst_mac_0 3:
+    p4: { name: update_dst_mac, size: 512 }
+    p4_param_order: 
+      hdr.ipv4.dst_addr: { type: lpm, size: 32, full_size: 32, key_name: "dst_ip_mac" }
+    row: 0
+    bus: 0
+    column: 0
+    input_xbar:
+      ternary group 0: { 0: hdr.ipv4.dst_addr }
+    match:
+    - { group: 0, byte_config: 3, dirtcam: 0x55 }
+    hit: [  update_src_mac_0 ]
+    miss:  update_src_mac_0
+    indirect: update_dst_mac_0$tind
+  ternary_indirect update_dst_mac_0$tind:
+    row: 0
+    bus: 0
+    column: 2
+    input_xbar:
+      ternary group 0: { 0: hdr.ipv4.dst_addr }
+    format: { action: 0..0 }
+    action: update_dst_mac_0$action_data($DIRECT, $DEFAULT)
+    instruction: update_dst_mac_0$tind(action, $DEFAULT)
+    actions:
+      set_dst_mac(0, 3):
+      - p4_param_order: { dst_mac: 48 }
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: false, reason: has_const_default_action }
+      - handle: 0x20000012
+      - next_table: 0
+      - { dst_mac_1.32-47: $adf_h0(0..15), dst_mac.32-47: dst_mac_1.32-47, dst_mac_1.0-31: $adf_f1(0..31), dst_mac.0-31: dst_mac_1.0-31 }
+      - set hdr.ethernet.dst_addr.0-31, dst_mac.0-31
+      - set hdr.ethernet.dst_addr.32-47, dst_mac.32-47
+      nop(1, 0):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: true, is_constant: true }
+      - handle: 0x20000013
+      - next_table: 0
+      - {  }
+    default_action: nop
+  action update_dst_mac_0$action_data:
+    p4: { name: update_dst_mac$action }
+    row: 15
+    logical_bus: A
+    column: 0
+    vpns: [ 0 ]
+    home_row:
+    - 15
+    format set_dst_mac: { $adf_h0: 0..15, $adf_f1: 32..63 }
+    action_bus: { 40..41 : $adf_h0, 100..103 : $adf_f1 }
+  ternary_match update_src_mac_0 4:
+    p4: { name: update_src_mac, size: 512 }
+    p4_param_order: 
+      hdr.ipv4.dst_addr: { type: lpm, size: 32, full_size: 32, key_name: "src_ip_mac" }
+    row: 2
+    bus: 0
+    column: 0
+    input_xbar:
+      ternary group 0: { 0: hdr.ipv4.dst_addr }
+    match:
+    - { group: 0, byte_config: 3, dirtcam: 0x55 }
+    hit: [  counting_table_cloud_egr_0 ]
+    miss:  counting_table_cloud_egr_0
+    indirect: update_src_mac_0$tind
+  ternary_indirect update_src_mac_0$tind:
+    row: 2
+    bus: 0
+    column: 2
+    input_xbar:
+      ternary group 0: { 0: hdr.ipv4.dst_addr }
+    format: { action: 0..0 }
+    action: update_src_mac_0$action_data($DIRECT, $DEFAULT)
+    instruction: update_src_mac_0$tind(action, $DEFAULT)
+    actions:
+      set_src_mac(0, 5):
+      - p4_param_order: { src_mac: 48 }
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: false, reason: has_const_default_action }
+      - handle: 0x20000010
+      - next_table: 0
+      - { src_mac_1.32-47: $adf_h0(0..15), src_mac.32-47: src_mac_1.32-47, src_mac_1.0-31: $adf_f1(0..31), src_mac.0-31: src_mac_1.0-31 }
+      - set hdr.ethernet.src_addr.0-31, src_mac.0-31
+      - set hdr.ethernet.src_addr.32-47, src_mac.32-47
+      nop(1, 0):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: true, is_constant: true }
+      - handle: 0x20000011
+      - next_table: 0
+      - {  }
+    default_action: nop
+  action update_src_mac_0$action_data:
+    p4: { name: update_src_mac$action }
+    row: 14
+    logical_bus: A
+    column: 3
+    vpns: [ 0 ]
+    home_row:
+    - 14
+    format set_src_mac: { $adf_h0: 0..15, $adf_f1: 32..63 }
+    action_bus: { 44..45 : $adf_h0, 108..111 : $adf_f1 }
+stage 3 ingress:
+  dependency: match
+  exact_match counting_table_cloud_egr_0 0:
+    p4: { name: counting_table_cloud_egr, size: 512 }
+    p4_param_order: 
+      ig_intr_md_for_tm.ucast_egress_port: { type: exact, size: 9, full_size: 9, key_name: "egress_port_count" }
+    row: 7
+    bus: 0
+    column: 2
+    stash: 
+      row: [ 7 ]
+      col: [ 2 ]
+      unit: [ 0 ]
+    ways:
+      - [0, 0, 0x0, [7, 2]]
+    input_xbar:
+      exact group 0: { 0: ig_intr_md_for_tm.ucast_egress_port }
+      hash 0:
+        0..7: ig_intr_md_for_tm.ucast_egress_port(0..7)
+        8: ig_intr_md_for_tm.ucast_egress_port(8)
+      hash group 0:
+        table: [0]
+        seed: 0x0
+    format: { version(0): 112..115 }
+    match_group_map: [ [ 0 ] ]
+    hit: [  counting_table_egr_0 ]
+    miss:  counting_table_egr_0
+    stats: counting_table_cloud_egr_0$stats.counter_cloud_egr($DIRECT, $DEFAULT)
+    instruction: counting_table_cloud_egr_0($DEFAULT, $DEFAULT)
+    actions:
+      hit_counting_table_cloud_egr(0, 0):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: false, reason: has_const_default_action }
+      - handle: 0x2000001d
+      - next_table: 0
+      - counting_table_cloud_egr_0$stats.counter_cloud_egr($DIRECT)
+      nop(-1, 1):
+      - hit_allowed: { allowed: false, reason: user_indicated_default_only }
+      - default_only_action: { allowed: true, is_constant: true }
+      - handle: 0x2000001e
+      - next_table: 0
+    default_only_action: nop
+  counter counting_table_cloud_egr_0$stats.counter_cloud_egr:
+    p4: { name: counter_cloud_egr }
+    row: 13
+    logical_bus: S
+    column: [ 0, 1 ]
+    maprams: [ 0, 1 ]
+    vpns: [ 0, 1 ]
+    home_row: 13
+    count: packets_and_bytes
+    format: {packets(0): 64..91, bytes(0): 92..127, packets(1): 0..27, bytes(1): 28..63}
+    lrt:
+    - { threshold: 404246592, interval: 25265664 }
+    - { threshold: 404246592, interval: 25265664 }
+    - { threshold: 404246592, interval: 25265664 }
+  exact_match counting_table_egr_0 1:
+    p4: { name: counting_table_egr, size: 512 }
+    p4_param_order: 
+      ig_intr_md_for_tm.ucast_egress_port: { type: exact, size: 9, full_size: 9, key_name: "egress_port_count" }
+    row: 7
+    bus: 1
+    column: 3
+    stash: 
+      row: [ 7 ]
+      col: [ 3 ]
+      unit: [ 1 ]
+    ways:
+      - [0, 1, 0x0, [7, 3]]
+    input_xbar:
+      exact group 0: { 0: ig_intr_md_for_tm.ucast_egress_port }
+      hash 0:
+        10..17: ig_intr_md_for_tm.ucast_egress_port(0..7)
+        18: ig_intr_md_for_tm.ucast_egress_port(8)
+      hash group 0:
+        table: [0]
+        seed: 0x0
+    format: { version(0): 112..115 }
+    match_group_map: [ [ 0 ] ]
+    hit: [  END ]
+    miss:  END
+    stats: counting_table_egr_0$stats.counter_egr($DIRECT, $DEFAULT)
+    instruction: counting_table_egr_0($DEFAULT, $DEFAULT)
+    actions:
+      hit_counting_table_egr(0, 0):
+      - hit_allowed: { allowed: true }
+      - default_action: { allowed: false, reason: has_const_default_action }
+      - handle: 0x2000001b
+      - next_table: 0
+      - counting_table_egr_0$stats.counter_egr($DIRECT)
+      nop(-1, 2):
+      - hit_allowed: { allowed: false, reason: user_indicated_default_only }
+      - default_only_action: { allowed: true, is_constant: true }
+      - handle: 0x2000001c
+      - next_table: 0
+    default_only_action: nop
+  counter counting_table_egr_0$stats.counter_egr:
+    p4: { name: counter_egr }
+    row: 9
+    logical_bus: S
+    column: [ 0, 1 ]
+    maprams: [ 0, 1 ]
+    vpns: [ 0, 1 ]
+    home_row: 9
+    count: packets_and_bytes
+    format: {packets(0): 64..91, bytes(0): 92..127, packets(1): 0..27, bytes(1): 28..63}
+    lrt:
+    - { threshold: 404246592, interval: 25265664 }
+    - { threshold: 404246592, interval: 25265664 }
+    - { threshold: 404246592, interval: 25265664 }
+
+
+primitives: "./tna_nbnswitch/pipe//tna_nbnswitch.prim.json"
+dynhash: "./tna_nbnswitch/pipe//tna_nbnswitch.dynhash.json"

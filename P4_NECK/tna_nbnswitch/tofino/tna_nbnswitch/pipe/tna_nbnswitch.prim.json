@@ -1,0 +1,925 @@
+{
+  "tables" : [
+    {
+      "name" : "tbl_tna_nbnswitch419",
+      "actions" : [
+        {
+          "name" : "tna_nbnswitch419",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "ig_intr_md_for_dprsr.digest_type"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "7"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "3w1"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "ig_md.ingress_port"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "127"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "7w0"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "tbl_tna_nbnswitch420",
+      "actions" : [
+        {
+          "name" : "tna_nbnswitch420",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "ig_md.ingress_port"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "511"
+              },
+              "src1" : {
+                "type" : "phv",
+                "name" : "ig_intr_md.ingress_port"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "counting_table_ing",
+      "actions" : [
+        {
+          "name" : "hit_counting_table_ing",
+          "primitives" : [
+            {
+              "name" : "CountPrimitive",
+              "dst" : {
+                "type" : "counter",
+                "name" : "counter_ing"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "counting_table_cloud_ing",
+      "actions" : [
+        {
+          "name" : "hit_counting_table_cloud_ing",
+          "primitives" : [
+            {
+              "name" : "CountPrimitive",
+              "dst" : {
+                "type" : "counter",
+                "name" : "counter_cloud_ing"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "port_type",
+      "actions" : [
+        {
+          "name" : "detect_source",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "ig_md.traffic_type"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "63"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "6w0"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "ig_md.traffic_type"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "3"
+              },
+              "src1" : {
+                "type" : "action_param",
+                "name" : "traffic"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "unk_source",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "ig_md.traffic_type"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "255"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "8w4"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "port_forward",
+      "actions" : [
+        {
+          "name" : "set_egr_port",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "ig_intr_md_for_tm.ucast_egress_port"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "511"
+              },
+              "src1" : {
+                "type" : "action_param",
+                "name" : "dst_port"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "cloud_access",
+      "actions" : [
+        {
+          "name" : "set_cloud_access",
+          "primitives" : []
+        },
+        {
+          "name" : "no_access",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "check_dst_cloud",
+      "actions" : [
+        {
+          "name" : "valid_cloud_dst",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "dst_cloud_0"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "1"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "1w1"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "invalid_cloud_dst",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "tbl_tna_nbnswitch441",
+      "actions" : [
+        {
+          "name" : "tna_nbnswitch441",
+          "primitives" : [
+            {
+              "name" : "RemoveHeaderPrimitive",
+              "dst" : {
+                "type" : "header",
+                "name" : "hdr.vlan_tag$0.$valid"
+              }
+            },
+            {
+              "name" : "RemoveHeaderPrimitive",
+              "dst" : {
+                "type" : "header",
+                "name" : "hdr.vlan_tag$1.$valid"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.ethernet.ether_type"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "65535"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "16w0x800"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "update_src_mac",
+      "actions" : [
+        {
+          "name" : "set_src_mac",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.ethernet.src_addr"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "65535"
+              },
+              "src1" : {
+                "type" : "action_param",
+                "name" : "src_mac"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "update_dst_mac",
+      "actions" : [
+        {
+          "name" : "set_dst_mac",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.ethernet.dst_addr"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "65535"
+              },
+              "src1" : {
+                "type" : "action_param",
+                "name" : "dst_mac"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "ipv4_forward",
+      "actions" : [
+        {
+          "name" : "set_egr_port",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "ig_intr_md_for_tm.ucast_egress_port"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "511"
+              },
+              "src1" : {
+                "type" : "action_param",
+                "name" : "dst_port"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "port_forward",
+      "actions" : [
+        {
+          "name" : "set_egr_port",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "ig_intr_md_for_tm.ucast_egress_port"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "511"
+              },
+              "src1" : {
+                "type" : "action_param",
+                "name" : "dst_port"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "port_forward",
+      "actions" : [
+        {
+          "name" : "set_egr_port",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "ig_intr_md_for_tm.ucast_egress_port"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "511"
+              },
+              "src1" : {
+                "type" : "action_param",
+                "name" : "dst_port"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "arp_response",
+      "actions" : [
+        {
+          "name" : "nop",
+          "primitives" : []
+        },
+        {
+          "name" : "Ingress.cloud_arp",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "ig_intr_md_for_tm.ucast_egress_port"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "511"
+              },
+              "src1" : {
+                "type" : "phv",
+                "name" : "ig_intr_md.ingress_port"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.arp.spa_addr"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "0"
+              },
+              "src1" : {
+                "type" : "phv",
+                "name" : "hdr.arp.tpa_addr"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.arp.tpa_addr"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "0"
+              },
+              "src1" : {
+                "type" : "phv",
+                "name" : "temp_ip_0"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.arp.tha_addr"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "65535"
+              },
+              "src1" : {
+                "type" : "phv",
+                "name" : "hdr.arp.sha_addr"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.arp.sha_addr"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "65535"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "48w622693826712"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.arp.opcode"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "65535"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "16w2"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.ethernet.dst_addr"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "65535"
+              },
+              "src1" : {
+                "type" : "phv",
+                "name" : "hdr.ethernet.src_addr"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.ethernet.src_addr"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "65535"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "48w622693826712"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "port_forward",
+      "actions" : [
+        {
+          "name" : "set_egr_port",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "ig_intr_md_for_tm.ucast_egress_port"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "511"
+              },
+              "src1" : {
+                "type" : "action_param",
+                "name" : "dst_port"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "tbl_tna_nbnswitch471",
+      "actions" : [
+        {
+          "name" : "tna_nbnswitch471",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.vlan_tag$0.pcp"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "7"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "3w4"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.vlan_tag$0.dei"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "1"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "1w0"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.vlan_tag$0.vid"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "4095"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "12w0xd28"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.vlan_tag$0.ether_type"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "65535"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "16w0x8100"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.vlan_tag$1.pcp"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "7"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "3w4"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.vlan_tag$1.dei"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "1"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "1w0"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.vlan_tag$1.vid"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "4095"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "12w0x66"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.vlan_tag$1.ether_type"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "65535"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "16w0x800"
+              }
+            },
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.ethernet.ether_type"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "65535"
+              },
+              "src1" : {
+                "type" : "immediate",
+                "name" : "16w0x8100"
+              }
+            },
+            {
+              "name" : "AddHeaderPrimitive",
+              "dst" : {
+                "type" : "header",
+                "name" : "hdr.vlan_tag$0.$valid"
+              }
+            },
+            {
+              "name" : "AddHeaderPrimitive",
+              "dst" : {
+                "type" : "header",
+                "name" : "hdr.vlan_tag$1.$valid"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "reverse_cloud_access",
+      "actions" : [
+        {
+          "name" : "set_cloud_access",
+          "primitives" : []
+        },
+        {
+          "name" : "no_access",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "update_src_mac",
+      "actions" : [
+        {
+          "name" : "set_src_mac",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.ethernet.src_addr"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "65535"
+              },
+              "src1" : {
+                "type" : "action_param",
+                "name" : "src_mac"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "update_dst_mac",
+      "actions" : [
+        {
+          "name" : "set_dst_mac",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "hdr.ethernet.dst_addr"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "65535"
+              },
+              "src1" : {
+                "type" : "action_param",
+                "name" : "dst_mac"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "ipv4_forward",
+      "actions" : [
+        {
+          "name" : "set_egr_port",
+          "primitives" : [
+            {
+              "name" : "ModifyFieldPrimitive",
+              "operation" : "set",
+              "dst" : {
+                "type" : "phv",
+                "name" : "ig_intr_md_for_tm.ucast_egress_port"
+              },
+              "dst_mask" : {
+                "type" : "immediate",
+                "name" : "511"
+              },
+              "src1" : {
+                "type" : "action_param",
+                "name" : "dst_port"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "counting_table_egr",
+      "actions" : [
+        {
+          "name" : "hit_counting_table_egr",
+          "primitives" : [
+            {
+              "name" : "CountPrimitive",
+              "dst" : {
+                "type" : "counter",
+                "name" : "counter_egr"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    },
+    {
+      "name" : "counting_table_cloud_egr",
+      "actions" : [
+        {
+          "name" : "hit_counting_table_cloud_egr",
+          "primitives" : [
+            {
+              "name" : "CountPrimitive",
+              "dst" : {
+                "type" : "counter",
+                "name" : "counter_cloud_egr"
+              }
+            }
+          ]
+        },
+        {
+          "name" : "nop",
+          "primitives" : []
+        }
+      ]
+    }
+  ]
+}

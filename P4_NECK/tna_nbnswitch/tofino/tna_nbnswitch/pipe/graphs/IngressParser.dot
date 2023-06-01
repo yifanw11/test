@@ -1,0 +1,30 @@
+digraph IngressParser{
+start [shape=rectangle,label="start
+(ig_intr_md.resubmit_flag)"]
+TofinoIngressParser_parse_resubmit [shape=rectangle,label="TofinoIngressParser_parse_resubmit"]
+TofinoIngressParser_parse_port_metadata [shape=rectangle,label="TofinoIngressParser_parse_port_metadata
+(hdr.ethernet.ether_type)"]
+parse_vlan [shape=rectangle,label="parse_vlan
+(hdr.vlan_tag.last.ether_type)"]
+parse_arp [shape=rectangle,label="parse_arp"]
+parse_ipv4 [shape=rectangle,label="parse_ipv4"]
+accept [shape=rectangle,label="accept"]
+reject [shape=rectangle,label="reject"]
+start -> TofinoIngressParser_parse_resubmit [label="1w1"]
+start -> TofinoIngressParser_parse_port_metadata [label="1w0"]
+start -> reject [label="fallthrough"]
+TofinoIngressParser_parse_resubmit -> reject [label="always"]
+TofinoIngressParser_parse_port_metadata -> parse_ipv4 [label="16w0x800"]
+TofinoIngressParser_parse_port_metadata -> accept [label="16w0x86dd"]
+TofinoIngressParser_parse_port_metadata -> parse_arp [label="16w0x806"]
+TofinoIngressParser_parse_port_metadata -> parse_vlan [label="16w0x8100"]
+TofinoIngressParser_parse_port_metadata -> parse_vlan [label="16w0x88a8"]
+TofinoIngressParser_parse_port_metadata -> accept [label="default"]
+parse_vlan -> parse_ipv4 [label="16w0x800"]
+parse_vlan -> accept [label="16w0x86dd"]
+parse_vlan -> parse_arp [label="16w0x806"]
+parse_vlan -> parse_vlan [label="16w0x8100"]
+parse_vlan -> accept [label="default"]
+parse_arp -> accept [label="always"]
+parse_ipv4 -> accept [label="always"]
+}

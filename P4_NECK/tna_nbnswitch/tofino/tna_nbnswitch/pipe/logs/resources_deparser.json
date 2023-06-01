@@ -1,0 +1,261 @@
+[
+  {
+    "gress": "ingress",
+    "pov": {
+      "size": 10,
+      "pov_bits": [
+        {
+          "pov_bit": 0,
+          "phv_container": 66,
+          "phv_container_bit": 0,
+          "pov_name": "hdr.ethernet.$valid"
+        },
+        {
+          "pov_bit": 1,
+          "phv_container": 66,
+          "phv_container_bit": 1,
+          "pov_name": "hdr.ipv4.$valid"
+        },
+        {
+          "pov_bit": 2,
+          "phv_container": 66,
+          "phv_container_bit": 2,
+          "pov_name": "hdr.arp.$valid"
+        },
+        {
+          "pov_bit": 8,
+          "phv_container": 65,
+          "phv_container_bit": 0,
+          "pov_name": "hdr.vlan_tag$1.$valid"
+        },
+        {
+          "pov_bit": 9,
+          "phv_container": 65,
+          "phv_container_bit": 1,
+          "pov_name": "hdr.vlan_tag$0.$valid"
+        }
+      ]
+    },
+    "nFdeEntries": 192,
+    "fde_entries": [
+      {
+        "entry": 0,
+        "pov_bit": 0,
+        "pov_name": "hdr.ethernet.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 133 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 133 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 1 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 1 } }
+        ]
+      },
+      {
+        "entry": 1,
+        "pov_bit": 0,
+        "pov_name": "hdr.ethernet.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 1 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 1 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 132 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 132 } }
+        ]
+      },
+      {
+        "entry": 2,
+        "pov_bit": 0,
+        "pov_name": "hdr.ethernet.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 0 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 0 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 0 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 0 } }
+        ]
+      },
+      {
+        "entry": 3,
+        "pov_bit": 0,
+        "pov_name": "hdr.ethernet.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 138 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 138 } }
+        ]
+      },
+      {
+        "entry": 4,
+        "pov_bit": 9,
+        "pov_name": "hdr.vlan_tag$0.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 136 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 136 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 139 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 139 } }
+        ]
+      },
+      {
+        "entry": 5,
+        "pov_bit": 8,
+        "pov_name": "hdr.vlan_tag$1.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 137 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 137 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 140 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 140 } }
+        ]
+      },
+      {
+        "entry": 6,
+        "pov_bit": 1,
+        "pov_name": "hdr.ipv4.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 256 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 256 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 256 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 256 } }
+        ]
+      },
+      {
+        "entry": 7,
+        "pov_bit": 1,
+        "pov_name": "hdr.ipv4.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 258 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 258 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 258 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 258 } }
+        ]
+      },
+      {
+        "entry": 8,
+        "pov_bit": 1,
+        "pov_name": "hdr.ipv4.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 257 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 257 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 257 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 257 } }
+        ]
+      },
+      {
+        "entry": 9,
+        "pov_bit": 1,
+        "pov_name": "hdr.ipv4.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 2 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 2 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 2 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 2 } }
+        ]
+      },
+      {
+        "entry": 10,
+        "pov_bit": 1,
+        "pov_name": "hdr.ipv4.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 3 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 3 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 3 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 3 } }
+        ]
+      },
+      {
+        "entry": 11,
+        "pov_bit": 2,
+        "pov_name": "hdr.arp.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 256 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 256 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 256 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 256 } }
+        ]
+      },
+      {
+        "entry": 12,
+        "pov_bit": 2,
+        "pov_name": "hdr.arp.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 320 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 320 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 131 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 131 } }
+        ]
+      },
+      {
+        "entry": 13,
+        "pov_bit": 2,
+        "pov_name": "hdr.arp.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 134 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 134 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 5 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 5 } }
+        ]
+      },
+      {
+        "entry": 14,
+        "pov_bit": 2,
+        "pov_name": "hdr.arp.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 5 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 5 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 3 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 3 } }
+        ]
+      },
+      {
+        "entry": 15,
+        "pov_bit": 2,
+        "pov_name": "hdr.arp.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 3 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 3 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 135 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 135 } }
+        ]
+      },
+      {
+        "entry": 16,
+        "pov_bit": 2,
+        "pov_name": "hdr.arp.$valid",
+        "chunks": [
+          { "chunk_number": 0, "chunk": { "phv_container": 6 } },
+          { "chunk_number": 1, "chunk": { "phv_container": 6 } },
+          { "chunk_number": 2, "chunk": { "phv_container": 6 } },
+          { "chunk_number": 3, "chunk": { "phv_container": 6 } }
+        ]
+      }
+    ],
+    "mirror_table": { "nTables": 0, "maxBytes": 0, "table_phv": [] },
+    "resubmit_table": { "nTables": 0, "maxBytes": 0, "table_phv": [] },
+    "learning_table": {
+      "nTables": 1,
+      "maxBytes": 10,
+      "index_phv": 64,
+      "table_phv": [
+        {
+          "table_id": 1,
+          "bytes": [
+            { "byte_number": 0, "phv_container": 64 },
+            { "byte_number": 1, "phv_container": 129 },
+            { "byte_number": 2, "phv_container": 136 },
+            { "byte_number": 3, "phv_container": 137 },
+            { "byte_number": 4, "phv_container": 133 },
+            { "byte_number": 5, "phv_container": 1 },
+            { "byte_number": 6, "phv_container": 132 },
+            { "byte_number": 7, "phv_container": 0 },
+            { "byte_number": 8, "phv_container": 3 },
+            { "byte_number": 9, "phv_container": 2 }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "gress": "egress",
+    "pov": { "size": 0, "pov_bits": [] },
+    "nFdeEntries": 192,
+    "fde_entries": [],
+    "mirror_table": { "nTables": 0, "maxBytes": 0, "table_phv": [] },
+    "resubmit_table": { "nTables": 0, "maxBytes": 0, "table_phv": [] },
+    "learning_table": { "nTables": 0, "maxBytes": 0, "table_phv": [] }
+  }
+]

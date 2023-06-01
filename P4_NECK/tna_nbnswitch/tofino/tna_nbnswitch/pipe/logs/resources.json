@@ -1,0 +1,5441 @@
+{
+  "build_date": "Mon May 29 15:51:25 2023",
+  "compiler_version": "9.6.0",
+  "program_name": "tna_nbnswitch.p4",
+  "run_id": "b280d292747592ee",
+  "schema_version": "2.2.0",
+  "resources": {
+    "deparser": [
+      {
+        "gress": "ingress",
+        "pov": {
+          "size": 10,
+          "pov_bits": [
+            {
+              "pov_bit": 0,
+              "phv_container": 66,
+              "phv_container_bit": 0,
+              "pov_name": "hdr.ethernet.$valid"
+            },
+            {
+              "pov_bit": 1,
+              "phv_container": 66,
+              "phv_container_bit": 1,
+              "pov_name": "hdr.ipv4.$valid"
+            },
+            {
+              "pov_bit": 2,
+              "phv_container": 66,
+              "phv_container_bit": 2,
+              "pov_name": "hdr.arp.$valid"
+            },
+            {
+              "pov_bit": 8,
+              "phv_container": 65,
+              "phv_container_bit": 0,
+              "pov_name": "hdr.vlan_tag$1.$valid"
+            },
+            {
+              "pov_bit": 9,
+              "phv_container": 65,
+              "phv_container_bit": 1,
+              "pov_name": "hdr.vlan_tag$0.$valid"
+            }
+          ]
+        },
+        "nFdeEntries": 192,
+        "fde_entries": [
+          {
+            "entry": 0,
+            "pov_bit": 0,
+            "pov_name": "hdr.ethernet.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 133
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 133
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 1
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 1
+                }
+              }
+            ]
+          },
+          {
+            "entry": 1,
+            "pov_bit": 0,
+            "pov_name": "hdr.ethernet.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 1
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 1
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 132
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 132
+                }
+              }
+            ]
+          },
+          {
+            "entry": 2,
+            "pov_bit": 0,
+            "pov_name": "hdr.ethernet.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 0
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 0
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 0
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 0
+                }
+              }
+            ]
+          },
+          {
+            "entry": 3,
+            "pov_bit": 0,
+            "pov_name": "hdr.ethernet.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 138
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 138
+                }
+              }
+            ]
+          },
+          {
+            "entry": 4,
+            "pov_bit": 9,
+            "pov_name": "hdr.vlan_tag$0.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 136
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 136
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 139
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 139
+                }
+              }
+            ]
+          },
+          {
+            "entry": 5,
+            "pov_bit": 8,
+            "pov_name": "hdr.vlan_tag$1.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 137
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 137
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 140
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 140
+                }
+              }
+            ]
+          },
+          {
+            "entry": 6,
+            "pov_bit": 1,
+            "pov_name": "hdr.ipv4.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 256
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 256
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 256
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 256
+                }
+              }
+            ]
+          },
+          {
+            "entry": 7,
+            "pov_bit": 1,
+            "pov_name": "hdr.ipv4.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 258
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 258
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 258
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 258
+                }
+              }
+            ]
+          },
+          {
+            "entry": 8,
+            "pov_bit": 1,
+            "pov_name": "hdr.ipv4.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 257
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 257
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 257
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 257
+                }
+              }
+            ]
+          },
+          {
+            "entry": 9,
+            "pov_bit": 1,
+            "pov_name": "hdr.ipv4.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 2
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 2
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 2
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 2
+                }
+              }
+            ]
+          },
+          {
+            "entry": 10,
+            "pov_bit": 1,
+            "pov_name": "hdr.ipv4.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 3
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 3
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 3
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 3
+                }
+              }
+            ]
+          },
+          {
+            "entry": 11,
+            "pov_bit": 2,
+            "pov_name": "hdr.arp.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 256
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 256
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 256
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 256
+                }
+              }
+            ]
+          },
+          {
+            "entry": 12,
+            "pov_bit": 2,
+            "pov_name": "hdr.arp.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 320
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 320
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 131
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 131
+                }
+              }
+            ]
+          },
+          {
+            "entry": 13,
+            "pov_bit": 2,
+            "pov_name": "hdr.arp.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 134
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 134
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 5
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 5
+                }
+              }
+            ]
+          },
+          {
+            "entry": 14,
+            "pov_bit": 2,
+            "pov_name": "hdr.arp.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 5
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 5
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 3
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 3
+                }
+              }
+            ]
+          },
+          {
+            "entry": 15,
+            "pov_bit": 2,
+            "pov_name": "hdr.arp.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 3
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 3
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 135
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 135
+                }
+              }
+            ]
+          },
+          {
+            "entry": 16,
+            "pov_bit": 2,
+            "pov_name": "hdr.arp.$valid",
+            "chunks": [
+              {
+                "chunk_number": 0,
+                "chunk": {
+                  "phv_container": 6
+                }
+              },
+              {
+                "chunk_number": 1,
+                "chunk": {
+                  "phv_container": 6
+                }
+              },
+              {
+                "chunk_number": 2,
+                "chunk": {
+                  "phv_container": 6
+                }
+              },
+              {
+                "chunk_number": 3,
+                "chunk": {
+                  "phv_container": 6
+                }
+              }
+            ]
+          }
+        ],
+        "mirror_table": {
+          "nTables": 0,
+          "maxBytes": 0,
+          "table_phv": []
+        },
+        "resubmit_table": {
+          "nTables": 0,
+          "maxBytes": 0,
+          "table_phv": []
+        },
+        "learning_table": {
+          "nTables": 1,
+          "maxBytes": 10,
+          "index_phv": 64,
+          "table_phv": [
+            {
+              "table_id": 1,
+              "bytes": [
+                {
+                  "byte_number": 0,
+                  "phv_container": 64
+                },
+                {
+                  "byte_number": 1,
+                  "phv_container": 129
+                },
+                {
+                  "byte_number": 2,
+                  "phv_container": 136
+                },
+                {
+                  "byte_number": 3,
+                  "phv_container": 137
+                },
+                {
+                  "byte_number": 4,
+                  "phv_container": 133
+                },
+                {
+                  "byte_number": 5,
+                  "phv_container": 1
+                },
+                {
+                  "byte_number": 6,
+                  "phv_container": 132
+                },
+                {
+                  "byte_number": 7,
+                  "phv_container": 0
+                },
+                {
+                  "byte_number": 8,
+                  "phv_container": 3
+                },
+                {
+                  "byte_number": 9,
+                  "phv_container": 2
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "gress": "egress",
+        "pov": {
+          "size": 0,
+          "pov_bits": []
+        },
+        "nFdeEntries": 192,
+        "fde_entries": [],
+        "mirror_table": {
+          "nTables": 0,
+          "maxBytes": 0,
+          "table_phv": []
+        },
+        "resubmit_table": {
+          "nTables": 0,
+          "maxBytes": 0,
+          "table_phv": []
+        },
+        "learning_table": {
+          "nTables": 0,
+          "maxBytes": 0,
+          "table_phv": []
+        }
+      }
+    ],
+    "mau": {
+      "mau_stages": [
+        {
+          "action_bus_bytes": {
+            "bytes": [
+              {
+                "byte_number": 0,
+                "usages": [
+                  {
+                    "used_by": "port_type"
+                  }
+                ]
+              }
+            ],
+            "size": 128
+          },
+          "action_slots": [
+            {
+              "maximum_slots": 32,
+              "number_used": 0,
+              "slot_bit_width": 8
+            },
+            {
+              "maximum_slots": 32,
+              "number_used": 0,
+              "slot_bit_width": 16
+            },
+            {
+              "maximum_slots": 32,
+              "number_used": 0,
+              "slot_bit_width": 32
+            }
+          ],
+          "exm_result_buses": {
+            "ids": [
+              {
+                "id": 12,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              },
+              {
+                "id": 14,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              },
+              {
+                "id": 15,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "exm_search_buses": {
+            "ids": [
+              {
+                "id": 12,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              },
+              {
+                "id": 14,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              },
+              {
+                "id": 15,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "gateways": {
+            "gateways": [],
+            "nRows": 8,
+            "nUnits": 2
+          },
+          "hash_bits": {
+            "bits": [
+              {
+                "hash_bit": 0,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 1,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 2,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 3,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 4,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 5,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 6,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 7,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 8,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 9,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 10,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 11,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 12,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 13,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 14,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 15,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 16,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 17,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 18,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 19,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 20,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 21,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 22,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 23,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 24,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 25,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 26,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 27,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 28,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 29,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              }
+            ],
+            "nBits": 52,
+            "nFunctions": 8
+          },
+          "hash_distribution_units": {
+            "nHashIds": 2,
+            "nUnitIds": 3,
+            "units": []
+          },
+          "logical_tables": {
+            "ids": [
+              {
+                "id": 0,
+                "usages": [
+                  {
+                    "used_by": "port_type"
+                  }
+                ]
+              },
+              {
+                "id": 1,
+                "usages": [
+                  {
+                    "used_by": "tbl_tna_nbnswitch419"
+                  }
+                ]
+              },
+              {
+                "id": 2,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing"
+                  }
+                ]
+              },
+              {
+                "id": 3,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "map_rams": {
+            "maprams": [
+              {
+                "row": 6,
+                "unit_id": 0,
+                "usages": [
+                  {
+                    "used_by": "counter_cloud_ing",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "row": 6,
+                "unit_id": 1,
+                "usages": [
+                  {
+                    "used_by": "counter_cloud_ing",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "row": 4,
+                "unit_id": 0,
+                "usages": [
+                  {
+                    "used_by": "counter_ing",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "row": 4,
+                "unit_id": 1,
+                "usages": [
+                  {
+                    "used_by": "counter_ing",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              }
+            ],
+            "nRows": 8,
+            "nUnits": 6
+          },
+          "meter_alus": {
+            "meters": [],
+            "nAlus": 4
+          },
+          "rams": {
+            "nColumns": 10,
+            "nRows": 8,
+            "srams": [
+              {
+                "column": 1,
+                "row": 7,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "used_for": "match_entry_ram"
+                  }
+                ],
+                "way": 0
+              },
+              {
+                "column": 0,
+                "row": 7,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "used_for": "match_entry_ram"
+                  }
+                ],
+                "way": 0
+              },
+              {
+                "column": 4,
+                "row": 6,
+                "usages": [
+                  {
+                    "used_by": "counter_cloud_ing",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "column": 5,
+                "row": 6,
+                "usages": [
+                  {
+                    "used_by": "counter_cloud_ing",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "column": 0,
+                "row": 6,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "used_for": "match_entry_ram"
+                  }
+                ],
+                "way": 0
+              },
+              {
+                "column": 4,
+                "row": 4,
+                "usages": [
+                  {
+                    "used_by": "counter_ing",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "column": 5,
+                "row": 4,
+                "usages": [
+                  {
+                    "used_by": "counter_ing",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              }
+            ]
+          },
+          "stage_number": 0,
+          "stashes": {
+            "nRows": 8,
+            "nUnits": 2,
+            "stashes": [
+              {
+                "row": 7,
+                "unit_id": 1,
+                "usages": [
+                  {
+                    "used_by": "port_type",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              },
+              {
+                "row": 7,
+                "unit_id": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              },
+              {
+                "row": 6,
+                "unit_id": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_ing",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              }
+            ]
+          },
+          "statistic_alus": {
+            "nAlus": 4,
+            "stats": [
+              {
+                "row": 6,
+                "usages": [
+                  {
+                    "used_by": "counter_cloud_ing",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "row": 4,
+                "usages": [
+                  {
+                    "used_by": "counter_ing",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              }
+            ]
+          },
+          "tcams": {
+            "nColumns": 2,
+            "nRows": 12,
+            "tcams": []
+          },
+          "tind_result_buses": {
+            "ids": [
+              {
+                "id": 0,
+                "usages": [
+                  {
+                    "used_by": "tbl_tna_nbnswitch419",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "vliw": {
+            "instructions": [
+              {
+                "color_usages": [
+                  {
+                    "color": 1,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "port_type",
+                        "detail": "detect_source"
+                      }
+                    ]
+                  },
+                  {
+                    "color": 0,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "counting_table_cloud_ing",
+                        "detail": "hit_counting_table_cloud_ing, hit_counting_table_ing"
+                      },
+                      {
+                        "used_by": "counting_table_ing",
+                        "detail": "hit_counting_table_cloud_ing, hit_counting_table_ing"
+                      }
+                    ]
+                  }
+                ],
+                "instruction_number": 0
+              },
+              {
+                "color_usages": [
+                  {
+                    "color": 0,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "port_type",
+                        "detail": "unk_source"
+                      }
+                    ]
+                  },
+                  {
+                    "color": 1,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "tbl_tna_nbnswitch419",
+                        "detail": "tna_nbnswitch419"
+                      }
+                    ]
+                  }
+                ],
+                "instruction_number": 1
+              },
+              {
+                "color_usages": [
+                  {
+                    "color": 0,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "counting_table_cloud_ing",
+                        "detail": "nop"
+                      }
+                    ]
+                  },
+                  {
+                    "color": 1,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "counting_table_ing",
+                        "detail": "nop"
+                      }
+                    ]
+                  }
+                ],
+                "instruction_number": 2
+              }
+            ],
+            "size": 32
+          },
+          "xbar_bytes": {
+            "bytes": [
+              {
+                "byte_number": 1,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "detail": "{ingress::ig_intr_md.ingress_port[8:8], unused[0:6]}",
+                    "used_for": "exact_match"
+                  },
+                  {
+                    "used_by": "counting_table_ing",
+                    "detail": "{ingress::ig_intr_md.ingress_port[8:8], unused[0:6]}",
+                    "used_for": "exact_match"
+                  },
+                  {
+                    "used_by": "port_type",
+                    "detail": "{ingress::ig_intr_md.ingress_port[8:8], unused[0:6]}",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 0,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_ing",
+                    "detail": "{ingress::ig_intr_md.ingress_port[0:7]}",
+                    "used_for": "exact_match"
+                  },
+                  {
+                    "used_by": "counting_table_ing",
+                    "detail": "{ingress::ig_intr_md.ingress_port[0:7]}",
+                    "used_for": "exact_match"
+                  },
+                  {
+                    "used_by": "port_type",
+                    "detail": "{ingress::ig_intr_md.ingress_port[0:7]}",
+                    "used_for": "exact_match"
+                  }
+                ]
+              }
+            ],
+            "exact_size": 128,
+            "size": 194,
+            "ternary_size": 66
+          }
+        },
+        {
+          "action_bus_bytes": {
+            "bytes": [
+              {
+                "byte_number": 96,
+                "usages": [
+                  {
+                    "used_by": "arp_response"
+                  }
+                ]
+              },
+              {
+                "byte_number": 97,
+                "usages": [
+                  {
+                    "used_by": "arp_response"
+                  }
+                ]
+              },
+              {
+                "byte_number": 98,
+                "usages": [
+                  {
+                    "used_by": "arp_response"
+                  }
+                ]
+              },
+              {
+                "byte_number": 99,
+                "usages": [
+                  {
+                    "used_by": "arp_response"
+                  }
+                ]
+              }
+            ],
+            "size": 128
+          },
+          "action_slots": [
+            {
+              "maximum_slots": 32,
+              "number_used": 0,
+              "slot_bit_width": 8
+            },
+            {
+              "maximum_slots": 32,
+              "number_used": 0,
+              "slot_bit_width": 16
+            },
+            {
+              "maximum_slots": 32,
+              "number_used": 0,
+              "slot_bit_width": 32
+            }
+          ],
+          "exm_result_buses": {
+            "ids": [
+              {
+                "id": 14,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "exm_search_buses": {
+            "ids": [
+              {
+                "id": 0,
+                "usages": [
+                  {
+                    "used_by": "cond-12",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "id": 1,
+                "usages": [
+                  {
+                    "used_by": "cond-11",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "id": 2,
+                "usages": [
+                  {
+                    "used_by": "cond-10",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "id": 3,
+                "usages": [
+                  {
+                    "used_by": "cond-7",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "id": 14,
+                "usages": [
+                  {
+                    "used_by": "cond-8",
+                    "used_for": "gateway"
+                  },
+                  {
+                    "used_by": "arp_response",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "gateways": {
+            "gateways": [
+              {
+                "row": 1,
+                "unit_id": 1,
+                "usages": [
+                  {
+                    "used_by": "cond-7",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "row": 7,
+                "unit_id": 0,
+                "usages": [
+                  {
+                    "used_by": "cond-8",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "row": 1,
+                "unit_id": 0,
+                "usages": [
+                  {
+                    "used_by": "cond-10",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "row": 0,
+                "unit_id": 1,
+                "usages": [
+                  {
+                    "used_by": "cond-11",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "row": 0,
+                "unit_id": 0,
+                "usages": [
+                  {
+                    "used_by": "cond-12",
+                    "used_for": "gateway"
+                  }
+                ]
+              }
+            ],
+            "nRows": 8,
+            "nUnits": 2
+          },
+          "hash_bits": {
+            "bits": [
+              {
+                "hash_bit": 0,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 1,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 2,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 3,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 4,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 5,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 6,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 7,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 8,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 9,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 10,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 1 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 11,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 1 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 12,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 1 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 13,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 1 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 14,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 1 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 15,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 1 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 16,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 1 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 17,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 1 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 18,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 1 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 19,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 1 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 20,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 2 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 21,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 2 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 22,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 2 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 23,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 2 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 24,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 2 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 25,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 2 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 26,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 2 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 27,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 2 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 28,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 2 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 29,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 2 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 30,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 3 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 31,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 3 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 32,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 3 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 33,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 3 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 34,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 3 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 35,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 3 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 36,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 3 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 37,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 3 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 38,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 3 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 39,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "Hash Way 3 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              }
+            ],
+            "nBits": 52,
+            "nFunctions": 8
+          },
+          "hash_distribution_units": {
+            "nHashIds": 2,
+            "nUnitIds": 3,
+            "units": []
+          },
+          "logical_tables": {
+            "ids": [
+              {
+                "id": 0,
+                "usages": [
+                  {
+                    "used_by": "tbl_tna_nbnswitch420"
+                  }
+                ]
+              },
+              {
+                "id": 1,
+                "usages": [
+                  {
+                    "used_by": "cond-7"
+                  }
+                ]
+              },
+              {
+                "id": 5,
+                "usages": [
+                  {
+                    "used_by": "check_dst_cloud"
+                  }
+                ]
+              },
+              {
+                "id": 6,
+                "usages": [
+                  {
+                    "used_by": "cloud_access"
+                  }
+                ]
+              },
+              {
+                "id": 2,
+                "usages": [
+                  {
+                    "used_by": "cond-10"
+                  }
+                ]
+              },
+              {
+                "id": 3,
+                "usages": [
+                  {
+                    "used_by": "cond-11"
+                  }
+                ]
+              },
+              {
+                "id": 4,
+                "usages": [
+                  {
+                    "used_by": "arp_response"
+                  }
+                ]
+              },
+              {
+                "id": 7,
+                "usages": [
+                  {
+                    "used_by": "reverse_cloud_access"
+                  }
+                ]
+              },
+              {
+                "id": 8,
+                "usages": [
+                  {
+                    "used_by": "tbl_tna_nbnswitch471"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "map_rams": {
+            "maprams": [],
+            "nRows": 8,
+            "nUnits": 6
+          },
+          "meter_alus": {
+            "meters": [],
+            "nAlus": 4
+          },
+          "rams": {
+            "nColumns": 10,
+            "nRows": 8,
+            "srams": [
+              {
+                "column": 0,
+                "row": 2,
+                "usages": [
+                  {
+                    "used_by": "check_dst_cloud",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              },
+              {
+                "column": 0,
+                "row": 1,
+                "usages": [
+                  {
+                    "used_by": "cloud_access",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              },
+              {
+                "column": 0,
+                "row": 7,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "used_for": "match_entry_ram"
+                  }
+                ],
+                "way": 0
+              },
+              {
+                "column": 4,
+                "row": 7,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "used_for": "match_entry_ram"
+                  }
+                ],
+                "way": 1
+              },
+              {
+                "column": 5,
+                "row": 7,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "used_for": "match_entry_ram"
+                  }
+                ],
+                "way": 2
+              },
+              {
+                "column": 6,
+                "row": 7,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "used_for": "match_entry_ram"
+                  }
+                ],
+                "way": 3
+              },
+              {
+                "column": 0,
+                "row": 0,
+                "usages": [
+                  {
+                    "used_by": "reverse_cloud_access",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              }
+            ]
+          },
+          "stage_number": 1,
+          "stashes": {
+            "nRows": 8,
+            "nUnits": 2,
+            "stashes": [
+              {
+                "row": 7,
+                "unit_id": 0,
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              }
+            ]
+          },
+          "statistic_alus": {
+            "nAlus": 4,
+            "stats": []
+          },
+          "tcams": {
+            "nColumns": 2,
+            "nRows": 12,
+            "tcams": [
+              {
+                "column": 0,
+                "row": 2,
+                "usages": [
+                  {
+                    "used_by": "check_dst_cloud",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "column": 0,
+                "row": 1,
+                "usages": [
+                  {
+                    "used_by": "cloud_access",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "column": 0,
+                "row": 0,
+                "usages": [
+                  {
+                    "used_by": "reverse_cloud_access",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              }
+            ]
+          },
+          "tind_result_buses": {
+            "ids": [
+              {
+                "id": 0,
+                "usages": [
+                  {
+                    "used_by": "reverse_cloud_access",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              },
+              {
+                "id": 1,
+                "usages": [
+                  {
+                    "used_by": "tbl_tna_nbnswitch471",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              },
+              {
+                "id": 2,
+                "usages": [
+                  {
+                    "used_by": "cloud_access",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              },
+              {
+                "id": 3,
+                "usages": [
+                  {
+                    "used_by": "tbl_tna_nbnswitch420",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              },
+              {
+                "id": 4,
+                "usages": [
+                  {
+                    "used_by": "check_dst_cloud",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "vliw": {
+            "instructions": [
+              {
+                "color_usages": [
+                  {
+                    "color": 1,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "tbl_tna_nbnswitch420",
+                        "detail": "tna_nbnswitch420"
+                      }
+                    ]
+                  },
+                  {
+                    "color": 0,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "arp_response",
+                        "detail": "invalid_cloud_dst, nop, set_cloud_access"
+                      },
+                      {
+                        "used_by": "check_dst_cloud",
+                        "detail": "invalid_cloud_dst, nop, set_cloud_access"
+                      },
+                      {
+                        "used_by": "cloud_access",
+                        "detail": "invalid_cloud_dst, nop, set_cloud_access"
+                      },
+                      {
+                        "used_by": "reverse_cloud_access",
+                        "detail": "invalid_cloud_dst, nop, set_cloud_access"
+                      }
+                    ]
+                  }
+                ],
+                "instruction_number": 0
+              },
+              {
+                "color_usages": [
+                  {
+                    "color": 1,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "check_dst_cloud",
+                        "detail": "valid_cloud_dst"
+                      }
+                    ]
+                  },
+                  {
+                    "color": 0,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "arp_response",
+                        "detail": "Ingress.cloud_arp"
+                      }
+                    ]
+                  }
+                ],
+                "instruction_number": 1
+              },
+              {
+                "color_usages": [
+                  {
+                    "color": 0,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "cloud_access",
+                        "detail": "no_access"
+                      }
+                    ]
+                  },
+                  {
+                    "color": 1,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "reverse_cloud_access",
+                        "detail": "no_access"
+                      }
+                    ]
+                  }
+                ],
+                "instruction_number": 2
+              },
+              {
+                "color_usages": [
+                  {
+                    "color": 0,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "tbl_tna_nbnswitch471",
+                        "detail": "tna_nbnswitch471"
+                      }
+                    ]
+                  }
+                ],
+                "instruction_number": 3
+              }
+            ],
+            "size": 32
+          },
+          "xbar_bytes": {
+            "bytes": [
+              {
+                "byte_number": 0,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "cond-10",
+                    "detail": "{unused[0:1], ingress::ig_md.traffic_type[2:7]}",
+                    "used_for": "gateway"
+                  },
+                  {
+                    "used_by": "cond-11",
+                    "detail": "{unused[0:1], ingress::ig_md.traffic_type[2:7]}",
+                    "used_for": "gateway"
+                  },
+                  {
+                    "used_by": "cond-7",
+                    "detail": "{unused[0:1], ingress::ig_md.traffic_type[2:7]}",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "byte_number": 1,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "cond-10",
+                    "detail": "{unused[0:2], ingress::ig_md.traffic_type[0:1], unused[0:2]}",
+                    "used_for": "gateway"
+                  },
+                  {
+                    "used_by": "cond-11",
+                    "detail": "{unused[0:2], ingress::ig_md.traffic_type[0:1], unused[0:2]}",
+                    "used_for": "gateway"
+                  },
+                  {
+                    "used_by": "cond-7",
+                    "detail": "{unused[0:2], ingress::ig_md.traffic_type[0:1], unused[0:2]}",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "byte_number": 131,
+                "byte_type": "ternary",
+                "usages": [
+                  {
+                    "used_by": "check_dst_cloud",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[24:31]}",
+                    "used_for": "ternary_match"
+                  },
+                  {
+                    "used_by": "reverse_cloud_access",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[24:31]}",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 130,
+                "byte_type": "ternary",
+                "usages": [
+                  {
+                    "used_by": "check_dst_cloud",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[16:23]}",
+                    "used_for": "ternary_match"
+                  },
+                  {
+                    "used_by": "reverse_cloud_access",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[16:23]}",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 129,
+                "byte_type": "ternary",
+                "usages": [
+                  {
+                    "used_by": "check_dst_cloud",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[8:15]}",
+                    "used_for": "ternary_match"
+                  },
+                  {
+                    "used_by": "reverse_cloud_access",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[8:15]}",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 128,
+                "byte_type": "ternary",
+                "usages": [
+                  {
+                    "used_by": "check_dst_cloud",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[0:7]}",
+                    "used_for": "ternary_match"
+                  },
+                  {
+                    "used_by": "reverse_cloud_access",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[0:7]}",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 7,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "cond-12",
+                    "detail": "{ingress::hdr.ethernet.ether_type[8:15]}",
+                    "used_for": "gateway"
+                  },
+                  {
+                    "used_by": "cond-8",
+                    "detail": "{ingress::hdr.ethernet.ether_type[8:15]}",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "byte_number": 9,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "cond-12",
+                    "detail": "{ingress::hdr.vlan_tag[1].ether_type[8:15]}",
+                    "used_for": "gateway"
+                  },
+                  {
+                    "used_by": "cond-8",
+                    "detail": "{ingress::hdr.vlan_tag[1].ether_type[8:15]}",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "byte_number": 6,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "cond-12",
+                    "detail": "{ingress::hdr.ethernet.ether_type[0:7]}",
+                    "used_for": "gateway"
+                  },
+                  {
+                    "used_by": "cond-8",
+                    "detail": "{ingress::hdr.ethernet.ether_type[0:7]}",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "byte_number": 8,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "cond-12",
+                    "detail": "{ingress::hdr.vlan_tag[1].ether_type[0:7]}",
+                    "used_for": "gateway"
+                  },
+                  {
+                    "used_by": "cond-8",
+                    "detail": "{ingress::hdr.vlan_tag[1].ether_type[0:7]}",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "byte_number": 135,
+                "byte_type": "ternary",
+                "usages": [
+                  {
+                    "used_by": "cloud_access",
+                    "detail": "{ingress::hdr.ipv4.src_addr[24:31]}",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 134,
+                "byte_type": "ternary",
+                "usages": [
+                  {
+                    "used_by": "cloud_access",
+                    "detail": "{ingress::hdr.ipv4.src_addr[16:23]}",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 137,
+                "byte_type": "ternary",
+                "usages": [
+                  {
+                    "used_by": "cloud_access",
+                    "detail": "{ingress::hdr.ipv4.src_addr[8:15]}",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 136,
+                "byte_type": "ternary",
+                "usages": [
+                  {
+                    "used_by": "cloud_access",
+                    "detail": "{ingress::hdr.ipv4.src_addr[0:7]}",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 3,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "{ingress::hdr.arp.tpa_addr[24:31]}",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 2,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "{ingress::hdr.arp.tpa_addr[16:23]}",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 5,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "{ingress::hdr.arp.tpa_addr[8:15]}",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 4,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "arp_response",
+                    "detail": "{ingress::hdr.arp.tpa_addr[0:7]}",
+                    "used_for": "exact_match"
+                  }
+                ]
+              }
+            ],
+            "exact_size": 128,
+            "size": 194,
+            "ternary_size": 66
+          }
+        },
+        {
+          "action_bus_bytes": {
+            "bytes": [
+              {
+                "byte_number": 32,
+                "usages": [
+                  {
+                    "used_by": "port_forward"
+                  }
+                ]
+              },
+              {
+                "byte_number": 33,
+                "usages": [
+                  {
+                    "used_by": "port_forward"
+                  }
+                ]
+              },
+              {
+                "byte_number": 36,
+                "usages": [
+                  {
+                    "used_by": "ipv4_forward"
+                  }
+                ]
+              },
+              {
+                "byte_number": 37,
+                "usages": [
+                  {
+                    "used_by": "ipv4_forward"
+                  }
+                ]
+              },
+              {
+                "byte_number": 40,
+                "usages": [
+                  {
+                    "used_by": "update_dst_mac"
+                  }
+                ]
+              },
+              {
+                "byte_number": 41,
+                "usages": [
+                  {
+                    "used_by": "update_dst_mac"
+                  }
+                ]
+              },
+              {
+                "byte_number": 100,
+                "usages": [
+                  {
+                    "used_by": "update_dst_mac"
+                  }
+                ]
+              },
+              {
+                "byte_number": 101,
+                "usages": [
+                  {
+                    "used_by": "update_dst_mac"
+                  }
+                ]
+              },
+              {
+                "byte_number": 102,
+                "usages": [
+                  {
+                    "used_by": "update_dst_mac"
+                  }
+                ]
+              },
+              {
+                "byte_number": 103,
+                "usages": [
+                  {
+                    "used_by": "update_dst_mac"
+                  }
+                ]
+              },
+              {
+                "byte_number": 44,
+                "usages": [
+                  {
+                    "used_by": "update_src_mac"
+                  }
+                ]
+              },
+              {
+                "byte_number": 45,
+                "usages": [
+                  {
+                    "used_by": "update_src_mac"
+                  }
+                ]
+              },
+              {
+                "byte_number": 108,
+                "usages": [
+                  {
+                    "used_by": "update_src_mac"
+                  }
+                ]
+              },
+              {
+                "byte_number": 109,
+                "usages": [
+                  {
+                    "used_by": "update_src_mac"
+                  }
+                ]
+              },
+              {
+                "byte_number": 110,
+                "usages": [
+                  {
+                    "used_by": "update_src_mac"
+                  }
+                ]
+              },
+              {
+                "byte_number": 111,
+                "usages": [
+                  {
+                    "used_by": "update_src_mac"
+                  }
+                ]
+              }
+            ],
+            "size": 128
+          },
+          "action_slots": [
+            {
+              "maximum_slots": 32,
+              "number_used": 0,
+              "slot_bit_width": 8
+            },
+            {
+              "maximum_slots": 32,
+              "number_used": 0,
+              "slot_bit_width": 16
+            },
+            {
+              "maximum_slots": 32,
+              "number_used": 0,
+              "slot_bit_width": 32
+            }
+          ],
+          "exm_result_buses": {
+            "ids": [
+              {
+                "id": 14,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "exm_search_buses": {
+            "ids": [
+              {
+                "id": 14,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "used_for": "match_entry_ram"
+                  },
+                  {
+                    "used_by": "cond-9",
+                    "used_for": "gateway"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "gateways": {
+            "gateways": [
+              {
+                "row": 7,
+                "unit_id": 0,
+                "usages": [
+                  {
+                    "used_by": "cond-9",
+                    "used_for": "gateway"
+                  }
+                ]
+              }
+            ],
+            "nRows": 8,
+            "nUnits": 2
+          },
+          "hash_bits": {
+            "bits": [
+              {
+                "hash_bit": 0,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 1,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 2,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 3,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 4,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 5,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 6,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 7,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 8,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 9,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              }
+            ],
+            "nBits": 52,
+            "nFunctions": 8
+          },
+          "hash_distribution_units": {
+            "nHashIds": 2,
+            "nUnitIds": 3,
+            "units": []
+          },
+          "logical_tables": {
+            "ids": [
+              {
+                "id": 1,
+                "usages": [
+                  {
+                    "used_by": "port_forward"
+                  }
+                ]
+              },
+              {
+                "id": 0,
+                "usages": [
+                  {
+                    "used_by": "tbl_tna_nbnswitch441"
+                  }
+                ]
+              },
+              {
+                "id": 2,
+                "usages": [
+                  {
+                    "used_by": "ipv4_forward"
+                  }
+                ]
+              },
+              {
+                "id": 3,
+                "usages": [
+                  {
+                    "used_by": "update_dst_mac"
+                  }
+                ]
+              },
+              {
+                "id": 4,
+                "usages": [
+                  {
+                    "used_by": "update_src_mac"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "map_rams": {
+            "maprams": [],
+            "nRows": 8,
+            "nUnits": 6
+          },
+          "meter_alus": {
+            "meters": [],
+            "nAlus": 4
+          },
+          "rams": {
+            "nColumns": 10,
+            "nRows": 8,
+            "srams": [
+              {
+                "column": 0,
+                "row": 7,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "used_for": "match_entry_ram"
+                  }
+                ],
+                "way": 0
+              },
+              {
+                "column": 0,
+                "row": 1,
+                "usages": [
+                  {
+                    "used_by": "ipv4_forward",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              },
+              {
+                "column": 0,
+                "row": 0,
+                "usages": [
+                  {
+                    "used_by": "update_dst_mac",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              },
+              {
+                "column": 4,
+                "row": 7,
+                "usages": [
+                  {
+                    "used_by": "update_dst_mac$action",
+                    "used_for": "action_ram"
+                  }
+                ]
+              },
+              {
+                "column": 0,
+                "row": 2,
+                "usages": [
+                  {
+                    "used_by": "update_src_mac",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              },
+              {
+                "column": 1,
+                "row": 7,
+                "usages": [
+                  {
+                    "used_by": "update_src_mac$action",
+                    "used_for": "action_ram"
+                  }
+                ]
+              }
+            ]
+          },
+          "stage_number": 2,
+          "stashes": {
+            "nRows": 8,
+            "nUnits": 2,
+            "stashes": [
+              {
+                "row": 7,
+                "unit_id": 0,
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              }
+            ]
+          },
+          "statistic_alus": {
+            "nAlus": 4,
+            "stats": []
+          },
+          "tcams": {
+            "nColumns": 2,
+            "nRows": 12,
+            "tcams": [
+              {
+                "column": 0,
+                "row": 1,
+                "usages": [
+                  {
+                    "used_by": "ipv4_forward",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "column": 0,
+                "row": 0,
+                "usages": [
+                  {
+                    "used_by": "update_dst_mac",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "column": 0,
+                "row": 2,
+                "usages": [
+                  {
+                    "used_by": "update_src_mac",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              }
+            ]
+          },
+          "tind_result_buses": {
+            "ids": [
+              {
+                "id": 0,
+                "usages": [
+                  {
+                    "used_by": "update_dst_mac",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              },
+              {
+                "id": 1,
+                "usages": [
+                  {
+                    "used_by": "tbl_tna_nbnswitch441",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              },
+              {
+                "id": 2,
+                "usages": [
+                  {
+                    "used_by": "ipv4_forward",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              },
+              {
+                "id": 4,
+                "usages": [
+                  {
+                    "used_by": "update_src_mac",
+                    "used_for": "ternary_indirection_ram"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "vliw": {
+            "instructions": [
+              {
+                "color_usages": [
+                  {
+                    "color": 0,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "ipv4_forward",
+                        "detail": "nop"
+                      },
+                      {
+                        "used_by": "port_forward",
+                        "detail": "nop"
+                      },
+                      {
+                        "used_by": "update_dst_mac",
+                        "detail": "nop"
+                      },
+                      {
+                        "used_by": "update_src_mac",
+                        "detail": "nop"
+                      }
+                    ]
+                  },
+                  {
+                    "color": 1,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "tbl_tna_nbnswitch441",
+                        "detail": "tna_nbnswitch441"
+                      }
+                    ]
+                  }
+                ],
+                "instruction_number": 0
+              },
+              {
+                "color_usages": [
+                  {
+                    "color": 0,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "port_forward",
+                        "detail": "set_egr_port"
+                      }
+                    ]
+                  },
+                  {
+                    "color": 1,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "update_dst_mac",
+                        "detail": "set_dst_mac"
+                      }
+                    ]
+                  }
+                ],
+                "instruction_number": 1
+              },
+              {
+                "color_usages": [
+                  {
+                    "color": 0,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "ipv4_forward",
+                        "detail": "set_egr_port"
+                      }
+                    ]
+                  },
+                  {
+                    "color": 1,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "update_src_mac",
+                        "detail": "set_src_mac"
+                      }
+                    ]
+                  }
+                ],
+                "instruction_number": 2
+              }
+            ],
+            "size": 32
+          },
+          "xbar_bytes": {
+            "bytes": [
+              {
+                "byte_number": 1,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "detail": "{ingress::ig_intr_md.ingress_port[8:8], unused[0:6]}",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 2,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "port_forward",
+                    "detail": "{ingress::ig_intr_md.ingress_port[0:7]}",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 0,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "cond-9",
+                    "detail": "{ingress::dst_cloud_0[0:0], unused[0:6]}",
+                    "used_for": "gateway"
+                  }
+                ]
+              },
+              {
+                "byte_number": 131,
+                "byte_type": "ternary",
+                "usages": [
+                  {
+                    "used_by": "ipv4_forward",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[24:31]}",
+                    "used_for": "ternary_match"
+                  },
+                  {
+                    "used_by": "update_dst_mac",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[24:31]}",
+                    "used_for": "ternary_match"
+                  },
+                  {
+                    "used_by": "update_src_mac",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[24:31]}",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 130,
+                "byte_type": "ternary",
+                "usages": [
+                  {
+                    "used_by": "ipv4_forward",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[16:23]}",
+                    "used_for": "ternary_match"
+                  },
+                  {
+                    "used_by": "update_dst_mac",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[16:23]}",
+                    "used_for": "ternary_match"
+                  },
+                  {
+                    "used_by": "update_src_mac",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[16:23]}",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 129,
+                "byte_type": "ternary",
+                "usages": [
+                  {
+                    "used_by": "ipv4_forward",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[8:15]}",
+                    "used_for": "ternary_match"
+                  },
+                  {
+                    "used_by": "update_dst_mac",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[8:15]}",
+                    "used_for": "ternary_match"
+                  },
+                  {
+                    "used_by": "update_src_mac",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[8:15]}",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 128,
+                "byte_type": "ternary",
+                "usages": [
+                  {
+                    "used_by": "ipv4_forward",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[0:7]}",
+                    "used_for": "ternary_match"
+                  },
+                  {
+                    "used_by": "update_dst_mac",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[0:7]}",
+                    "used_for": "ternary_match"
+                  },
+                  {
+                    "used_by": "update_src_mac",
+                    "detail": "{ingress::hdr.ipv4.dst_addr[0:7]}",
+                    "used_for": "ternary_match"
+                  }
+                ]
+              }
+            ],
+            "exact_size": 128,
+            "size": 194,
+            "ternary_size": 66
+          }
+        },
+        {
+          "action_bus_bytes": {
+            "bytes": [],
+            "size": 128
+          },
+          "action_slots": [
+            {
+              "maximum_slots": 32,
+              "number_used": 0,
+              "slot_bit_width": 8
+            },
+            {
+              "maximum_slots": 32,
+              "number_used": 0,
+              "slot_bit_width": 16
+            },
+            {
+              "maximum_slots": 32,
+              "number_used": 0,
+              "slot_bit_width": 32
+            }
+          ],
+          "exm_result_buses": {
+            "ids": [
+              {
+                "id": 14,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              },
+              {
+                "id": 15,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "exm_search_buses": {
+            "ids": [
+              {
+                "id": 14,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              },
+              {
+                "id": 15,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "gateways": {
+            "gateways": [],
+            "nRows": 8,
+            "nUnits": 2
+          },
+          "hash_bits": {
+            "bits": [
+              {
+                "hash_bit": 0,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 1,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 2,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 3,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 4,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 5,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 6,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 7,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 8,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 9,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 10,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 11,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 12,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 13,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 14,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 15,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 16,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 17,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 18,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "hash_bit": 19,
+                "hash_function": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "detail": "Hash Way 0 RAM line select",
+                    "used_for": "exact_match"
+                  }
+                ]
+              }
+            ],
+            "nBits": 52,
+            "nFunctions": 8
+          },
+          "hash_distribution_units": {
+            "nHashIds": 2,
+            "nUnitIds": 3,
+            "units": []
+          },
+          "logical_tables": {
+            "ids": [
+              {
+                "id": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr"
+                  }
+                ]
+              },
+              {
+                "id": 1,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr"
+                  }
+                ]
+              }
+            ],
+            "size": 16
+          },
+          "map_rams": {
+            "maprams": [
+              {
+                "row": 6,
+                "unit_id": 0,
+                "usages": [
+                  {
+                    "used_by": "counter_cloud_egr",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "row": 6,
+                "unit_id": 1,
+                "usages": [
+                  {
+                    "used_by": "counter_cloud_egr",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "row": 4,
+                "unit_id": 0,
+                "usages": [
+                  {
+                    "used_by": "counter_egr",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "row": 4,
+                "unit_id": 1,
+                "usages": [
+                  {
+                    "used_by": "counter_egr",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              }
+            ],
+            "nRows": 8,
+            "nUnits": 6
+          },
+          "meter_alus": {
+            "meters": [],
+            "nAlus": 4
+          },
+          "rams": {
+            "nColumns": 10,
+            "nRows": 8,
+            "srams": [
+              {
+                "column": 0,
+                "row": 7,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "used_for": "match_entry_ram"
+                  }
+                ],
+                "way": 0
+              },
+              {
+                "column": 4,
+                "row": 6,
+                "usages": [
+                  {
+                    "used_by": "counter_cloud_egr",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "column": 5,
+                "row": 6,
+                "usages": [
+                  {
+                    "used_by": "counter_cloud_egr",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "column": 1,
+                "row": 7,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "used_for": "match_entry_ram"
+                  }
+                ],
+                "way": 0
+              },
+              {
+                "column": 4,
+                "row": 4,
+                "usages": [
+                  {
+                    "used_by": "counter_egr",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "column": 5,
+                "row": 4,
+                "usages": [
+                  {
+                    "used_by": "counter_egr",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              }
+            ]
+          },
+          "stage_number": 3,
+          "stashes": {
+            "nRows": 8,
+            "nUnits": 2,
+            "stashes": [
+              {
+                "row": 7,
+                "unit_id": 0,
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              },
+              {
+                "row": 7,
+                "unit_id": 1,
+                "usages": [
+                  {
+                    "used_by": "counting_table_egr",
+                    "used_for": "match_entry_ram"
+                  }
+                ]
+              }
+            ]
+          },
+          "statistic_alus": {
+            "nAlus": 4,
+            "stats": [
+              {
+                "row": 6,
+                "usages": [
+                  {
+                    "used_by": "counter_cloud_egr",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              },
+              {
+                "row": 4,
+                "usages": [
+                  {
+                    "used_by": "counter_egr",
+                    "used_for": "statistics_ram"
+                  }
+                ]
+              }
+            ]
+          },
+          "tcams": {
+            "nColumns": 2,
+            "nRows": 12,
+            "tcams": []
+          },
+          "tind_result_buses": {
+            "ids": [],
+            "size": 16
+          },
+          "vliw": {
+            "instructions": [
+              {
+                "color_usages": [
+                  {
+                    "color": 0,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "counting_table_cloud_egr",
+                        "detail": "hit_counting_table_cloud_egr, hit_counting_table_egr"
+                      },
+                      {
+                        "used_by": "counting_table_egr",
+                        "detail": "hit_counting_table_cloud_egr, hit_counting_table_egr"
+                      }
+                    ]
+                  },
+                  {
+                    "color": 1,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "counting_table_cloud_egr",
+                        "detail": "nop"
+                      }
+                    ]
+                  }
+                ],
+                "instruction_number": 0
+              },
+              {
+                "color_usages": [
+                  {
+                    "color": 0,
+                    "gress": "ingress",
+                    "usages": [
+                      {
+                        "used_by": "counting_table_egr",
+                        "detail": "nop"
+                      }
+                    ]
+                  }
+                ],
+                "instruction_number": 1
+              }
+            ],
+            "size": 32
+          },
+          "xbar_bytes": {
+            "bytes": [
+              {
+                "byte_number": 1,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "detail": "{ingress::ig_intr_md_for_tm.ucast_egress_port[8:8], unused[0:6]}",
+                    "used_for": "exact_match"
+                  },
+                  {
+                    "used_by": "counting_table_egr",
+                    "detail": "{ingress::ig_intr_md_for_tm.ucast_egress_port[8:8], unused[0:6]}",
+                    "used_for": "exact_match"
+                  }
+                ]
+              },
+              {
+                "byte_number": 0,
+                "byte_type": "exact",
+                "usages": [
+                  {
+                    "used_by": "counting_table_cloud_egr",
+                    "detail": "{ingress::ig_intr_md_for_tm.ucast_egress_port[0:7]}",
+                    "used_for": "exact_match"
+                  },
+                  {
+                    "used_by": "counting_table_egr",
+                    "detail": "{ingress::ig_intr_md_for_tm.ucast_egress_port[0:7]}",
+                    "used_for": "exact_match"
+                  }
+                ]
+              }
+            ],
+            "exact_size": 128,
+            "size": 194,
+            "ternary_size": 66
+          }
+        }
+      ],
+      "nStages": 12
+    },
+    "parser": {
+      "nParsers": 18,
+      "parsers": [
+        {
+          "gress": "egress",
+          "nStates": 256,
+          "parser_id": 0,
+          "states": [
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 144,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [],
+              "next_state_id": 2,
+              "next_state_name": "END",
+              "previous_state_id": 10,
+              "shifts": 27,
+              "tcam_row": 255,
+              "previous_state_name": "$entry_point.start"
+            }
+          ]
+        },
+        {
+          "gress": "ingress",
+          "nStates": 256,
+          "parser_id": 0,
+          "states": [
+            {
+              "extracts": [],
+              "has_counter": false,
+              "matchesOn": [],
+              "next_state_id": 0,
+              "next_state_name": "start",
+              "previous_state_id": 1,
+              "shifts": 0,
+              "tcam_row": 255,
+              "previous_state_name": "$entry_point",
+              "savesTo": [
+                {
+                  "buffer_offset": 0,
+                  "hardware_id": 2
+                }
+              ]
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 128,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 8,
+                  "hardware_id": 2,
+                  "value": "0b1*******"
+                }
+              ],
+              "next_state_id": 2,
+              "next_state_name": "END",
+              "previous_state_id": 0,
+              "shifts": 8,
+              "tcam_row": 254,
+              "previous_state_name": "start"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 128,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 8,
+                  "hardware_id": 2,
+                  "value": "0b0*******"
+                }
+              ],
+              "next_state_id": 3,
+              "next_state_name": "TofinoIngressParser_parse_port_metadata",
+              "previous_state_id": 0,
+              "shifts": 8,
+              "tcam_row": 253,
+              "previous_state_name": "start",
+              "savesTo": [
+                {
+                  "buffer_offset": 28,
+                  "hardware_id": 0
+                }
+              ]
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 133,
+                  "extractor_id": 0,
+                  "buffer_offset": 8
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 1,
+                  "extractor_id": 0,
+                  "buffer_offset": 10
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 132,
+                  "extractor_id": 1,
+                  "buffer_offset": 14
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 0,
+                  "extractor_id": 1,
+                  "buffer_offset": 16
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 138,
+                  "extractor_id": 2,
+                  "buffer_offset": 20
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 66,
+                  "extractor_id": 0,
+                  "constant_value": 1
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x0800"
+                }
+              ],
+              "next_state_id": 4,
+              "next_state_name": "parse_ipv4",
+              "previous_state_id": 3,
+              "shifts": 22,
+              "tcam_row": 252,
+              "previous_state_name": "TofinoIngressParser_parse_port_metadata"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 133,
+                  "extractor_id": 0,
+                  "buffer_offset": 8
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 1,
+                  "extractor_id": 0,
+                  "buffer_offset": 10
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 132,
+                  "extractor_id": 1,
+                  "buffer_offset": 14
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 0,
+                  "extractor_id": 1,
+                  "buffer_offset": 16
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 138,
+                  "extractor_id": 2,
+                  "buffer_offset": 20
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 66,
+                  "extractor_id": 0,
+                  "constant_value": 1
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x86dd"
+                }
+              ],
+              "next_state_id": 2,
+              "next_state_name": "END",
+              "previous_state_id": 3,
+              "shifts": 22,
+              "tcam_row": 251,
+              "previous_state_name": "TofinoIngressParser_parse_port_metadata"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 133,
+                  "extractor_id": 0,
+                  "buffer_offset": 8
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 1,
+                  "extractor_id": 0,
+                  "buffer_offset": 10
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 132,
+                  "extractor_id": 1,
+                  "buffer_offset": 14
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 0,
+                  "extractor_id": 1,
+                  "buffer_offset": 16
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 138,
+                  "extractor_id": 2,
+                  "buffer_offset": 20
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 66,
+                  "extractor_id": 0,
+                  "constant_value": 1
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x0806"
+                }
+              ],
+              "next_state_id": 5,
+              "next_state_name": "parse_arp",
+              "previous_state_id": 3,
+              "shifts": 22,
+              "tcam_row": 250,
+              "previous_state_name": "TofinoIngressParser_parse_port_metadata"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 133,
+                  "extractor_id": 0,
+                  "buffer_offset": 8
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 1,
+                  "extractor_id": 0,
+                  "buffer_offset": 10
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 132,
+                  "extractor_id": 1,
+                  "buffer_offset": 14
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 0,
+                  "extractor_id": 1,
+                  "buffer_offset": 16
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 138,
+                  "extractor_id": 2,
+                  "buffer_offset": 20
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 66,
+                  "extractor_id": 0,
+                  "constant_value": 1
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x8100"
+                }
+              ],
+              "next_state_id": 6,
+              "next_state_name": "parse_vlan",
+              "previous_state_id": 3,
+              "shifts": 22,
+              "tcam_row": 249,
+              "previous_state_name": "TofinoIngressParser_parse_port_metadata",
+              "savesTo": [
+                {
+                  "buffer_offset": 24,
+                  "hardware_id": 0
+                }
+              ]
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 133,
+                  "extractor_id": 0,
+                  "buffer_offset": 8
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 1,
+                  "extractor_id": 0,
+                  "buffer_offset": 10
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 132,
+                  "extractor_id": 1,
+                  "buffer_offset": 14
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 0,
+                  "extractor_id": 1,
+                  "buffer_offset": 16
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 138,
+                  "extractor_id": 2,
+                  "buffer_offset": 20
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 66,
+                  "extractor_id": 0,
+                  "constant_value": 1
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x88a8"
+                }
+              ],
+              "next_state_id": 6,
+              "next_state_name": "parse_vlan",
+              "previous_state_id": 3,
+              "shifts": 22,
+              "tcam_row": 248,
+              "previous_state_name": "TofinoIngressParser_parse_port_metadata",
+              "savesTo": [
+                {
+                  "buffer_offset": 24,
+                  "hardware_id": 0
+                }
+              ]
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 133,
+                  "extractor_id": 0,
+                  "buffer_offset": 8
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 1,
+                  "extractor_id": 0,
+                  "buffer_offset": 10
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 132,
+                  "extractor_id": 1,
+                  "buffer_offset": 14
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 0,
+                  "extractor_id": 1,
+                  "buffer_offset": 16
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 138,
+                  "extractor_id": 2,
+                  "buffer_offset": 20
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 66,
+                  "extractor_id": 0,
+                  "constant_value": 1
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x****"
+                }
+              ],
+              "next_state_id": 2,
+              "next_state_name": "END",
+              "previous_state_id": 3,
+              "shifts": 22,
+              "tcam_row": 247,
+              "previous_state_name": "TofinoIngressParser_parse_port_metadata"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 32,
+                  "dest_container": 256,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 258,
+                  "extractor_id": 1,
+                  "buffer_offset": 4
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 257,
+                  "extractor_id": 2,
+                  "buffer_offset": 8
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 2,
+                  "extractor_id": 3,
+                  "buffer_offset": 12
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 66,
+                  "extractor_id": 0,
+                  "constant_value": 2
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [],
+              "next_state_id": 7,
+              "next_state_name": "parse_ipv4.$split_0",
+              "previous_state_id": 4,
+              "shifts": 16,
+              "tcam_row": 246,
+              "previous_state_name": "parse_ipv4"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 32,
+                  "dest_container": 3,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [],
+              "next_state_id": 2,
+              "next_state_name": "END",
+              "previous_state_id": 7,
+              "shifts": 4,
+              "tcam_row": 245,
+              "previous_state_name": "parse_ipv4.$split_0"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 32,
+                  "dest_container": 256,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 320,
+                  "extractor_id": 0,
+                  "buffer_offset": 4
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 131,
+                  "extractor_id": 1,
+                  "buffer_offset": 6
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 134,
+                  "extractor_id": 2,
+                  "buffer_offset": 8
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 5,
+                  "extractor_id": 1,
+                  "buffer_offset": 10
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 3,
+                  "extractor_id": 2,
+                  "buffer_offset": 14
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 135,
+                  "extractor_id": 3,
+                  "buffer_offset": 18
+                },
+                {
+                  "bit_width": 32,
+                  "dest_container": 6,
+                  "extractor_id": 3,
+                  "buffer_offset": 20
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 66,
+                  "extractor_id": 0,
+                  "constant_value": 4
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [],
+              "next_state_id": 8,
+              "next_state_name": "parse_arp.$split_0",
+              "previous_state_id": 5,
+              "shifts": 24,
+              "tcam_row": 244,
+              "previous_state_name": "parse_arp"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 32,
+                  "dest_container": 2,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [],
+              "next_state_id": 2,
+              "next_state_name": "END",
+              "previous_state_id": 8,
+              "shifts": 4,
+              "tcam_row": 243,
+              "previous_state_name": "parse_arp.$split_0"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 136,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 139,
+                  "extractor_id": 1,
+                  "buffer_offset": 2
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 65,
+                  "extractor_id": 0,
+                  "constant_value": 2
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x0800"
+                }
+              ],
+              "next_state_id": 4,
+              "next_state_name": "parse_ipv4",
+              "previous_state_id": 6,
+              "shifts": 4,
+              "tcam_row": 242,
+              "previous_state_name": "parse_vlan"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 136,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 139,
+                  "extractor_id": 1,
+                  "buffer_offset": 2
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 65,
+                  "extractor_id": 0,
+                  "constant_value": 2
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x86dd"
+                }
+              ],
+              "next_state_id": 2,
+              "next_state_name": "END",
+              "previous_state_id": 6,
+              "shifts": 4,
+              "tcam_row": 241,
+              "previous_state_name": "parse_vlan"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 136,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 139,
+                  "extractor_id": 1,
+                  "buffer_offset": 2
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 65,
+                  "extractor_id": 0,
+                  "constant_value": 2
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x0806"
+                }
+              ],
+              "next_state_id": 5,
+              "next_state_name": "parse_arp",
+              "previous_state_id": 6,
+              "shifts": 4,
+              "tcam_row": 240,
+              "previous_state_name": "parse_vlan"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 136,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 139,
+                  "extractor_id": 1,
+                  "buffer_offset": 2
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 65,
+                  "extractor_id": 0,
+                  "constant_value": 2
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x8100"
+                }
+              ],
+              "next_state_id": 9,
+              "next_state_name": "parse_vlan.$it1",
+              "previous_state_id": 6,
+              "shifts": 4,
+              "tcam_row": 239,
+              "previous_state_name": "parse_vlan",
+              "savesTo": [
+                {
+                  "buffer_offset": 6,
+                  "hardware_id": 0
+                }
+              ]
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 136,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 139,
+                  "extractor_id": 1,
+                  "buffer_offset": 2
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 65,
+                  "extractor_id": 0,
+                  "constant_value": 2
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x****"
+                }
+              ],
+              "next_state_id": 2,
+              "next_state_name": "END",
+              "previous_state_id": 6,
+              "shifts": 4,
+              "tcam_row": 238,
+              "previous_state_name": "parse_vlan"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 137,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 140,
+                  "extractor_id": 1,
+                  "buffer_offset": 2
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 65,
+                  "extractor_id": 0,
+                  "constant_value": 1
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x0800"
+                }
+              ],
+              "next_state_id": 4,
+              "next_state_name": "parse_ipv4",
+              "previous_state_id": 9,
+              "shifts": 4,
+              "tcam_row": 237,
+              "previous_state_name": "parse_vlan.$it1"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 137,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 140,
+                  "extractor_id": 1,
+                  "buffer_offset": 2
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 65,
+                  "extractor_id": 0,
+                  "constant_value": 1
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x86dd"
+                }
+              ],
+              "next_state_id": 2,
+              "next_state_name": "END",
+              "previous_state_id": 9,
+              "shifts": 4,
+              "tcam_row": 236,
+              "previous_state_name": "parse_vlan.$it1"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 137,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 140,
+                  "extractor_id": 1,
+                  "buffer_offset": 2
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 65,
+                  "extractor_id": 0,
+                  "constant_value": 1
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x0806"
+                }
+              ],
+              "next_state_id": 5,
+              "next_state_name": "parse_arp",
+              "previous_state_id": 9,
+              "shifts": 4,
+              "tcam_row": 235,
+              "previous_state_name": "parse_vlan.$it1"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 137,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 140,
+                  "extractor_id": 1,
+                  "buffer_offset": 2
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 65,
+                  "extractor_id": 0,
+                  "constant_value": 1
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x8100"
+                }
+              ],
+              "next_state_id": 2,
+              "next_state_name": "END",
+              "previous_state_id": 9,
+              "shifts": 4,
+              "tcam_row": 234,
+              "previous_state_name": "parse_vlan.$it1"
+            },
+            {
+              "extracts": [
+                {
+                  "bit_width": 16,
+                  "dest_container": 137,
+                  "extractor_id": 0,
+                  "buffer_offset": 0
+                },
+                {
+                  "bit_width": 16,
+                  "dest_container": 140,
+                  "extractor_id": 1,
+                  "buffer_offset": 2
+                },
+                {
+                  "bit_width": 8,
+                  "dest_container": 65,
+                  "extractor_id": 0,
+                  "constant_value": 1
+                }
+              ],
+              "has_counter": false,
+              "matchesOn": [
+                {
+                  "bit_width": 16,
+                  "hardware_id": 0,
+                  "value": "0x****"
+                }
+              ],
+              "next_state_id": 2,
+              "next_state_name": "END",
+              "previous_state_id": 9,
+              "shifts": 4,
+              "tcam_row": 233,
+              "previous_state_name": "parse_vlan.$it1"
+            }
+          ],
+          "phase0": {
+            "usages": [
+              {
+                "used_by": "IngressParser.$PORT_METADATA",
+                "used_for": "set_port_metadata"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "phv_containers": {
+      "normal": [
+        {
+          "addresses": [
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127
+          ],
+          "units": 64,
+          "width": 8
+        },
+        {
+          "addresses": [
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223
+          ],
+          "units": 96,
+          "width": 16
+        },
+        {
+          "addresses": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63
+          ],
+          "units": 64,
+          "width": 32
+        }
+      ],
+      "tagalong": [
+        {
+          "addresses": [
+            288,
+            289,
+            290,
+            291,
+            292,
+            293,
+            294,
+            295,
+            296,
+            297,
+            298,
+            299,
+            300,
+            301,
+            302,
+            303,
+            304,
+            305,
+            306,
+            307,
+            308,
+            309,
+            310,
+            311,
+            312,
+            313,
+            314,
+            315,
+            316,
+            317,
+            318,
+            319
+          ],
+          "units": 32,
+          "width": 8
+        },
+        {
+          "addresses": [
+            320,
+            321,
+            322,
+            323,
+            324,
+            325,
+            326,
+            327,
+            328,
+            329,
+            330,
+            331,
+            332,
+            333,
+            334,
+            335,
+            336,
+            337,
+            338,
+            339,
+            340,
+            341,
+            342,
+            343,
+            344,
+            345,
+            346,
+            347,
+            348,
+            349,
+            350,
+            351,
+            352,
+            353,
+            354,
+            355,
+            356,
+            357,
+            358,
+            359,
+            360,
+            361,
+            362,
+            363,
+            364,
+            365,
+            366,
+            367
+          ],
+          "units": 48,
+          "width": 16
+        },
+        {
+          "addresses": [
+            256,
+            257,
+            258,
+            259,
+            260,
+            261,
+            262,
+            263,
+            264,
+            265,
+            266,
+            267,
+            268,
+            269,
+            270,
+            271,
+            272,
+            273,
+            274,
+            275,
+            276,
+            277,
+            278,
+            279,
+            280,
+            281,
+            282,
+            283,
+            284,
+            285,
+            286,
+            287
+          ],
+          "units": 32,
+          "width": 32
+        }
+      ]
+    }
+  }
+}

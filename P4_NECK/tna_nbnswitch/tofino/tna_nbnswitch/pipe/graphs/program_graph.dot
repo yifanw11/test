@@ -1,0 +1,83 @@
+digraph table_deps {
+  splines=ortho; rankdir=LR;
+  label="Program: tna_nbnswitch
+RunId: b280d292747592ee
+";
+  labelloc=t; labeljust=l;
+  { "cond-7"; "cond-8"; ".cloud_access"; ".check_dst_cloud"; "cond-10"; "cond-11"; "cond-12"; ".arp_response"; "tbl_tna_nbnswitch471"; ".reverse_cloud_access"; "tbl_tna_nbnswitch420"; }
+  { rank = same; ".port_forward"; "cond-9"; "tbl_tna_nbnswitch441"; ".update_src_mac"; ".update_dst_mac"; ".ipv4_forward"; }
+  { rank = same; "tbl_tna_nbnswitch419"; ".counting_table_ing"; ".counting_table_cloud_ing"; ".port_type"; }
+  { rank = same; ".counting_table_egr"; ".counting_table_cloud_egr"; }
+   "cond-7" -> "cond-8" [ label= "",color=green ];
+   "cond-8" -> ".port_forward" [ label= "",color=green ];
+   "cond-8" -> ".cloud_access" [ label= "",color=green ];
+   "cond-8" -> ".check_dst_cloud" [ label= "",color=green ];
+   "cond-8" -> "cond-9" [ label= "",color=green ];
+   "cond-9" -> "tbl_tna_nbnswitch441" [ label= "",color=green ];
+   "cond-9" -> ".update_src_mac" [ label= "",color=green ];
+   "cond-9" -> ".update_dst_mac" [ label= "",color=green ];
+   "cond-9" -> ".ipv4_forward" [ label= "",color=green ];
+   "cond-9" -> ".port_forward" [ label= "",color=green ];
+   "cond-7" -> "cond-10" [ label= "",color=green ];
+   "cond-10" -> ".port_forward" [ label= "",color=green ];
+   "cond-10" -> "cond-11" [ label= "",color=green ];
+   "cond-11" -> "cond-12" [ label= "",color=green ];
+   "cond-12" -> ".arp_response" [ label= "",color=green ];
+   "cond-12" -> ".port_forward" [ label= "",color=green ];
+   "cond-12" -> "tbl_tna_nbnswitch471" [ label= "",color=green ];
+   "cond-12" -> ".reverse_cloud_access" [ label= "",color=green ];
+   "cond-12" -> ".update_src_mac" [ label= "",color=green ];
+   "cond-12" -> ".update_dst_mac" [ label= "",color=green ];
+   "cond-12" -> ".ipv4_forward" [ label= "",color=green ];
+   ".cloud_access" -> "cond-9" [ label= "",color=pink ];
+   ".check_dst_cloud" -> "cond-9" [ label= "",color=pink ];
+   ".arp_response" -> ".port_forward" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch441" -> ".update_src_mac" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch441" -> ".update_dst_mac" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch441" -> ".ipv4_forward" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch471" -> ".update_src_mac" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch471" -> ".update_dst_mac" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch471" -> ".ipv4_forward" [ label= "",color=pink ];
+   ".reverse_cloud_access" -> ".update_src_mac" [ label= "",color=pink ];
+   ".reverse_cloud_access" -> ".update_dst_mac" [ label= "",color=pink ];
+   ".reverse_cloud_access" -> ".ipv4_forward" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch419" -> "tbl_tna_nbnswitch420" [ label= "",color=red ];
+   ".port_type" -> "cond-7" [ label= "",color=blue ];
+   ".check_dst_cloud" -> "cond-9" [ label= "",color=blue ];
+   "cond-8" -> "tbl_tna_nbnswitch441" [ label= "",color=pink ];
+   ".port_type" -> "cond-10" [ label= "",color=blue ];
+   ".port_type" -> "cond-11" [ label= "",color=blue ];
+   ".arp_response" -> ".port_forward" [ label= "",color=red ];
+   "cond-12" -> "tbl_tna_nbnswitch471" [ label= "",color=pink ];
+   ".ipv4_forward" -> ".counting_table_egr" [ label= "",color=gold ];
+   ".port_forward" -> ".counting_table_egr" [ label= "",color=gold ];
+   ".arp_response" -> ".counting_table_egr" [ label= "",color=gold ];
+   ".ipv4_forward" -> ".counting_table_cloud_egr" [ label= "",color=gold ];
+   ".port_forward" -> ".counting_table_cloud_egr" [ label= "",color=gold ];
+   ".arp_response" -> ".counting_table_cloud_egr" [ label= "",color=gold ];
+   ".ipv4_forward" -> ".counting_table_egr" [ label= "",color=pink ];
+   ".ipv4_forward" -> ".counting_table_cloud_egr" [ label= "",color=pink ];
+   ".port_forward" -> ".counting_table_egr" [ label= "",color=pink ];
+   ".port_forward" -> ".counting_table_cloud_egr" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch441" -> ".update_src_mac" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch441" -> ".update_dst_mac" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch441" -> ".ipv4_forward" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch471" -> ".update_src_mac" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch471" -> ".update_dst_mac" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch471" -> ".ipv4_forward" [ label= "",color=pink ];
+   ".cloud_access" -> "cond-9" [ label= "",color=pink ];
+   ".check_dst_cloud" -> "cond-9" [ label= "",color=pink ];
+   ".arp_response" -> ".port_forward" [ label= "",color=pink ];
+   ".arp_response" -> ".counting_table_egr" [ label= "",color=pink ];
+   ".arp_response" -> ".counting_table_cloud_egr" [ label= "",color=pink ];
+   ".reverse_cloud_access" -> ".update_src_mac" [ label= "",color=pink ];
+   ".reverse_cloud_access" -> ".update_dst_mac" [ label= "",color=pink ];
+   ".reverse_cloud_access" -> ".ipv4_forward" [ label= "",color=pink ];
+   "tbl_tna_nbnswitch419" -> "tbl_tna_nbnswitch420" [ label= "",color=pink ];
+   ".port_type" -> "cond-7" [ label= "",color=pink ];
+  { rank=max;
+    subgraph cluster_legend { node [ shape=record; fontsize=10];
+      empty [label=<<table border="0" cellborder="0"><tr><td colspan="8">Edge colors</td></tr><tr><td><font color="gold">ixbar_read</font></td><td><font color="blue">action_read</font></td><td><font color="red">output</font></td><td><font color="navy">cont_conflict</font></td><td><font color="cyan">reduction_or_read</font></td><td><font color="cyan">reduction_or_output</font></td><td><font color="pink">anti_table_read</font></td><td><font color="pink">anti_next_action_read</font></td><td><font color="pink">anti_next_table_data</font></td><td><font color="pink">anti_next_table_control</font></td><td><font color="pink">anti_next_table_metadata</font></td><td><font color="black">exit</font></td><td><font color="green">control_action</font></td><td><font color="green">control_condition_true</font></td><td><font color="green">control_condition_false</font></td><td><font color="green">control_table_hit</font></td><td><font color="green">control_table_miss</font></td><td><font color="green">control_default_next_table</font></td></tr></table>>;]
+    }
+  }
+}
