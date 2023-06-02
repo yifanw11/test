@@ -1,0 +1,14 @@
+grpc_addr: "10.0.59.166:50052"
+listen_port: 4444
+yaml_file: "p4info.yaml"
+flask_addr: "0.0.0.0:5000"
+
+switch_mac: "00:90:fb:70:65:a9"
+cloud_ip_prefix: "10.0.112.0"
+cloud_ip: "10.0.112.10"
+cloud_mac: "fa:16:3e:ac:bd:65"
+switch_virtual_ip: "10.0.112.8"
+switch_host_port: 132
+switch_cloud_port: 164
+host_ip: "10.211.211.0"
+host_mac: "08:36:c9:f3:6e:01"
